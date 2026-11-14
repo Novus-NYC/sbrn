@@ -27,13 +27,14 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Open + Online", href: "/openandonline" },
   { label: "Stories", href: "/stories" },
   { label: "Media", href: "/media" },
 ] as const;
 
-export const cta = { label: "Connect with us", href: "/connect" } as const;
+export const cta = { label: "Get support", href: "/connect" } as const;
 
 export const hero = {
   question: "Are you a small business?",
@@ -57,6 +58,7 @@ export const hero = {
 export type Service = {
   id: string;
   name: string;
+  summary: string;
   /** How the sign is drawn on the block. */
   shop: "party" | "cafe" | "studio" | "corner" | "market";
   proof: string;
@@ -71,6 +73,7 @@ export const offer = {
     {
       id: "grants-loans",
       name: "Grants & loans",
+      summary: "Get guidance on funding resources and applications for your business.",
       shop: "party",
       proof:
         "La Bomboniera Marylu in Astoria secured a $20,000 grant that paid all of its back-owed rent and kept the store open.",
@@ -79,6 +82,7 @@ export const offer = {
     {
       id: "digital-marketing",
       name: "Digital marketing",
+      summary: "Find opportunities to reach customers and build your digital skills.",
       shop: "cafe",
       proof:
         "OurtBox Cafe in Manhattan secured a LinkNYC digital advertising spot at no cost.",
@@ -87,6 +91,7 @@ export const offer = {
     {
       id: "getting-online",
       name: "Getting online",
+      summary: "Talk with a specialist about your website and online presence.",
       shop: "studio",
       proof:
         "Pan-African Solutions Consulting in Brooklyn had lost access to its website. Within a few weeks, it had an entirely new one.",
@@ -95,6 +100,7 @@ export const offer = {
     {
       id: "lease-negotiations",
       name: "Lease negotiations",
+      summary: "Connect with your borough’s specialist to discuss your lease questions.",
       shop: "corner",
       proof:
         "Bring your lease questions to the Small Business Support Specialist at your borough’s Chamber of Commerce.",
@@ -102,6 +108,7 @@ export const offer = {
     {
       id: "business-planning",
       name: "Business planning",
+      summary: "Find training and resources to help you plan your next steps.",
       shop: "market",
       proof:
         "The owners of Valid Vibes on Staten Island completed digital trainings and began MWBE certification to open new vending opportunities.",

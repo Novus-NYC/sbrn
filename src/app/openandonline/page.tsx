@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import BrowserFrame from "@/lib/components/browser-frame"
 import ConnectBand from "@/lib/components/connect-band"
-import BuildSteps from "@/lib/components/online/build-steps"
 import PageHeader from "@/lib/components/page-header"
 import { Lines } from "@/lib/components/ui"
 import { openOnline } from "@/lib/data/site"
@@ -22,94 +21,30 @@ export default function OpenOnlinePage() {
       <PageHeader
         kicker="A program of the Network"
         title={["Open", "+ Online"]}
-        underClass="under--sites"
-        under={openOnline.projects.map((p) => (
-          <Image key={p.slug} src={`/media/projects/${p.slug}.webp`} alt="" width={p.w} height={p.h} sizes="(max-width: 720px) 40vw, 16vw" />
-        ))}
         lead={openOnline.lead}
         aside={
-          <div className="doorsign" role="note">
-            <span className="doorsign__string" aria-hidden="true" />
-            <p className="label doorsign__tag">Notice</p>
-            <p className="display doorsign__text">{openOnline.status}</p>
+          <div className="program-status" role="note">
+            <h2>Applications are closed</h2>
+            <p>{openOnline.status}</p>
+            <a href="/connect" className="text-link">Contact us about other support</a>
           </div>
         }
       >
         <p className="phead__offer">{openOnline.offer}</p>
       </PageHeader>
 
-      {/* ---- how a project runs: the page in the browser builds itself as you read ---- */}
-      <section className="build" data-tone="night" aria-labelledby="build-h">
+      <section className="program-process section-pad" aria-labelledby="build-h">
         <div className="wrap">
-          <Lines id="build-h" as="h2" className="display build__h" lines={["How our website", "projects work"]} />
-        </div>
-        <BuildSteps className="wrap grid12 build__grid">
-          <div className="build__stage" aria-hidden="true">
-            <div className="mock">
-              <div className="mock__bar">
-                <i />
-                <i />
-                <i />
-                <b>
-                  <span className="mock__lock" />
-                  yourbusiness.com
-                </b>
-              </div>
-              <div className="mock__page">
-                <div className="mock__nav">
-                  <span className="mock__logo" />
-                  <span className="mock__links">
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                </div>
-                <div className="mock__hero">
-                  <div className="mock__copy">
-                    <span className="mock__line mock__line--1" />
-                    <span className="mock__line mock__line--2" />
-                    <span className="mock__line mock__line--3" />
-                    <span className="mock__btn" />
-                  </div>
-                  <div className="mock__img">
-                    <span className="mock__play" />
-                  </div>
-                </div>
-                <div className="mock__row">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <ul className="mock__check">
-                  <li>Logo</li>
-                  <li>Photos</li>
-                  <li>Words</li>
-                </ul>
-                <span className="mock__pin mock__pin--1">1</span>
-                <span className="mock__pin mock__pin--2">2</span>
-                <div className="mock__scrub">
-                  <span />
-                </div>
-                <span className="mock__open">Open</span>
-              </div>
-            </div>
-          </div>
-
-          <ol className="build__steps">
+          <div className="section-heading"><div><p className="section-tag">The Open + Online experience</p><h2 id="build-h">How our website projects work</h2></div></div>
+          <ol className="program-process__steps">
             {openOnline.steps.map((step, i) => (
-              <li key={step.title} className="step" data-step-item={i + 1}>
-                <span className="display step__n tnum" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <div className="step__body">
-                  <Image src={step.icon} alt="" width={256} height={256} sizes="64px" className="step__icon" />
-                  <h3 className="display step__title">{step.title}</h3>
-                  <p className="step__text">{step.text}</p>
-                </div>
+              <li key={step.title}>
+                <span className="program-process__number" aria-hidden="true">{i + 1}</span>
+                <h3>{step.title}</h3><p>{step.text}</p>
               </li>
             ))}
           </ol>
-        </BuildSteps>
+        </div>
       </section>
 
       {/* ---- is it really free? ---- */}
@@ -119,9 +54,6 @@ export default function OpenOnlinePage() {
             <h2 id="free-h" className="voice free__h" data-reveal="">
               Is it really free?
             </h2>
-            <p className="free__stamp display" data-reveal="" style={{ ["--d" as string]: "200ms" }} aria-hidden="true">
-              Free
-            </p>
           </div>
           <ul className="free__list">
             {openOnline.free.map((f, i) => (
@@ -148,23 +80,15 @@ export default function OpenOnlinePage() {
         </div>
       </section>
 
-      {/* ---- funders ---- */}
-      <section className="funders section-pad" data-tone="night" aria-labelledby="funders-h">
-        <div className="wrap grid12">
-          <div className="funders__head">
-            <h2 id="funders-h" className="voice funders__h" data-reveal="">
-              Thank you to our funders
-            </h2>
-            <div className="funders__lead" data-reveal="" style={{ ["--d" as string]: "120ms" }}>
-              <Image src="/media/partners/wells-fargo.webp" alt="Wells Fargo" width={900} height={204} sizes="240px" />
-            </div>
+      <section className="supporters section-pad" aria-labelledby="funders-h">
+        <div className="wrap">
+          <div className="supporters__intro"><div><p className="section-tag">Investing in New York’s small businesses</p><h2 id="funders-h">Thank you to our funders</h2><p>The support behind NYC Small Biz: Open + Online.</p></div>
+            <div className="supporters__logo"><Image src="/media/partners/wells-fargo.webp" alt="Wells Fargo" width={900} height={204} sizes="220px" /></div>
           </div>
-          <div className="funders__tiers">
-            {openOnline.funders.slice(1).map((tier, t) => (
-              <ul key={t} className={`funders__tier funders__tier--${t + 1}`} data-reveal="" style={{ ["--d" as string]: `${t * 90}ms` }}>
-                {tier.map((name) => (
-                  <li key={name}>{name}</li>
-                ))}
+          <div className="supporters__groups">
+            {openOnline.funders.slice(1).map((group, i) => (
+              <ul key={i} className={`supporters__group ${i === 0 ? "supporters__group--featured" : ""}`}>
+                {group.map((name) => <li key={name}>{name}</li>)}
               </ul>
             ))}
           </div>

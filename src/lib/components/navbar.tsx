@@ -45,7 +45,7 @@ export default function Navbar() {
   // Menu behaviour: lock scroll, trap focus, close on Escape.
   useEffect(() => {
     const main = document.getElementById("main")
-    const footer = document.querySelector("footer")
+    const footer = document.querySelector("body > footer")
     if (!open) {
       document.documentElement.style.removeProperty("overflow")
       main?.removeAttribute("inert")
@@ -107,6 +107,7 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="nav__fallback"><Link href={cta.href}>{cta.label}</Link></li>
           </ul>
         </nav>
 
@@ -153,6 +154,9 @@ export default function Navbar() {
         aria-label="Site menu"
         aria-hidden={!open}
         inert={!open}
+        onClick={(event) => {
+          if ((event.target as HTMLElement).closest("a[href]")) close(false)
+        }}
       >
         <div className="menu__inner wrap">
           <ul className="menu__list">

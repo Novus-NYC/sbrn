@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { cta, hero, offer, stories } from "@/lib/data/site"
 import { Arrow, ArrowLink, Btn } from "../ui"
 import { Building } from "./building"
@@ -258,9 +259,9 @@ export default function Morning() {
                 </li>
               ))}
             </ul>
-            <a className="label offer__skip" href="#who">
-              Skip the walk
-            </a>
+            <Link className="label offer__skip" href="/services">
+              View all services
+            </Link>
           </div>
         </div>
       </div>

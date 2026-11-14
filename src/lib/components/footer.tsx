@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { chambers, cta, nav, site } from "@/lib/data/site"
 import { Btn, Roll } from "./ui"
@@ -7,18 +6,6 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="footer" data-tone="night">
-      {/* The brand's own storefront line drawing sits on the footer like a block at dusk. */}
-      <div className="footer__block" aria-hidden="true">
-        <Image
-          src="/media/brand/storefront-row.webp"
-          alt=""
-          width={1600}
-          height={782}
-          sizes="(max-width: 720px) 180vw, 100vw"
-          className="footer__blockimg"
-        />
-      </div>
-
       <div className="wrap footer__top">
         <div className="footer__lockup">
           <p className="footer__nyc display" aria-hidden="true">
@@ -48,7 +35,7 @@ export default function Footer() {
             {site.address.city}
           </address>
           <a className="ulink footer__mail" href={`mailto:${site.email}`}>
-            {site.email}
+            Email the Network
           </a>
         </div>
 

@@ -18,10 +18,7 @@ export default function StoriesPage() {
         kicker="Stories"
         title={["Our impact on", "small businesses"]}
         lead={storiesIntro.text}
-        underClass="under--photos"
-        under={stories.map((s) => (
-          <Image key={s.slug} src={s.image.src} alt="" width={s.image.width} height={s.image.height} sizes="(max-width: 720px) 34vw, 14vw" />
-        ))}
+        aside={<Image className="page-intro__photo" src={stories[2].image.src} alt={stories[2].image.alt} width={stories[2].image.width} height={stories[2].image.height} sizes="(max-width: 760px) 90vw, 34vw" priority />}
       >
         <nav aria-label="Boroughs">
           <ul className="jump">

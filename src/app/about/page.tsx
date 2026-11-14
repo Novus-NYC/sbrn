@@ -3,7 +3,9 @@ import Image from "next/image"
 import ConnectBand from "@/lib/components/connect-band"
 import PageHeader from "@/lib/components/page-header"
 import { Arrow, Lines } from "@/lib/components/ui"
-import { about, chambers, mailto, partners } from "@/lib/data/site"
+import { about, chambers, mailto, partners, stories } from "@/lib/data/site"
+
+const neighborhood = stories.find((story) => story.slug === "vincents-barber-shop")!
 
 export const metadata: Metadata = {
   title: "Who we are",
@@ -17,9 +19,7 @@ export default function AboutPage() {
       <PageHeader
         kicker="The Network"
         title={["Who", "we are"]}
-        underClass="under--block"
-        under={<Image src="/media/brand/storefront-row.webp" alt="" width={1600} height={782} sizes="100vw" />}
-        lead={about.paragraphs[0]}
+        lead="We connect New York City small business owners with personalized guidance through the Chambers of Commerce in all five boroughs."
         aside={
           <dl className="phead__facts">
             {about.facts.map((f) => (
@@ -39,10 +39,10 @@ export default function AboutPage() {
         <div className="wrap grid12">
           <figure className="story__art" data-reveal="">
             <Image
-              src="/media/brand/storefront-illustration.webp"
-              alt="Illustration of a shop owner standing beside a storefront with a striped awning"
-              width={556}
-              height={556}
+              src={neighborhood.image.src}
+              alt={neighborhood.image.alt}
+              width={neighborhood.image.width}
+              height={neighborhood.image.height}
               sizes="(max-width: 860px) 70vw, 30vw"
             />
           </figure>

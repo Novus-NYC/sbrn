@@ -5,10 +5,10 @@ import "./globals.css"
 import "./styles/chrome.css"
 import "./styles/stage.css"
 import "./styles/sections.css"
+import "./styles/public-service.css"
 import Footer from "@/lib/components/footer"
 import Navbar from "@/lib/components/navbar"
 import { chambers, site } from "@/lib/data/site"
-import GateCurtain from "@/lib/motion/gate-curtain"
 import MotionRoot from "@/lib/motion/motion-root"
 
 // One family carries the street: condensed for signs, normal width for reading.
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.description,
     url: site.url,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Are you a small business? We are here to help you. NYC Small Business Resource Network." }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Local support for your next step. NYC Small Business Resource Network, with Brooklyn Burgers & Beer in Park Slope." }],
   },
   twitter: {
     card: "summary_large_image",
@@ -104,7 +104,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <Footer />
-        <GateCurtain />
         <MotionRoot />
         <script
           type="application/ld+json"
