@@ -1,11 +1,13 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import ConnectBand from "@/lib/components/connect-band"
 import PageHeader from "@/lib/components/page-header"
 import { Arrow, Lines } from "@/lib/components/ui"
 import { about, chambers, mailto, partners, stories } from "@/lib/data/site"
 
 const neighborhood = stories.find((story) => story.slug === "vincents-barber-shop")!
+const featured = stories.find((story) => story.slug === "madefresh-organic")!
 
 export const metadata: Metadata = {
   title: "Who we are",
@@ -21,19 +23,21 @@ export default function AboutPage() {
         title={["Who", "we are"]}
         lead="We connect New York City small business owners with personalized guidance through the Chambers of Commerce in all five boroughs."
         aside={
-          <dl className="phead__facts">
+          <figure className="neighborhood-portrait neighborhood-portrait--landscape"><Image src={featured.image.src} alt={featured.image.alt} width={featured.image.width} height={featured.image.height} sizes="(max-width: 760px) 92vw, 33vw" priority /><figcaption><span>Rooted in Queens</span><strong>{featured.name}</strong><Link href={`/stories#${featured.slug}`}>Meet the business <Arrow /></Link></figcaption></figure>
+        }
+      >
+          <dl className="network-facts">
             {about.facts.map((f) => (
               <div key={f.label}>
                 <dd className="display tnum">
                   {f.value.toLocaleString("en-US")}
                   {f.suffix}
                 </dd>
-                <dt className="label">{f.label}</dt>
+                <dt className="label">{f.value === 230000 ? "NYC small businesses at our 2020 launch" : f.label}</dt>
               </div>
             ))}
           </dl>
-        }
-      />
+      </PageHeader>
 
       <section className="story section-pad" data-tone="day" aria-labelledby="story-h">
         <div className="wrap grid12">

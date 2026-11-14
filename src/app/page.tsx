@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import ServiceMark from "@/lib/components/service-mark"
+import { Building } from "@/lib/components/home/building"
 import { Arrow, Btn } from "@/lib/components/ui"
 import { boroughName, chambers, offer, openOnline, stories } from "@/lib/data/site"
 
@@ -50,28 +50,25 @@ export default function HomePage() {
       </div>
 
       <section id="services" className="support section-pad" aria-labelledby="services-h">
-        <div className="wrap support__grid">
-          <div className="section-intro" data-reveal="">
-            <p className="section-tag">How we can help</p>
-            <h2 id="services-h" data-lines="">Your next step{" "}<br />starts here.</h2>
-            <p>Whether you’re looking for funding, reaching new customers, or planning what comes next, we’ll help you find your way.</p>
-            <Link className="text-link" href="/services">Explore all services <Arrow /></Link>
-            <Image className="support__drawing" src="/media/brand/storefront-row.webp" alt="" width={1600} height={782} sizes="(max-width: 760px) 70vw, 340px" />
+        <div className="wrap">
+          <div className="support__heading">
+            <div className="section-intro" data-reveal="">
+              <p className="section-tag">How we can help</p>
+              <h2 id="services-h" data-lines="">Your next step{" "}<br />starts here.</h2>
+            </div>
+            <div><p>Whether you’re looking for funding, reaching new customers, or planning what comes next, we’ll help you find your way.</p><Link className="text-link" href="/services">Explore all services <Arrow /></Link></div>
           </div>
-          <div>
-            <ul className="service-list">
-              {offer.services.map((service) => (
-                <li key={service.id}>
-                  <Link href={`/services#${service.id}`}>
-                    <ServiceMark shop={service.shop} />
-                    <div><h3>{service.name}</h3><p>{service.summary}</p></div>
-                    <Arrow />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="program-note"><strong>Looking for Open + Online?</strong> {openOnline.status} <Link href="/openandonline">View program details</Link>.</p>
-          </div>
+          <ul className="service-list service-block">
+            {offer.services.map((service) => (
+              <li key={service.id}>
+                <Link href={`/services#${service.id}`}>
+                  <div className="service-block__building" aria-hidden="true"><Building kind={service.shop} sign={service.name} /></div>
+                  <div className="service-block__copy"><h3>{service.name}</h3><p>{service.summary}</p><span className="service-block__action">Explore service <Arrow /></span></div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="program-note"><strong>Looking for Open + Online?</strong> {openOnline.status} <Link href="/openandonline">View program details</Link>.</p>
         </div>
       </section>
 

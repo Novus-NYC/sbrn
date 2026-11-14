@@ -31,7 +31,7 @@ export default function MediaPage() {
         kicker="Media"
         title={["In the", "news"]}
         lead={`${items.length} stories from ${outlets} outlets, ${years[years.length - 1]} to ${years[0]}.`}
-
+        aside={<article className="press-feature"><p className="section-tag">From the archive</p><p className="press-feature__outlet">{items[0].outlet}</p><h2>{items[0].title}</h2><time dateTime={items[0].date}>January 22, 2024</time>{items[0].url && <a className="text-link" href={items[0].url} target="_blank" rel="noreferrer">Read the coverage <Arrow dir="out" /></a>}</article>}
       >
         <nav aria-label="Years">
           <ul className="jump">

@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     "Open + Online builds free websites, logos and branding, and offers expert SEO consulting, for New York City small businesses. See how it works.",
 }
 
-/** Column spans for the project wall: an uneven hang, the way frames go up on a real wall. */
-const SPANS = ["wall__a", "wall__b", "wall__c", "wall__c", "wall__c", "wall__b", "wall__a", "wall__c", "wall__c", "wall__c", "wall__a", "wall__b"]
+const featuredProjects = openOnline.projects.filter((project) => ["harlems-heaven-hats", "casa-lu-art-space"].includes(project.slug))
 
 export default function OpenOnlinePage() {
   return (
@@ -23,14 +22,19 @@ export default function OpenOnlinePage() {
         title={["Open", "+ Online"]}
         lead={openOnline.lead}
         aside={
-          <div className="program-status" role="note">
-            <h2>Applications are closed</h2>
-            <p>{openOnline.status}</p>
-            <a href="/connect" className="text-link">Contact us about other support</a>
+          <div className="project-showcase">
+            <p className="project-showcase__label">Local businesses. A bigger online presence.</p>
+            {featuredProjects.map((project) => <BrowserFrame key={project.slug} project={project} sizes="(max-width: 760px) 75vw, 30vw" />)}
+            <a href="#wall-h" className="text-link">Explore all {openOnline.projects.length} projects</a>
           </div>
         }
       >
         <p className="phead__offer">{openOnline.offer}</p>
+        <div className="program-status" role="note">
+          <h2>Applications are closed</h2>
+          <p>{openOnline.status}</p>
+          <a href="/connect" className="text-link">Contact us about other support</a>
+        </div>
       </PageHeader>
 
       <section className="program-process section-pad" aria-labelledby="build-h">
@@ -69,10 +73,10 @@ export default function OpenOnlinePage() {
       {/* ---- the work ---- */}
       <section className="wall section-pad" data-tone="concrete" aria-labelledby="wall-h">
         <div className="wrap">
-          <Lines id="wall-h" as="h2" className="display wall__h" lines={["Our website projects,", "and the small businesses", "behind them"]} />
+          <div className="project-wall__heading"><div><p className="section-tag">Made for the neighborhood</p><Lines id="wall-h" as="h2" className="display wall__h" lines={["Local businesses.", "Individual stories."]} /></div><p>From fashion and food to art and travel, explore the websites created through Open + Online.</p></div>
           <ul className="grid12 wall__grid">
             {openOnline.projects.map((p, i) => (
-              <li key={p.slug} className={SPANS[i % SPANS.length]} data-reveal="" style={{ ["--d" as string]: `${(i % 3) * 80}ms` }}>
+              <li key={p.slug} data-reveal="" style={{ ["--d" as string]: `${(i % 3) * 80}ms` }}>
                 <BrowserFrame project={p} sizes="(max-width: 860px) 92vw, 45vw" />
               </li>
             ))}
