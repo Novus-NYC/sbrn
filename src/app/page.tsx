@@ -1,5 +1,4 @@
 import ConnectBand from "@/lib/components/connect-band"
-import FilmBand from "@/lib/components/home/film-band"
 import Morning from "@/lib/components/home/morning"
 import NetworkMap from "@/lib/components/home/network-map"
 import OnlineStrip from "@/lib/components/home/online-strip"
@@ -11,8 +10,6 @@ export default function HomePage() {
     <>
       <Morning />
       <Who />
-      {/* renders only once footage is configured in src/lib/data/film.ts */}
-      <FilmBand />
       <NetworkMap />
       <OnlineStrip />
       <StoriesTeaser />

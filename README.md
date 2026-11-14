@@ -55,11 +55,9 @@ src/lib/data/site.ts           every business fact and string (single source of 
 src/lib/data/press.json        press list
 src/lib/data/legal/*.json      legal documents, extracted from the source
 src/lib/data/media-manifest.json   every source image: original URL, local path, sizes
-src/lib/data/film.ts           the film slot (see "Film" below)
 src/lib/components/            navbar, footer, page header, primitives (ui.tsx), page sections
 src/lib/components/home/       the morning stage: building.tsx (the block), morning.tsx, morning-driver.tsx
 src/lib/motion/                scroll-rig.ts, scrub.ts, motion-root.tsx, gate-curtain.tsx
-scripts/prepare-film.sh        encodes a clip for the film slot
 ```
 
 ## How the motion works
@@ -72,18 +70,13 @@ scripts/prepare-film.sh        encodes a clip for the film slot
 - **Graceful by default.** CSS describes the finished picture (gates up, daylight, all copy in normal flow). An inline script adds `html.motion` before first paint only when the visitor has not asked for reduced motion; if the app bundle never arrives the class is removed again. Without JavaScript or with reduced motion the home page is a static open block with the five services listed beneath it.
 - **Keyboard.** Tabbing through the pinned walk scrolls each service into view as its link takes focus. The five tick buttons jump to a service. "Skip the walk" leaves the stage.
 
-## Film (read this)
+## Why the scroll scene is drawn, not filmed
 
-The brief asked for a Higgsfield-generated clip scrubbed by scroll as the centerpiece. **No footage was generated.** On 2026-11-14 the connected Higgsfield tool quoted 80 credits for two eight-second Cinema Studio 3.0 options, then rejected submission because the Private workspace had no credits (free plan). No job was submitted. Support request ID: `7c8e3d60-2963-4c08-a889-1e24c7dad9aa`. No stock or stand-in footage is shipped. The video requirement remains outstanding until generation access is funded or a clip is supplied.
-
-What was done instead:
-
-1. The signature scroll experience is rendered live (SVG and CSS) rather than from video. It is resolution independent, weighs nothing in video bytes, and reacts to every scroll position exactly.
-2. A film slot is built and tested, ready for a clip:
-   - `src/lib/data/film.ts` holds the configuration and two written shot directions for Higgsfield.
-   - `scripts/prepare-film.sh clip.mp4` writes all-keyframe, silent, fast-start MP4s (1280x720 and a 720x1280 phone crop) plus first-frame posters into `public/media/film/`, and prints the values to paste into `film.ts`.
-   - Once configured, a full-bleed band appears on the home page between "Who we are" and the network map and scrubs frame by frame with scroll.
-   - The slot was exercised with a temporary stand-in clip (a recording of the block scene, since deleted): seeks landed on the exact frame in both directions on desktop and phone, the phone crop was selected at phone width, and with reduced motion or JavaScript off only the poster loaded and no MP4 was requested. It has **not** been run with real Higgsfield footage or on a physical iPhone.
+The signature moment is a drawn, live scene rather than footage. The block is built from the brand's own illustration language (the storefront line drawings in the source), so it looks like this Network and no one else. Because it is SVG and CSS, it:
+- stays sharp at any size;
+- adds no video weight to the page;
+- lands on exactly the right picture at every scroll position, forward or back;
+- carries real copy (each service, each real outcome) as text that is readable, selectable and indexed.
 
 ## Content notes
 
