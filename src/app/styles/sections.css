@@ -347,6 +347,21 @@
   line-height: 1.4;
 }
 
+.online__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  margin-top: 1.25rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--coral);
+  font-weight: 600;
+}
+
+.online__status .label {
+  color: var(--coral-ink);
+}
+
 .online__copy .btn {
   margin-top: 1.75rem;
 }
@@ -763,8 +778,10 @@ html:not(.motion) .online__rows {
 }
 
 .phead__facts dd {
-  margin: 0;
+  margin: 0 0 0.3rem;
   font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  /* the comma's tail hangs below the baseline: leave it room above the label */
+  line-height: 1;
 }
 
 .phead__facts dt {
@@ -859,7 +876,8 @@ html:not(.motion) .online__rows {
 }
 
 .motion .doorsign {
-  animation: swing 6s ease-in-out infinite;
+  /* the sign starts swinging once the entrance has settled */
+  animation: swing 6s ease-in-out 3.2s infinite;
 }
 
 @keyframes swing {
@@ -1589,8 +1607,25 @@ html:not(.motion) .online__rows {
   font-size: var(--t-xs);
 }
 
+/* an address to click, not a field to type in: underlined, with an arrow */
 .door__addr {
   overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.door__go {
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  transition: transform var(--dur-2) var(--ease-gate);
+}
+
+@media (hover: hover) {
+  .door__mail:hover .door__go {
+    transform: translate3d(0.25rem, 0, 0);
+  }
 }
 
 .door__site svg {
@@ -1806,6 +1841,13 @@ html:not(.motion) .online__rows {
 
 .lost__inner {
   position: relative;
+}
+
+/* on a tall phone screen the message sits mid-gate, not under a field of slats */
+@media (max-width: 720px) {
+  .lost {
+    align-items: center;
+  }
 }
 
 .lost__code {

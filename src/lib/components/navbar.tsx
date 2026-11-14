@@ -110,7 +110,12 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__end">
-          <Link href={cta.href} className="btn btn--coral btn--sm nav__cta">
+          {/* On its own page the action is marked current and painted ink, so it reads against the coral gate. */}
+          <Link
+            href={cta.href}
+            className={`btn btn--sm nav__cta ${pathname === cta.href ? "btn--ink nav__cta--here" : "btn--coral"}`}
+            aria-current={pathname === cta.href ? "page" : undefined}
+          >
             <span>{cta.label}</span>
           </Link>
           <button

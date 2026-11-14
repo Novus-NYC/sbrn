@@ -14,7 +14,15 @@ export const metadata: Metadata = {
 export default function StoriesPage() {
   return (
     <>
-      <PageHeader kicker="Stories" title={["Our impact on", "small businesses"]} lead={storiesIntro.text}>
+      <PageHeader
+        kicker="Stories"
+        title={["Our impact on", "small businesses"]}
+        lead={storiesIntro.text}
+        underClass="under--photos"
+        under={stories.map((s) => (
+          <Image key={s.slug} src={s.image.src} alt="" width={s.image.width} height={s.image.height} sizes="(max-width: 720px) 34vw, 14vw" />
+        ))}
+      >
         <nav aria-label="Boroughs">
           <ul className="jump">
             {boroughOrder.map((b) => (

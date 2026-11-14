@@ -180,6 +180,10 @@
   }
 
   [data-tone="coral"] :focus-visible,
+  .slats--coral :focus-visible {
+    outline-color: var(--night);
+  }
+
   .btn--coral:focus-visible {
     outline-color: var(--white);
   }
@@ -273,6 +277,12 @@
     background-color: #263243;
   }
 
+  /* the open sign: the coral gate */
+  .slats--coral {
+    background-color: var(--coral);
+    color: var(--night);
+  }
+
   /* ---------- skip link ---------- */
   .skip {
     position: fixed;
@@ -353,6 +363,11 @@
     --btn-fg: var(--white);
     --btn-bg-hover: var(--coral);
     --btn-fg-hover: var(--night);
+  }
+
+  /* on the coral gate a coral fill would vanish: roll up white instead */
+  .slats--coral .btn--ink {
+    --btn-bg-hover: var(--white);
   }
 
   .btn--line {
@@ -437,13 +452,23 @@
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.22em;
     text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
-    transition: text-decoration-color var(--dur-1) ease, color var(--dur-1) ease;
+    transition:
+      text-decoration-color var(--dur-1) ease,
+      text-underline-offset var(--dur-2) var(--ease-gate),
+      color var(--dur-1) ease;
   }
 
+  /* the underline drops a notch and turns coral, like a gate bar settling */
   @media (hover: hover) {
     .ulink:hover {
       text-decoration-color: var(--coral);
+      text-underline-offset: 0.38em;
     }
+  }
+
+  .ulink:focus-visible {
+    text-decoration-color: var(--coral);
+    text-underline-offset: 0.38em;
   }
 
   /* arrow link: label + travelling arrow */
