@@ -1,0 +1,239 @@
+{
+ "dateLabel": "Date of Last Revision",
+ "date": "September 15, 2022",
+ "blocks": [
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "NYC Small Business Resource Network, together with its partners (and their related entities), including but not limited to the New York City Partnership Foundation, Inc., the Peter G. Peterson Foundation, the New York City Economic Development Corporation, the Bronx Chamber of Commerce, the Brooklyn Chamber of Commerce, the Manhattan Chamber of Commerce, the Queens Chamber of Commerce and the Staten Island Chamber of Commerce (collectively “NYCSBRN,” “we,” “us,” “our”) provides its services (described below) to you through its website located at https:// nycsmallbusinessresourcenetwork.org (the “Site”) and may in the future provide such services through its mobile applications and related services (collectively, such services, including any new features and applications, and the Site, the “Service(s)”), subject to the following Terms of Service (as amended from time to time, the “Terms of Service”). We reserve the right, at our sole discretion, to change or modify portions of these Terms of Service at any time. If we do this, we will post the changes on this page and will indicate at the top of this page the date these terms were last revised."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "THESE TERMS OF SERVICE ARE ENTERED INTO BY AND BETWEEN YOU (“YOU”, “YOUR”), AS AN INDIVIDUAL OR ORGANIZATION AND NYCSBRN, AND GOVERN YOUR USE OF THE SERVICES. BY USING THE SERVICES OR OTHERWISE INDICATING YOUR ACCEPTANCE OF THESE TERMS OF SERVICE (THE EARLIEST OF WHICH IS REFERRED TO HEREIN AS THE “ACCEPTANCE DATE”), YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOU HAVE READ THESE TERMS OF SERVICE, ARE BOUND BY THESE TERMS OF SERVICE, AND HEREBY AGREE TO THE TERMS AND CONDITIONS SET FORTH HEREIN. IF YOU ARE AN INDIVIDUAL ENTERING INTO THESE TERMS OF SERVICE ON BEHALF OF AN ORGANIZATION, YOU HEREBY REPRESENT AND WARRANT TO NYCSBRN THAT YOU ARE AUTHORIZED TO ENTER INTO THESE TERMS OF SERVICE ON BEHALF OF SUCH ORGANIZATION AND BIND SUCH ENTITY TO THE TERMS AND CONDITIONS CONTAINED HEREIN, IN WHICH CASE, THE TERMS “YOU” AND “YOUR” WILL REFER TO SUCH ORGANIZATION. IF YOU DO NOT ACCEPT ALL THE TERMS AND CONDITIONS HEREIN OR ARE NOT AN AUTHORIZED AGENT FOR THE ORGANIZATION ENTERING INTO THESE TERMS OF SERVICE, YOU MAY NOT USE THE SERVICES."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "PLEASE READ THESE TERMS OF SERVICE CAREFULLY, AS THEY CONTAIN AN AGREEMENT TO ARBITRATE AND OTHER IMPORTANT INFORMATION REGARDING YOUR LEGAL RIGHTS, REMEDIES, AND OBLIGATIONS. THE AGREEMENT TO ARBITRATE REQUIRES (WITH LIMITED EXCEPTION) THAT YOU SUBMIT CLAIMS YOU HAVE AGAINST US TO BINDING AND FINAL ARBITRATION.",
+     "bold": true
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "In addition, when using certain services, you will be subject to any additional terms applicable to such services that may be posted on the Service from time to time, including, without limitation, the Privacy Policy. All such terms are hereby incorporated by reference into these Terms of Service."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Access and Use of the Service"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Services Description:",
+     "bold": true
+    },
+    {
+     "text": " The Service is a comprehensive approach to strengthening New York City’s economy and accelerating the recovery of small businesses, starting with personalized guidance and recovery resources. Launched in response to the crisis facing many of the city’s 230,000+ small businesses in the wake of COVID-19, the NYCSBRN has assembled an extraordinary collaboration of New Yorkers who are committed to small business recovery in NYC’s communities. The NYCSBRN is leveraging relationships with the city’s corporate, financial and professional services sectors, as well as universities, philanthropies and expert volunteers to help small business owners gain access to a range of programs and services."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Modifications to Service:",
+     "bold": true
+    },
+    {
+     "text": " NYCSBRN reserves the right to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. You agree that NYCSBRN will not be liable to you or to any third party for any modification, suspension or discontinuance of the Service."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Indemnity and Release"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "You agree to release, indemnify and hold NYCSBRN and its affiliates and their officers, employees, directors and agents (collectively, “Indemnitees”) harmless from any from any and all losses, damages, expenses, including reasonable attorneys’ fees, rights, claims, actions of any kind and injury (including death) or property damage arising (directly or indirectly) out of or relating to your use of the Service, your dealings and interactions with any individual involved with the NYSBRN, your connection to the Service, your violation of these Terms of Service or your violation of any rights of another."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Disclaimer of Warranties"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. NYCSBRN EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "NYCSBRN MAKES NO WARRANTY THAT (I) THE SERVICE WILL MEET YOUR REQUIREMENTS, (II) THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, (III) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE SERVICE WILL BE ACCURATE OR RELIABLE, OR (IV) THE QUALITY OF ANY PRODUCTS, SERVICES, INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY YOU THROUGH THE SERVICE WILL MEET YOUR EXPECTATIONS."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Limitation of Liability"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "YOU EXPRESSLY UNDERSTAND AND AGREE THAT NYCSBRN WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS INCLUDING BUT NOT LIMITED TO, DAMAGES FOR LOSS OF GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES (EVEN IF NYCSBRN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), WHETHER BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY OR OTHERWISE, RESULTING FROM: (I) THE USE OR THE INABILITY TO USE THE SERVICE; (II) THE COST OF PROCUREMENT OF SUBSTITUTE GOODS AND SERVICES RESULTING FROM ANY GOODS, DATA, INFORMATION OR SERVICES PURCHASED OR OBTAINED OR MESSAGES RECEIVED OR TRANSACTIONS ENTERED INTO THROUGH OR FROM THE SERVICE; (III) UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA; (IV) STATEMENTS OR CONDUCT OF ANY THIRD PARTY ON THE SERVICE; OR (V) ANY OTHER MATTER RELATING TO THE SERVICE. IN NO EVENT WILL NYCSBRN’S TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES OR CAUSES OF ACTION EXCEED ONE HUNDRED DOLLARS ($100)."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER OR EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES. ACCORDINGLY, SOME OF THE ABOVE LIMITATIONS SET FORTH ABOVE MAY NOT APPLY TO YOU OR BE ENFORCEABLE WITH RESPECT TO YOU. IF YOU ARE DISSATISFIED WITH ANY PORTION OF THE SERVICE OR WITH THESE TERMS OF SERVICE, YOUR SOLE AND EXCLUSIVE REMEDY IS TO DISCONTINUE USE OF THE SERVICE."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Dispute Resolution By Binding Arbitration:",
+     "bold": true
+    },
+    {
+     "text": " "
+    },
+    {
+     "text": "PLEASE READ THIS SECTION CAREFULLY AS IT AFFECTS YOUR RIGHTS.",
+     "bold": true
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 3,
+   "text": "a) Agreement to Arbitrate"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "This Dispute Resolution by Binding Arbitration section is referred to in this Terms of Service as the “Arbitration Agreement.” You agree that any and all disputes or claims that have arisen or may arise between you and NYCSBRN, whether arising out of or relating to this Terms of Service (including any alleged breach thereof), the Services, any advertising, any aspect of the relationship or transactions between us, shall be resolved exclusively through final and binding arbitration, rather than a court, in accordance with the terms of this Arbitration Agreement, except that you may assert individual claims in small claims court, if your claims qualify. Further, this Arbitration Agreement does not preclude you from bringing issues to the attention of federal, state, or local agencies, and such agencies can, if the law allows, seek relief against us on your behalf. You agree that, by entering into this Terms of Service, you and NYCSBRN are each waiving the right to a trial by jury or to participate in a class action. Your rights will be determined by a neutral arbitrator, not a judge or jury. The Federal Arbitration Act governs the interpretation and enforcement of this Arbitration Agreement."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 3,
+   "text": "b) Arbitration Procedures"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Arbitration will be conducted by a neutral arbitrator in accordance with the American Arbitration Association’s (“AAA”) rules and procedures, including the AAA’s Consumer Arbitration Rules (collectively, the “AAA Rules”), as modified by this Arbitration Agreement."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "For information on the AAA, please visit its website, "
+    },
+    {
+     "text": "http://www.adr.org",
+     "href": "http://www.adr.org"
+    },
+    {
+     "text": ". Information about the AAA Rules and fees for consumer disputes can be found at the AAA’s consumer arbitration page, "
+    },
+    {
+     "text": "http://www.adr.org/consumer_arbitration ",
+     "href": "http://www.adr.org/consumer_arbitration"
+    },
+    {
+     "text": " If there is any inconsistency between any term of the AAA Rules and any term of this Arbitration Agreement, the applicable terms of this Arbitration Agreement will control unless the arbitrator determines that the application of the inconsistent Arbitration Agreement terms would not result in a fundamentally fair arbitration. The arbitrator must also follow the provisions of these Terms of Service as a court would. All issues are for the arbitrator to decide, including, but not limited to, issues relating to the scope, enforceability, and arbitrability of this Arbitration Agreement. Although arbitration proceedings are usually simpler and more streamlined than trials and other judicial proceedings, the arbitrator can award the same damages and relief on an individual basis that a court can award to an individual under the Terms of Service and applicable law. Decisions by the arbitrator are enforceable in court and may be overturned by a court only for very limited reasons."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Termination"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "You agree that NYCSBRN, in its sole discretion, may suspend or terminate your account (or any part thereof) or use of the Service and remove and discard any content within the Service, for any reason, including, without limitation, for lack of use or if NYCSBRN believes that you have violated or acted inconsistently with the letter or spirit of these Terms of Service. Any suspected fraudulent, abusive or illegal activity that may be grounds for termination of your use of Service, may be referred to appropriate law enforcement authorities. NYCSBRN may also in its sole discretion and at any time discontinue providing the Service, or any part thereof, with or without notice. You agree that any termination of your access to the Service under any provision of this Terms of Service may be effected without prior notice, and acknowledge and agree that NYCSBRN may immediately deactivate or delete your account and all related information and files in your account and/or bar any further access to such files or the Service. Further, you agree that NYCSBRN will not be liable to you or any third party for any termination of your access to the Service."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "User Disputes"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "You agree that you are solely responsible for your interactions with any other user in connection with the Service and NYCSBRN will have no liability or responsibility with respect thereto. NYCSBRN reserves the right, but has no obligation, to become involved in any way with disputes between you and any other user of the Service."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "General"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "These Terms of Service constitute the entire agreement between you and NYCSBRN and govern your use of the Service, superseding any prior agreements between you and NYCSBRN with respect to the Service. You also may be subject to additional terms and conditions that may apply when you use affiliate or third party services, third party content or third party software. These Terms of Service will be governed by the laws of the State of New York without regard to its conflict of law provisions. With respect to any disputes or claims not subject to arbitration, as set forth above, you and NYCSBRN agree to submit to the personal and exclusive jurisdiction of the state and federal courts located within New York, NY. The failure of NYCSBRN to exercise or enforce any right or provision of these Terms of Service will not constitute a waiver of such right or provision. If any provision of these Terms of Service is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties’ intentions as reflected in the provision, and the other provisions of these Terms of Service remain in full force and effect. You agree that regardless of any statute or law to the contrary, any claim or cause of action arising out of or related to use of the Service or these Terms of Service must be filed within one (1) year after such claim or cause of action arose or be forever barred. A printed version of this agreement and of any notice given in electronic form will be admissible in judicial or administrative proceedings based upon or relating to this agreement to the same extent and subject to the same conditions as other business documents and records originally generated and maintained in printed form. You may not assign this Terms of Service without the prior written consent of NYCSBRN, but NYCSBRN may assign or transfer this Terms of Service, in whole or in part, without restriction. In addition, the NYCSBRN may subcontract or delegate to other parties (including affiliates) its rights and obligations under these Terms of Service, including the performance of any or all of the Services. The section titles in these Terms of Service are for convenience only and have no legal or contractual effect. Notices to you may be made via either email or regular mail. The Service may also provide notices to you of changes to these Terms of Service or other matters by displaying notices or links to notices generally on the Service."
+    }
+   ]
+  },
+  {
+   "type": "h",
+   "level": 2,
+   "text": "Your Privacy"
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "At NYCSBRN, we respect the privacy of our users. For details please see our Privacy Policy. By using the Service, you consent to our collection and use of personal data as outlined therein."
+    }
+   ]
+  }
+ ]
+}
