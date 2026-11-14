@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+Disallow: *?lightbox=
+
+# Optimization for Google Ads Bot
+User-agent: AdsBot-Google-Mobile
+User-agent: AdsBot-Google
+Disallow: /_partials*
+Disallow: /pro-gallery-webapp/v1/galleries/*
+
+# Block PetalBot
+User-agent: PetalBot
+Disallow: /
+
+# Crawl delay for overly enthusiastic bots
+User-agent: dotbot
+Crawl-delay: 10
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/el_el-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/es_es-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/ht_ht-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/ko_ko-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/ru_ru-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/tl_tl-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/ur_ur-sitemap.xml
+Sitemap: https://www.nycsmallbusinessresourcenetwork.org/zh_zh-sitemap.xml
+
+# Auto generated, go to SEO Tools > Robots.txt Editor to change this
