@@ -1,12 +1,12 @@
 {
-  "name": "novus-base-template",
+  "name": "nyc-small-business-resource-network",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "animejs": "^4.5.0",

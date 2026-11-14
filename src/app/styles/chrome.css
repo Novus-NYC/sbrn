@@ -1,0 +1,595 @@
+/* ==================================================================
+   Site chrome: wordmark, navigation, menu, page curtain, page header,
+   footer.
+================================================================== */
+
+/* ---------- wordmark ---------- */
+.wordmark {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  color: inherit;
+  line-height: 1;
+}
+
+.wordmark__nyc {
+  font-family: var(--f-display);
+  font-stretch: 62%;
+  font-weight: 900;
+  font-size: 2.45rem;
+  line-height: 0.78;
+  letter-spacing: -0.012em;
+  transition: transform 420ms var(--ease-gate);
+}
+
+.wordmark__rest {
+  transition: border-color var(--dur-1) ease;
+}
+
+/* home link: the mark lifts a touch, the rule under it lights */
+@media (hover: hover) {
+  .nav__brand:hover .wordmark__nyc {
+    transform: translate3d(0, -0.14rem, 0);
+  }
+  .nav__brand:hover .wordmark__rest {
+    border-color: var(--coral);
+  }
+}
+
+.nav__brand:focus-visible .wordmark__rest {
+  border-color: var(--coral);
+}
+
+.wordmark__rest {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid currentColor;
+  font-family: var(--f-display);
+  font-stretch: 75%;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- navigation: the sign band above the shop ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  color: var(--white);
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--night);
+  box-shadow: 0 1px 0 var(--line-night);
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.nav.is-scrolled::before,
+.nav.is-open::before,
+html:not(.js) .nav::before {
+  /* without JavaScript the bar cannot know it has scrolled, so it is always solid */
+  opacity: 1;
+}
+
+.nav__bar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: var(--nav-h);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.nav__links ul {
+  display: flex;
+  gap: clamp(1.1rem, 2.4vw, 2.5rem);
+}
+
+.nav__links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--f-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+/* where you are: a coral rule under the page's name */
+.nav__links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0.5rem 0;
+  height: 2px;
+  background: var(--coral);
+}
+
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav__toggle {
+  display: none;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+  font-family: var(--f-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.nav__toggle-icon {
+  display: grid;
+  gap: 4px;
+  width: 1.5rem;
+}
+
+.nav__toggle-icon i {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  transition: transform 420ms var(--ease-gate), opacity 200ms ease;
+  transform-origin: 50% 50%;
+}
+
+/* the three slats roll up into one */
+.nav.is-open .nav__toggle-icon i:nth-child(2) {
+  transform: translate3d(0, -6px, 0);
+}
+
+.nav.is-open .nav__toggle-icon i:nth-child(3) {
+  transform: translate3d(0, -12px, 0);
+}
+
+@media (max-width: 960px) {
+  .nav__links {
+    display: none;
+  }
+  .js .nav__toggle {
+    display: inline-flex;
+  }
+  /* Without JavaScript the menu cannot open, so the links stay in the bar. */
+  html:not(.js) .nav__links {
+    display: block;
+    overflow-x: auto;
+  }
+  html:not(.js) .nav__cta {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav__cta {
+    display: none;
+  }
+  .wordmark__nyc {
+    font-size: 2.1rem;
+  }
+  .wordmark__rest {
+    font-size: 0.62rem;
+  }
+}
+
+/* ---------- menu: the gate comes down ---------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  visibility: hidden;
+  padding-top: var(--nav-h);
+  transform: translate3d(0, -101%, 0);
+  transition:
+    transform 620ms var(--ease-gate),
+    visibility 0s linear 620ms;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.nav.is-open .menu {
+  visibility: visible;
+  transform: none;
+  transition: transform 620ms var(--ease-gate);
+}
+
+/* without motion there is nothing to animate, so a closed menu is simply not there */
+html:not(.motion) .menu {
+  display: none;
+}
+
+html:not(.motion) .nav.is-open .menu {
+  display: flex;
+}
+
+.menu__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding-block: clamp(1.5rem, 5vh, 3.5rem) calc(2rem + env(safe-area-inset-bottom));
+}
+
+.menu__list a {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.3rem;
+  font-size: clamp(3rem, 15.5vw, 6.5rem);
+}
+
+.menu__list a .display {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition: transform 700ms var(--ease-gate);
+}
+
+.nav.is-open .menu__list a .display {
+  transform: none;
+  transition-delay: calc(var(--i) * 55ms + 240ms);
+}
+
+.menu__list a[aria-current="page"] {
+  color: var(--coral);
+}
+
+.menu__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.menu__note {
+  max-width: 18rem;
+  color: var(--mist);
+  font-size: var(--t-s);
+}
+
+/* ---------- page curtain ---------- */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, -103%, 0);
+  transition:
+    transform 640ms var(--ease-gate),
+    visibility 0s linear 640ms;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+
+.curtain.is-down {
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: transform 500ms var(--ease-gate);
+}
+
+.curtain__mark {
+  opacity: 0.92;
+  transform: scale(1.5);
+}
+
+.curtain__bar,
+.gatebar {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1.1rem;
+  background: linear-gradient(180deg, #56677e 0%, #3a495d 45%, #202b3a 100%);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+.curtain__bar::after,
+.gatebar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 4.5rem;
+  height: 0.9rem;
+  margin-left: -2.25rem;
+  border: 3px solid #6b7c93;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
+}
+
+/* ---------- inner page header: a gate, part raised ---------- */
+.phead {
+  position: relative;
+  padding-top: calc(var(--nav-h) + clamp(3rem, 9vh, 7rem));
+  padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.phead__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(1rem, 2.5vh, 1.75rem);
+  color: var(--coral);
+}
+
+.phead__kicker::before {
+  content: "";
+  width: 2.25rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.phead__title {
+  font-size: var(--t-mega);
+  margin-left: -0.035em;
+}
+
+@media (max-width: 720px) {
+  .phead__title {
+    font-size: clamp(3.5rem, 16.5vw, 6rem);
+  }
+}
+
+.phead__lead {
+  max-width: 44rem;
+  margin-top: clamp(1.25rem, 3vh, 2.25rem);
+  color: var(--mist);
+  font-size: var(--t-m);
+  line-height: 1.38;
+}
+
+.phead .gatebar {
+  position: absolute;
+}
+
+/* line-by-line roll for display headings */
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.ln > span {
+  display: block;
+}
+
+.motion [data-lines] .ln > span {
+  transform: translate3d(0, 108%, 0);
+  transition: transform 950ms var(--ease-gate) calc(var(--d, 0ms) + var(--i, 0) * 85ms);
+}
+
+.motion [data-lines].is-in .ln > span {
+  transform: none;
+}
+
+/* The first screen of every page plays its entrance from CSS alone, at first
+   paint: it never waits for the script bundle, so the headline is the
+   largest paint almost immediately even on a slow phone. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes line-in {
+  from {
+    transform: translate3d(0, 108%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.motion :is(.herogate, .phead, .lost) [data-reveal]:not([data-reveal="lines"]) {
+  opacity: 0;
+  transform: none;
+  transition: none;
+  animation: rise-in 720ms var(--ease-out) var(--d, 0ms) both;
+}
+
+.motion :is(.herogate, .phead, .lost) [data-lines] .ln > span {
+  transition: none;
+  animation: line-in 900ms var(--ease-gate) calc(var(--d, 0ms) + var(--i, 0) * 80ms) both;
+}
+
+/* idle: now and then a car passes and its headlights cross the gate */
+.phead::after,
+.lost::after {
+  content: "";
+  position: absolute;
+  inset: -10% auto -10% 0;
+  width: 34vw;
+  background: linear-gradient(100deg, transparent 0%, rgba(255, 244, 220, 0.07) 42%, rgba(255, 244, 220, 0.11) 50%, rgba(255, 244, 220, 0.035) 62%, transparent 100%);
+  transform: translate3d(-120%, 0, 0) skewX(-14deg);
+  pointer-events: none;
+}
+
+.motion .phead::after,
+.motion .lost::after {
+  animation: sweep 15s cubic-bezier(0.4, 0, 0.3, 1) 2.8s infinite;
+}
+
+/* ---------- footer ---------- */
+.footer {
+  position: relative;
+  padding-top: clamp(4rem, 12vh, 8rem);
+  overflow: hidden;
+}
+
+.footer__block {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: clamp(9rem, 26vw, 22rem);
+  opacity: 0.11;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+}
+
+.footer__blockimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  filter: brightness(0) invert(1);
+}
+
+.footer__top {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
+}
+
+.footer__lockup {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(0.75rem, 1.6vw, 1.5rem);
+}
+
+.footer__nyc {
+  font-weight: 900;
+  font-size: clamp(6.5rem, 21vw, 19rem);
+  line-height: 0.76;
+  margin-left: -0.03em;
+}
+
+.footer__name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.12em;
+  padding-bottom: 0.32em;
+  border-bottom: clamp(3px, 0.5vw, 7px) solid var(--white);
+  font-size: clamp(1.5rem, 4.6vw, 4.2rem);
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.footer__cta {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+}
+
+.footer__line {
+  color: var(--coral);
+  font-size: var(--t-l);
+}
+
+.footer__cols {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 2.5rem var(--gutter);
+  padding-block: clamp(2rem, 5vh, 3.5rem);
+  border-top: 1px solid var(--line-night);
+}
+
+.footer__h {
+  margin-bottom: 1.1rem;
+  color: var(--mist);
+}
+
+.footer__addr {
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.footer__mail {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  overflow-wrap: anywhere;
+}
+
+.footer__list {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.footer__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+}
+
+.footer__base {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.5rem calc(1.75rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line-night);
+  color: var(--mist);
+  font-size: var(--t-s);
+}
+
+.footer__base a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  color: var(--white);
+}
+
+@media (max-width: 860px) {
+  .footer__cols {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer__cols > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__lockup {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .footer__name {
+    align-self: flex-start;
+    font-size: clamp(1.9rem, 9.6vw, 2.6rem);
+  }
+  .footer__nyc {
+    font-size: 40vw;
+  }
+}

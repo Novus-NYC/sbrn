@@ -1,23 +1,22 @@
+import ConnectBand from "@/lib/components/connect-band"
+import FilmBand from "@/lib/components/home/film-band"
+import Morning from "@/lib/components/home/morning"
+import NetworkMap from "@/lib/components/home/network-map"
+import OnlineStrip from "@/lib/components/home/online-strip"
+import StoriesTeaser from "@/lib/components/home/stories-teaser"
+import Who from "@/lib/components/home/who"
+
 export default function HomePage() {
   return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-bold">
-        Welcome to Business Name
-      </h1>
-
-      <p className="text-lg text-gray-600">
-        Replace this section with a strong value proposition.
-      </p>
-
-      <div className="flex gap-4">
-        <button className="px-6 py-3 bg-black text-white rounded-md">
-          Primary Action
-        </button>
-
-        <button className="px-6 py-3 border rounded-md">
-          Secondary Action
-        </button>
-      </div>
-    </div>
+    <>
+      <Morning />
+      <Who />
+      {/* renders only once footage is configured in src/lib/data/film.ts */}
+      <FilmBand />
+      <NetworkMap />
+      <OnlineStrip />
+      <StoriesTeaser />
+      <ConnectBand />
+    </>
   )
 }

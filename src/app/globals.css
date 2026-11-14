@@ -2,11 +2,620 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  padding: 0;
-  margin: 0;
+/* ------------------------------------------------------------------
+   Fallback faces for the condensed display voice, sized so a headline
+   occupies the same width before and after the web font arrives
+   (measured against Archivo at width 62, weight 800). The automatic
+   next/font fallback is normal-width Arial, about 45% wider, which
+   re-wrapped every headline on swap.
+------------------------------------------------------------------- */
+@font-face {
+  font-family: "SBRN Display A";
+  src: local("Impact");
+  font-weight: 100 900;
+  size-adjust: 93.3%;
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: "SBRN Display B";
+  src: local("HelveticaNeue-CondensedBold");
+  font-weight: 100 900;
+  size-adjust: 88.2%;
+}
+
+@font-face {
+  font-family: "SBRN Display C";
+  src: local("Arial Narrow Bold"), local("ArialNarrow-Bold");
+  font-weight: 100 900;
+  size-adjust: 83.9%;
+}
+
+@font-face {
+  font-family: "SBRN Display D";
+  src: local("Roboto Condensed Bold"), local("RobotoCondensed-Bold");
+  font-weight: 100 900;
+  size-adjust: 85%;
+}
+
+/* ------------------------------------------------------------------
+   Tokens. The palette is a New York morning: slate night and coral
+   sunrise are the brand's own two colors; harbor blue and lamp gold
+   support them; day and concrete are the neutrals.
+------------------------------------------------------------------- */
+:root {
+  /* primary */
+  --slate: #334255;
+  --coral: #fc6251;
+  /* supplemental */
+  --harbor: #2b5672;
+  --lamp: #ffc55c;
+  /* neutrals */
+  --night: #101823;
+  --night-2: #18222f;
+  --day: #f2f4f7;
+  --concrete: #e3e7ec;
+  --white: #ffffff;
+
+  /* roles */
+  --ink: #141c27;
+  --ink-2: #4a596c;
+  --mist: #b4c0cf;
+  --coral-ink: #b93224;
+  --line: rgba(20, 28, 39, 0.14);
+  --line-night: rgba(255, 255, 255, 0.16);
+
+  /* type */
+  --f-text: var(--font-archivo), "Helvetica Neue", Arial, system-ui, sans-serif;
+  /* "Archivo" is named directly so the display stack skips next/font's Arial fallback. */
+  --f-display: "Archivo", "SBRN Display A", "SBRN Display B", "SBRN Display C", "SBRN Display D", "Arial Narrow", sans-serif-condensed, sans-serif;
+  --f-voice: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --t-mega: clamp(3.4rem, 0.9rem + 11.6vw, 13.5rem);
+  --t-xl: clamp(2.6rem, 1.2rem + 5.6vw, 6.75rem);
+  --t-l: clamp(1.9rem, 1.25rem + 2.5vw, 3.6rem);
+  --t-m: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --t-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --t-s: 0.875rem;
+  --t-xs: 0.8125rem;
+
+  /* layout */
+  --gutter: clamp(1.125rem, 0.5rem + 2.4vw, 2.75rem);
+  --wrap: 97rem;
+  /* the left edge of .wrap content, for things positioned against the viewport */
+  --edge: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+  --nav-h: 4.25rem;
+  --slat: 2.75rem;
+
+  /* motion: everything rolls like a gate */
+  --ease-gate: cubic-bezier(0.66, 0, 0.16, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 280ms;
+  --dur-2: 520ms;
+  --dur-3: 760ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 3.75rem;
+    --slat: 2.2rem;
+  }
+}
+
+@layer base {
+  html {
+    background: var(--night);
+    color: var(--ink);
+    font-family: var(--f-text);
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--day);
+    font-size: var(--t-body);
+    line-height: 1.55;
+    overflow-x: clip;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: var(--coral);
+    color: var(--night);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  ol,
+  ul,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  ol,
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+  }
+
+  [data-tone="coral"] :focus-visible,
+  .btn--coral:focus-visible {
+    outline-color: var(--white);
+  }
+
+  [data-tone="day"] :focus-visible {
+    outline-color: var(--coral-ink);
+  }
+
+  #main:focus {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* ---------- layout ---------- */
+  .wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .grid12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  @media (max-width: 720px) {
+    .grid12 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* ---------- type voices ----------
+     The street speaks in condensed caps (signs, awnings, labels).
+     People speak in serif italic (questions, quotes, headlines). */
+  .display {
+    font-family: var(--f-display);
+    font-stretch: 62%;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: -0.008em;
+    text-wrap: balance;
+  }
+
+  .voice {
+    font-family: var(--f-voice);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .label {
+    font-family: var(--f-display);
+    font-stretch: 78%;
+    font-weight: 700;
+    font-size: var(--t-s);
+    letter-spacing: 0.085em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .prose p + p {
+    margin-top: 1.1em;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* ---------- the gate texture ---------- */
+  .slats {
+    background-color: var(--slate);
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.115) 0%,
+      rgba(255, 255, 255, 0.03) 13%,
+      rgba(0, 0, 0, 0) 46%,
+      rgba(0, 0, 0, 0.13) 80%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    background-size: 100% var(--slat);
+    background-repeat: repeat;
+  }
+
+  .slats--night {
+    background-color: #263243;
+  }
+
+  /* ---------- skip link ---------- */
+  .skip {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 200;
+    padding: 0.7rem 1rem;
+    background: var(--coral);
+    color: var(--night);
+    font-weight: 700;
+    transform: translateY(-200%);
+  }
+
+  .skip:focus {
+    transform: none;
+    outline: 2px solid var(--white);
+  }
+
+  /* ---------- buttons: the fill rolls up like a shutter ---------- */
+  .btn {
+    --btn-bg: var(--coral);
+    --btn-fg: var(--night);
+    --btn-bg-hover: var(--white);
+    --btn-fg-hover: var(--night);
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7em;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.5rem;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: var(--f-display);
+    font-stretch: 80%;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+    transition: color var(--dur-1) var(--ease-gate);
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--btn-bg-hover);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.14) 100%);
+    background-size: 100% 0.55rem;
+    transform: translate3d(0, 101%, 0);
+    transition: transform 460ms var(--ease-gate);
+  }
+
+  .btn__arrow {
+    display: inline-block;
+    width: 1.05em;
+    height: 1.05em;
+    flex: none;
+    transition: transform 460ms var(--ease-gate);
+  }
+
+  .btn--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--white);
+    --btn-bg-hover: var(--white);
+    --btn-fg-hover: var(--night);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+  }
+
+  .btn--ink {
+    --btn-bg: var(--night);
+    --btn-fg: var(--white);
+    --btn-bg-hover: var(--coral);
+    --btn-fg-hover: var(--night);
+  }
+
+  .btn--line {
+    --btn-bg: transparent;
+    --btn-fg: var(--ink);
+    --btn-bg-hover: var(--night);
+    --btn-fg-hover: var(--white);
+    box-shadow: inset 0 0 0 1.5px var(--ink);
+  }
+
+  .btn--sm {
+    min-height: 2.75rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  @media (hover: hover) {
+    .btn:hover {
+      color: var(--btn-fg-hover);
+    }
+    .btn:hover::before {
+      transform: none;
+    }
+    .btn:hover .btn__arrow--up {
+      transform: translate3d(0, -0.22em, 0);
+    }
+    .btn:hover .btn__arrow--right {
+      transform: translate3d(0.22em, 0, 0);
+    }
+    .btn:hover .btn__arrow--out {
+      transform: translate3d(0.16em, -0.16em, 0);
+    }
+  }
+
+  .btn:focus-visible {
+    color: var(--btn-fg-hover);
+  }
+  .btn:focus-visible::before {
+    transform: none;
+  }
+
+  .btn:active {
+    transform: scale(0.975);
+  }
+
+  /* ---------- text links: the label rolls up, an underline holds ---------- */
+  .roll {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 1.25;
+  }
+
+  .roll > span {
+    display: block;
+    transition: transform 420ms var(--ease-gate);
+  }
+
+  .roll > span::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    color: var(--coral);
+  }
+
+  @media (hover: hover) {
+    a:hover > .roll > span,
+    button:hover > .roll > span,
+    .roll-host:hover .roll > span {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  a:focus-visible > .roll > span {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  .ulink {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    transition: text-decoration-color var(--dur-1) ease, color var(--dur-1) ease;
+  }
+
+  @media (hover: hover) {
+    .ulink:hover {
+      text-decoration-color: var(--coral);
+    }
+  }
+
+  /* arrow link: label + travelling arrow */
+  .alink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    min-height: 2.75rem;
+    font-family: var(--f-display);
+    font-stretch: 80%;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+  }
+
+  .alink__mark {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    flex: none;
+    overflow: hidden;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+  }
+
+  .alink__mark svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    transition: transform 460ms var(--ease-gate);
+  }
+
+  @media (hover: hover) {
+    .alink:hover .alink__mark svg {
+      transform: translate3d(0, -160%, 0);
+    }
+    .alink:hover .alink__mark {
+      background: var(--coral);
+      border-color: var(--coral);
+      color: var(--night);
+    }
+  }
+
+  .alink__mark {
+    transition: background var(--dur-1) ease, border-color var(--dur-1) ease, color var(--dur-1) ease;
+  }
+
+  .alink__mark svg + svg {
+    position: absolute;
+    transform: translate3d(0, 160%, 0);
+  }
+
+  @media (hover: hover) {
+    .alink:hover .alink__mark svg + svg {
+      transform: none;
+    }
+  }
+
+  .alink__mark {
+    position: relative;
+  }
+
+  /* ---------- reveals (only when motion is on) ---------- */
+  .motion [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 1.75rem, 0);
+    transition:
+      opacity 620ms var(--ease-out) var(--d, 0ms),
+      transform 760ms var(--ease-out) var(--d, 0ms);
+  }
+
+  .motion [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* headings split into lines reveal line by line (see .ln in chrome.css) */
+  .motion [data-reveal="lines"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* roll: content wipes upward from the sill, the way a gate uncovers a window */
+  .motion [data-reveal="roll"] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 900ms var(--ease-gate) var(--d, 0ms);
+  }
+
+  .motion [data-reveal="roll"].is-in {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* shutter: a slatted cover lifts off an image */
+  .shutter {
+    position: relative;
+    overflow: hidden;
+    background: var(--slate);
+  }
+
+  .shutter > img,
+  .shutter > picture > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .motion .shutter[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion .shutter[data-reveal]::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background-color: var(--slate);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(0, 0, 0, 0) 46%, rgba(0, 0, 0, 0.36) 100%);
+    background-size: 100% 1.5rem;
+    transition: transform 950ms var(--ease-gate) var(--d, 0ms);
+    pointer-events: none;
+  }
+
+  .motion .shutter[data-reveal] > img {
+    transform: scale(1.09);
+    transition: transform 1500ms var(--ease-out) var(--d, 0ms);
+  }
+
+  .motion .shutter[data-reveal].is-in::after {
+    transform: translate3d(0, -102%, 0);
+  }
+
+  .motion .shutter[data-reveal].is-in > img {
+    transform: none;
+  }
+}
+
+/* ---------- section tones ---------- */
+[data-tone="night"] {
+  background-color: var(--night);
+  color: var(--white);
+}
+
+[data-tone="slate"] {
+  background-color: var(--slate);
+  color: var(--white);
+}
+
+[data-tone="day"] {
+  background-color: var(--day);
+  color: var(--ink);
+}
+
+[data-tone="concrete"] {
+  background-color: var(--concrete);
+  color: var(--ink);
+}
+
+[data-tone="coral"] {
+  background-color: var(--coral);
+  color: var(--night);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
