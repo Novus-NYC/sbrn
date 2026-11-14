@@ -10,7 +10,7 @@ The interactive design, including the pre-existing translation and performance w
 
 For a source comparison: `git diff archive/interactive-design-2026-11-14...design/accessible-public-service`. To run the archive separately, create a second worktree: `git worktree add ../sbrn-interactive archive/interactive-design-2026-11-14`, install dependencies there, then use `npm run dev -- --port 3012`.
 
-Typography uses normal-width Archivo for headings and reading, with Newsreader retained for quotations. Palette: slate `#334255`, coral `#fc6251`, harbor `#2b5672`, gold `#ffc55c`, ink `#141c27`, and white/light gray backgrounds. The alternative’s presentation lives in `src/app/styles/public-service.css`.
+Typography uses condensed Archivo for short display headings, normal-width Archivo for reading and navigation, and Newsreader for quotations. The character refinement adds a layered storefront hero, a static borough map, service pictograms and one featured owner story. The first accessible pass remains available at commit `4534c47`. Palette: slate `#334255`, coral `#fc6251`, harbor `#2b5672`, gold `#ffc55c`, ink `#141c27`, and white/light gray backgrounds. The alternative’s presentation lives in `src/app/styles/public-service.css`.
 
 ## Pages
 
@@ -122,7 +122,7 @@ Everything comes from `raw messy data/` (a Wix export of nycsmallbusinessresourc
 
 ## Media
 
-All 39 source images were downloaded from the original CDN, converted to WebP and self-hosted under `public/media/` (84 MB of originals down to 2.9 MB). `src/lib/data/media-manifest.json` records the source URL, local path and dimensions of each. Images render through `next/image` with responsive `sizes`. The favicon and app icons are cut from the brand's own logo mark; `public/og.png` is a screenshot of the alternative’s photo-led hero.
+All 39 source images were downloaded from the original CDN, converted to WebP and self-hosted under `public/media/` (84 MB of originals down to 2.9 MB). `src/lib/data/media-manifest.json` records the source URL, local path and dimensions of each. Images render through `next/image` with responsive `sizes`. The favicon and app icons are cut from the brand's own logo mark; `public/og.png` is a compact rendering of the photo-led hero for social previews.
 
 Several story photos are small in the source (464 to 570 px wide). They are shown at modest sizes rather than upscaled.
 

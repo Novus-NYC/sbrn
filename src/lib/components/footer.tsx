@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { chambers, cta, nav, site } from "@/lib/data/site"
 import { Btn, Roll } from "./ui"
 
@@ -16,6 +17,7 @@ export default function Footer() {
             <span>Resource Network</span>
           </p>
         </div>
+        <Image className="footer__street" src="/media/brand/storefront-row.webp" alt="" width={1600} height={782} sizes="(max-width: 760px) 1px, 380px" />
         <div className="footer__cta">
           <p className="voice footer__line">Tell us what you need.</p>
           <Btn href={cta.href}>{cta.label}</Btn>

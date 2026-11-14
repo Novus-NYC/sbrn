@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.description,
     url: site.url,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Local support for your next step. NYC Small Business Resource Network, with Brooklyn Burgers & Beer in Park Slope." }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "For the businesses that make New York. NYC Small Business Resource Network, with Brooklyn Burgers & Beer in Park Slope." }],
   },
   twitter: {
     card: "summary_large_image",

@@ -1,0 +1,12 @@
+# Restore neighborhood character
+
+Feedback: the first accessible alternative feels too bland. Preserve its ordinary navigation, permanently readable service content, direct contact paths and motion restraint while restoring distinctive local character.
+
+Direction: an editorial neighborhood portrait. Use the original condensed Archivo display voice for short headings, normal-width Archivo for reading, and Newsreader for the featured owner's quote. Palette remains slate #334255, coral #fc6251, harbor #2b5672, with paper #f7f5ef and lamp gold #ffc55c as supporting tones. The hero uses a light canvas and layered authentic storefront/owner images. The borough section uses the original static street map and clearly labelled contact links. Stories use one larger photographed feature and smaller supporting stories. Shared page headings regain typographic character and the footer restores a restrained storefront illustration.
+
+Alternatives considered: stronger colors alone would leave the repetitive composition; restoring the pinned walk as the default would reintroduce the original reading problem. This pass changes composition and typography, retaining the accessible behavior contract. These are the builder's design choices in response to the supplied feedback.
+
+Implementation: update the home composition and its existing stylesheet, add small decorative service pictograms, tune shared headings and footer artwork. Preserve source copy/facts, sponsor names, the optional walk and translation. Do not add dependencies. Verify screenshots at desktop/tablet/mobile, then rerun the existing production browser audit and build/typecheck. Preserve the first alternative at commit 4534c47 and the interactive archive at dd304af.
+
+## Validation
+Production build and TypeScript pass. The existing browser audit passes all 36 route/viewport combinations with no axe violations, horizontal overflow, broken images or hidden reading content. Keyboard navigation, no-JavaScript access, reduced motion and the optional walk exit still pass. Live Spanish translation of the new headline was checked at 390 px with no overflow. Independent review found no actionable regressions at 320/390/768 px, including the footer with and without a CTA. Desktop/tablet/mobile compositions were visually inspected. Social preview uses a compact rendering of the same hero with the secondary photo omitted to fit its 1200 × 630 format.

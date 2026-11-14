@@ -4,9 +4,9 @@
 Everyday small business owners across New York’s five boroughs, including visitors who prefer conventional navigation and straightforward reading. The primary action is to request guidance through the existing business profile form or contact a local Chamber.
 
 ## Art direction
-Local people, practical support. Preserve slate and coral branding, with real business photographs carrying the visual identity. A static split hero establishes the Network and the next action. Normal-width Archivo creates readable headings; existing Newsreader quotations retain a human voice.
+Local people, practical support, and the character of a New York block. A light paper hero pairs bold, condensed Archivo lettering with real storefront photographs. A coral offset frame and a smaller neighborhood photo give the composition a human, collected quality. Body copy and navigation retain normal-width Archivo; Newsreader is reserved for the featured owner’s own words.
 
-Use white and pale harbor-blue sections to distinguish services, local contacts and stories. Buttons and headings have restrained scale. Images are authentic sourced assets, not illustrative substitutes. The hero shows Brooklyn Burgers & Beer; stories feature Harlem’s Heaven Hats, La Bomboniera Marylu and NEAT Dry Clean & Tailoring. About includes Vincent’s Barber Shop.
+Use white service content, a dark static street-map section for borough contacts, paper-toned business stories, and a coral closing action. Vary composition as well as color: a photo-led opening, illustrated service list, map and borough directory, then one featured owner story with two smaller supporting stories. Images are authentic sourced assets, not illustrative substitutes. The hero shows Brooklyn Burgers & Beer; stories feature Harlem’s Heaven Hats, La Bomboniera Marylu and NEAT Dry Clean & Tailoring. About includes Vincent’s Barber Shop.
 
 ## Architecture
 - Home introduces the organization, displays every service, links directly to five borough contacts and previews real stories.
@@ -29,3 +29,6 @@ Browser audit: `docs/public-service-qa.json`. Rerun with `node scripts/qa-public
 
 ## Existing limitations
 The Bronx and Queens email discrepancies in the source need confirmation by the Chambers. Translation remains the existing integration; its provider requirements are documented in README. Physical-device and screen-reader tests are still needed before launch.
+
+## Character refinement
+The first accessible alternative is preserved at commit `4534c47`. The follow-up responds to “too bland” through composition, type, real photographs and static place-specific graphics. It does not restore scroll-dependent reading, continuous effects or gate transitions. See `docs/superpowers/specs/2026-11-14-neighborhood-character.md`.
