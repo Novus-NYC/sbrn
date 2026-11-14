@@ -3,234 +3,276 @@
   "date": "2024-01-22",
   "title": "Brooklyn women, business owners recognized with MWBE award",
   "outlet": "News 12",
+  "kind": "News",
   "url": "https://brooklyn.news12.com/brooklyn-women-business-owners-recognized-with-mwbe-award"
  },
  {
   "date": "2024-01-17",
   "title": "Queens Small Business Leaders Honored at MWBE Awards",
   "outlet": "Queens Gazette",
+  "kind": "News",
   "url": "https://www.qgazette.com/articles/queens-small-business-leaders-honored-at-mwbe-awards/"
  },
  {
   "date": "2024-01-17",
   "title": "2 Staten Island business owners honored at NYC event",
   "outlet": "Staten Island Advance",
+  "kind": "News",
   "url": "https://www.silive.com/business/2024/01/2-staten-island-business-owners-honored-at-nyc-event.html"
  },
  {
   "date": "2024-01-12",
   "title": "Two women-owned businesses recognized by borough-wide award",
   "outlet": "QNS.com",
+  "kind": "News",
   "url": "https://qns.com/2024/01/two-women-owned-businesses-recognized-award/"
  },
  {
   "date": "2024-01-11",
   "title": "Harlem And Manhattan Small Business Leaders Honored At Five Borough MWBE Awards",
   "outlet": "Harlem World Magazine",
+  "kind": "News",
   "url": "https://www.harlemworldmagazine.com/harlem-and-manhattan-small-business-leaders-honored-at-five-borough-mwbe-awards/"
  },
  {
   "date": "2023-12-21",
   "title": "Staten Island jewelry designer opens new shop-by-appointment space",
   "outlet": "Staten Island Advance",
+  "kind": "News",
   "url": "https://www.silive.com/business/2023/12/staten-island-jewelry-designer-opens-new-shop-by-appointment-space.html"
  },
  {
   "date": "2023-11-27",
   "title": "Financial help given to Brooklyn businesses still suffering flood damage",
-  "outlet": "PIX 11",
+  "outlet": "PIX11",
+  "kind": "News",
   "url": "https://pix11.com/news/morning/financial-help-given-to-brooklyn-businesses-still-suffering-flood-damage/"
  },
  {
   "date": "2023-10-23",
-  "title": "Op-ed: The impact of the small business community goes beyond numbers",
+  "title": "The impact of the small business community goes beyond numbers",
   "outlet": "amNewYork",
+  "kind": "Op-ed",
   "url": "https://www.amny.com/business/op-ed-the-impact-of-the-small-business-community-goes-beyond-numbers/"
  },
  {
   "date": "2023-10-20",
   "title": "NYC economic leaders applaud all-time high in local jobs, pandemic recovery",
   "outlet": "Staten Island Advance",
+  "kind": "News",
   "url": "https://www.silive.com/news/2023/10/nyc-economic-leaders-applaud-all-time-high-in-local-jobs-pandemic-recovery.html"
  },
  {
   "date": "2023-10-20",
   "title": "NYC’s Chambers of Commerce Celebrate Job Recovery As Mayor Adams Announces Pandemic Job Loss Reversal",
   "outlet": "Harlem World Magazine",
+  "kind": "News",
   "url": "https://www.harlemworldmagazine.com/nycs-chambers-of-commerce-celebrate-job-recovery-as-mayor-adams-announces-pandemic-job-loss-reversal/"
  },
  {
   "date": "2022-09-26",
-  "title": "Op-Ed | It's us (all five boroughs) against the world",
-  "outlet": "Crain's New York Business",
+  "title": "It’s us (all five boroughs) against the world",
+  "outlet": "Crain’s New York Business",
+  "kind": "Op-ed",
   "url": "https://www.crainsnewyork.com/crains-forum-outer-borough-business/op-ed-manhattan-doesnt-compete-other-boroughs"
  },
  {
   "date": "2022-09-07",
-  "title": "Op-Ed | Reviving NYC: Public transit must adapt to a post-COVID city",
-  "outlet": "amNY",
+  "title": "Reviving NYC: Public transit must adapt to a post-COVID city",
+  "outlet": "amNewYork",
+  "kind": "Op-ed",
   "url": "https://www.amny.com/opinion/public-transit-must-adapt-to-a-post-covid-city/"
  },
  {
   "date": "2022-08-24",
-  "title": "Op-Ed | New York City must continue to commit to small business recovery",
-  "outlet": "amNY",
+  "title": "New York City must continue to commit to small business recovery",
+  "outlet": "amNewYork",
+  "kind": "Op-ed",
   "url": "https://www.amny.com/opinion/new-york-city-must-continue-to-commit-to-small-business-recovery/"
  },
  {
   "date": "2022-07-28",
   "title": "Mayor Eric Adams announces $1.5 million will be invested in Small Business Resource Network",
   "outlet": "News 12 The Bronx",
+  "kind": "News",
   "url": "https://bronx.news12.com/mayor-eric-adams-announces-1-5-million-will-be-invested-in-small-business-resource-network"
  },
  {
   "date": "2022-07-26",
   "title": "S.I. business leader ‘incredibly pleased’ as Adams invests $1.5 million supporting NYC small businesses",
   "outlet": "Staten Island Advance",
+  "kind": "News",
   "url": "https://www.silive.com/news/2022/07/si-business-leader-incredibly-pleased-as-adams-invests-15-million-supporting-nyc-small-businesses.html"
  },
  {
   "date": "2022-07-26",
   "title": "Mayor Adams Announces $1.5 Million Investment in NYC Small Business Resources Network",
   "outlet": "NYC Office of the Mayor",
+  "kind": "News",
   "url": "https://www1.nyc.gov/office-of-the-mayor/news/537-22/mayor-adams-1-5-million-investment-nyc-small-business-resource-network"
  },
  {
   "date": "2022-03-30",
   "title": "City copies small-business outreach program",
-  "outlet": "CRAIN'S New York",
+  "outlet": "Crain’s New York Business",
+  "kind": "News",
   "url": "https://www.crainsnewyork.com/politics/city-copies-partnership-new-york-city-small-business-resource-network-program"
  },
  {
   "date": "2022-03-10",
   "title": "Blueprint for Economic Recovery will build on success of Small Business Resource Network",
   "outlet": "NYC Office of the Mayor",
+  "kind": "News",
   "url": "https://www1.nyc.gov/assets/home/downloads/pdf/office-of-the-mayor/2022/Mayor-Adams-Economic-Recovery-Blueprint.pdf"
  },
  {
   "date": "2022-03-02",
   "title": "Bronx restaurant grows revenue during pandemic after key improvement",
-  "outlet": "WCBS NEWSRADIO 880",
-  "url": "https://www.audacy.com/wcbs880/news/business/bronx-restaurant-grows-revenue-after-key-improvement"
+  "outlet": "WCBS Newsradio 880",
+  "kind": "News",
+  "url": null,
+  "sourceUrl": "https://www.audacy.com/wcbs880/news/business/bronx-restaurant-grows-revenue-after-key-improvement"
  },
  {
   "date": "2022-01-05",
   "title": "WCBS880 Small Business Spotlight: NYC comes to grips with new normal, changes ahead for COVID-battered economy",
-  "outlet": "WCBS NEWSRADIO 880",
-  "url": "https://www.audacy.com/wcbs880/news/local/nyc-economy-comes-to-grips-with-new-normal-post-covid"
+  "outlet": "WCBS Newsradio 880",
+  "kind": "News",
+  "url": null,
+  "sourceUrl": "https://www.audacy.com/wcbs880/news/local/nyc-economy-comes-to-grips-with-new-normal-post-covid"
  },
  {
   "date": "2021-12-06",
-  "title": "Op-ed: A full recovery requires continued support of NYC’s small businesses",
-  "outlet": "amNY",
+  "title": "A full recovery requires continued support of NYC’s small businesses",
+  "outlet": "amNewYork",
+  "kind": "Op-ed",
   "url": "https://www.amny.com/opinion/op-ed-a-full-recovery-requires-continued-support-of-nycs-small-businesses/"
  },
  {
   "date": "2021-11-26",
   "title": "Bronx Chamber discusses Small Business Saturday and SBRN on BronxNet Community TV",
   "outlet": "BronxNet",
-  "url": "https://www.bronxnet.org/watch/videos/13911/"
+  "kind": "News",
+  "url": null,
+  "sourceUrl": "https://www.bronxnet.org/watch/videos/13911/"
  },
  {
   "date": "2021-11-21",
   "title": "Small businesses fight for survival against COVID: Manhattan Chamber’s Jessica Walker",
   "outlet": "NY1",
+  "kind": "News",
   "url": "https://www.ny1.com/nyc/all-boroughs/in-focus-shows/2021/11/21/small-businesses-fight-for-survival-amidst-covid--supply-chain-and-labor-shortages-"
  },
  {
   "date": "2021-10-31",
   "title": "New protections for immigration status reporting, helping small businesses expand online",
-  "outlet": "Tiempo | ABC 7",
+  "outlet": "Tiempo, ABC 7",
+  "kind": "News",
   "url": "https://abc7ny.com/tiempo-joe-torres-immigration-status-reporting-protections/11183526/"
  },
  {
   "date": "2021-09-17",
   "title": "La Bomboniera owner discusses assistance she’s received",
-  "outlet": "Noticias 1",
+  "outlet": "NY1 Noticias",
+  "kind": "News",
   "url": "https://www.ny1noticias.com/nyc/noticias/noticias/2021/09/18/negocios-hispanos-luchan-por-obtener-ayuda-federal-tras-ida"
  },
  {
   "date": "2021-09-15",
   "title": "Local business owner bounces back after Ida",
-  "outlet": "Pix 11 News",
-  "url": "https://pix11.com/video/local-business-owner-bounces-back-after-ida/6983706/?fbclid=IwAR3ZSHPYT_qnBTVNUniFX1GK3T9Hoi2Gjs2BC5pESz3yE43y2sRMSnJdnU8"
+  "outlet": "PIX11",
+  "kind": "News",
+  "url": "https://pix11.com/video/local-business-owner-bounces-back-after-ida/6983706/"
  },
  {
   "date": "2021-08-25",
   "title": "Queens Chamber, Koo Host Flushing Business Walkabout",
   "outlet": "Queens Gazette",
+  "kind": "News",
   "url": "https://www.qgazette.com/articles/queens-chamber-koo-host-flushing-business-walkabout/"
  },
  {
   "date": "2021-07-26",
   "title": "Fresh Initiative Aims To Boost Digital Presence For Small Black-Owned Businesses",
   "outlet": "Black Enterprise",
+  "kind": "News",
   "url": "https://www.blackenterprise.com/fresh-initiative-aims-to-boost-digital-presence-for-small-black-owned-businesses/"
  },
  {
   "date": "2021-07-21",
   "title": "Small businesses in NYC get digital boost from local initiative",
   "outlet": "News 12 Brooklyn",
-  "url": "https://brooklyn.news12.com/small-businesses-in-nyc-get-digital-boost-from-local-initiative?fbclid=IwAR1179ZNi9pch12L7gqq1RbCfC-FHIGD5S9XpBAf_5ohW8hGkJLtrfZKzvQ"
+  "kind": "News",
+  "url": "https://brooklyn.news12.com/small-businesses-in-nyc-get-digital-boost-from-local-initiative"
  },
  {
   "date": "2021-03-11",
   "title": "Some Cities Are Cutting Red Tape to Try to Save Their Small Businesses",
   "outlet": "Next City",
+  "kind": "News",
   "url": "https://nextcity.org/daily/entry/some-cities-are-cutting-red-tape-to-try-to-save-their-small-businesses"
  },
  {
   "date": "2021-02-25",
   "title": "Top Business Community Advocate on How to Reverse Rise in Employers, Residents Fleeing NYC",
-  "outlet": "Spectrum News | NY 1",
+  "outlet": "Spectrum News NY1",
+  "kind": "News",
   "url": "https://www.ny1.com/nyc/all-boroughs/mornings-on-1/2021/02/25/top-business-community-advocate-on-how-to-reverse-rise-in-employers--residents-fleeing-nyc"
  },
  {
   "date": "2021-02-19",
-  "title": "BLKYN Lawmakers on the Move",
+  "title": "BKLYN Lawmakers on the Move",
   "outlet": "Politics NY",
+  "kind": "News",
   "url": "https://politicsny.com/2021/02/19/bklyn-lawmakers-on-the-move-feb-19-2021/"
  },
  {
   "date": "2021-02-02",
   "title": "Small Business Can Tap Into New Business Resource",
   "outlet": "Tap Into Sutton Place/Lenox Hill",
+  "kind": "News",
   "url": "https://www.tapinto.net/towns/sutton-place-slash-lenox-hill/sections/business-and-finance/articles/small-business-can-tap-into-new-business-resource"
  },
  {
   "date": "2020-12-05",
   "title": "They Offered Us Comfort and Normalcy. Now They Need Our Help",
   "outlet": "The New York Times",
+  "kind": "News",
   "url": "https://www.nytimes.com/2020/12/05/opinion/nyc-small-businesses-covid.html"
  },
  {
   "date": "2020-11-16",
   "title": "For Small-Business Owners, a Shifting Landscape of Resources",
   "outlet": "The New York Times",
+  "kind": "News",
   "url": "https://www.nytimes.com/2020/11/16/business/smallbusiness/small-business-loans-assistance-resources.html"
  },
  {
   "date": "2020-10-27",
   "title": "Manhattan Chamber CEO on Covid-19 recovery efforts so far, and what more needs to be done",
   "outlet": "NY Business Journal",
+  "kind": "News",
   "url": "https://www.bizjournals.com/newyork/news/2020/10/27/manhattan-chamber-ceo-on-covid-19-recovery-efforts.html"
  },
  {
   "date": "2020-10-19",
   "title": "Small businesses in Brooklyn get helping hand with safety equipment amid pandemic",
   "outlet": "ABC 7 NY",
+  "kind": "News",
   "url": "https://abc7ny.com/health/small-businesses-get-helping-hand-with-safety-equipment-amid-pandemic/7163529/"
  },
  {
   "date": "2020-10-10",
   "title": "New ‘one-stop shop’ network helps NYC small businesses reopen and recover amid COVID-19",
   "outlet": "6sqft",
+  "kind": "News",
   "url": "https://www.6sqft.com/new-one-stop-shop-program-helps-nyc-small-businesses-reopen-and-recover-amid-covid-19/"
  },
  {
   "date": "2020-09-30",
-  "title": "A public-private partnership creates a NYC small business assistance network | El Diario NY",
+  "title": "A public-private partnership creates a NYC small business assistance network",
   "outlet": "El Diario NY",
+  "kind": "News",
   "url": "https://eldiariony.com/2020/09/30/una-asociacion-publico-privada-crea-una-red-de-asistencia-a-pequenos-negocios-de-nyc/"
  }
 ]
