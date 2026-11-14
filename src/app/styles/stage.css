@@ -69,7 +69,7 @@
 }
 
 .motion .herogate__sweep {
-  animation: sweep 13s cubic-bezier(0.4, 0, 0.3, 1) 2.4s infinite;
+  animation: sweep 13s cubic-bezier(0.4, 0, 0.3, 1) 6s infinite;
 }
 
 .motion .herogate.is-away .herogate__sweep,
@@ -150,14 +150,15 @@
 }
 
 .motion .greetings li {
-  opacity: 0.5;
+  /* resting lines stay readable (real translated copy, not decoration) */
+  opacity: 0.78;
   animation: greet 17.6s linear infinite;
   animation-delay: calc(var(--i) * 2.2s + 1.6s);
 }
 
 @keyframes greet {
   0% {
-    opacity: 0.5;
+    opacity: 0.78;
     color: #e6ebf1;
   }
   2.5%,
@@ -167,7 +168,7 @@
   }
   14.5%,
   100% {
-    opacity: 0.5;
+    opacity: 0.78;
     color: #e6ebf1;
   }
 }
@@ -558,7 +559,8 @@ html:not(.motion) .street__hydrant {
 .motion .morning__stage.is-day {
   --sky-ink: var(--ink);
   --sky-ink-2: #33414f;
-  --sky-accent: var(--coral-ink);
+  /* coral on a mid-blue morning sky fails contrast: the label goes to ink by day */
+  --sky-accent: var(--ink);
 }
 
 .motion .herogate {
@@ -718,15 +720,15 @@ html:not(.motion) .street__hydrant {
 }
 
 .fore__lamp {
-  width: 11em;
-  height: 55em;
-  margin-left: -5.5em;
+  width: 10em;
+  height: 26.6em;
+  margin-left: -5em;
 }
 
 .fore__glow {
   position: absolute;
   left: 82%;
-  top: 6%;
+  top: 13%;
   width: 46em;
   height: 46em;
   margin: -23em 0 0 -23em;
@@ -749,7 +751,7 @@ html:not(.motion) .street__hydrant {
 
 .fore__tree {
   width: 21em;
-  height: 58.8em;
+  height: 13.5em;
   margin-left: -10.5em;
 }
 
@@ -952,6 +954,7 @@ html:not(.motion) .street__hydrant {
   }
   .offer__ticks button:hover i {
     border-color: var(--coral);
+    transform: translate3d(0, -0.2rem, 0);
   }
 }
 
@@ -960,7 +963,9 @@ html:not(.motion) .street__hydrant {
 }
 
 .offer__ticks i {
-  transition: border-color var(--dur-1) ease;
+  transition:
+    border-color var(--dur-1) ease,
+    transform var(--dur-2) var(--ease-gate);
 }
 
 .offer__ticks button[aria-current="step"] i {
@@ -972,6 +977,10 @@ html:not(.motion) .street__hydrant {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
+  /* a chip of night so it never sits on the road markings */
+  padding-inline: 0.7rem;
+  background: rgba(10, 17, 27, 0.82);
+  color: var(--white);
   font-size: var(--t-xs);
   text-decoration: underline;
   text-decoration-thickness: 1.5px;

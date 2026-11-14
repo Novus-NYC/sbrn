@@ -25,12 +25,22 @@ export default function MediaPage() {
   const items = press as Item[]
   const years = Array.from(new Set(items.map((i) => i.date.slice(0, 4))))
   const outlets = new Set(items.map((i) => i.outlet)).size
+  // every outlet that covered the Network, most frequent first: the newsstand under the gate
+  const tally = new Map<string, number>()
+  for (const i of items) tally.set(i.outlet, (tally.get(i.outlet) ?? 0) + 1)
+  const outletNames = [...tally.entries()].sort((x, y) => y[1] - x[1]).map(([o]) => o)
   return (
     <>
       <PageHeader
         kicker="Media"
         title={["In the", "news"]}
         lead={`${items.length} stories from ${outlets} outlets, ${years[years.length - 1]} to ${years[0]}.`}
+        underClass="under--stand"
+        under={outletNames.map((o) => (
+          <span key={o} className="voice">
+            {o}
+          </span>
+        ))}
       >
         <nav aria-label="Years">
           <ul className="jump">

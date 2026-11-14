@@ -18,9 +18,13 @@ export default function OnlineStrip() {
         </div>
         <div className="online__copy prose" data-reveal="">
           <p className="online__lead">{openOnline.teaser[1]}</p>
-          <p>{openOnline.teaser[2]}</p>
+          {/* The program is closed to new applicants: say so here, not only on its page. */}
+          <p className="online__status">
+            <span className="label">Notice</span>
+            {openOnline.status}
+          </p>
           <Btn href="/openandonline" variant="ink">
-            See the program
+            See the sites it built
           </Btn>
         </div>
       </div>

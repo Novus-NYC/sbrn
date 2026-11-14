@@ -116,13 +116,33 @@ html:not(.js) .nav::before {
   text-transform: uppercase;
 }
 
-/* where you are: a coral rule under the page's name */
-.nav__links a[aria-current="page"]::after {
+/* where you are: a coral rule under the page's name. On hover the same rule
+   rolls out from the left, like a gate bar sliding home. */
+.nav__links a::after {
   content: "";
   position: absolute;
   inset: auto 0 0.5rem 0;
   height: 2px;
   background: var(--coral);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  transition: transform 420ms var(--ease-gate);
+}
+
+.nav__links a[aria-current="page"]::after {
+  transform: none;
+}
+
+@media (hover: hover) {
+  .nav__links a:hover::after {
+    transform: none;
+    transform-origin: 0 50%;
+  }
+}
+
+.nav__links a:focus-visible::after {
+  transform: none;
+  transform-origin: 0 50%;
 }
 
 .nav__end {
@@ -183,6 +203,10 @@ html:not(.js) .nav::before {
   html:not(.js) .nav__cta {
     display: none;
   }
+}
+
+.nav__cta--here {
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.35);
 }
 
 @media (max-width: 520px) {
@@ -370,6 +394,135 @@ html:not(.motion) .nav.is-open .menu {
   position: absolute;
 }
 
+/* coral gate: night ink on coral, the bar stays steel */
+.slats--coral.phead {
+  color: var(--night);
+}
+
+.slats--coral .phead__kicker {
+  color: var(--night);
+}
+
+.slats--coral .phead__lead {
+  color: #2a1512;
+}
+
+/* ---------- under the gate: each page's own window ----------
+   The gate stops part-way up; under its bottom bar, the shop is lit. */
+.phead__under {
+  position: relative;
+  height: clamp(8.5rem, 22vh, 14rem);
+  overflow: hidden;
+  background: linear-gradient(180deg, #2a2013 0%, #4a3418 100%);
+}
+
+.phead__under::after {
+  /* the gate's shadow falling into the shop */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(8, 12, 18, 0.7), transparent);
+  pointer-events: none;
+}
+
+.phead__window {
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 0.9rem);
+  height: 100%;
+  padding: clamp(0.9rem, 2vh, 1.4rem) var(--gutter) 0;
+}
+
+.phead__window img {
+  flex: 0 0 auto;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+/* stories: the owners' own photos, lit like a window display */
+.under--photos .phead__window img {
+  width: clamp(9rem, 15vw, 15rem);
+  filter: saturate(1.05) brightness(0.98);
+}
+
+/* open + online: the sites, hung edge to edge */
+.under--sites .phead__window img {
+  width: clamp(11rem, 19vw, 19rem);
+  object-position: 50% 0;
+}
+
+/* about: the brand's own block drawing on a lamp-lit wall */
+.under--block {
+  background: linear-gradient(180deg, #ffd88f 0%, #ffc55c 100%);
+}
+
+.under--block .phead__window {
+  justify-content: center;
+  padding: 0;
+}
+
+.under--block .phead__window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 78%;
+  mix-blend-mode: multiply;
+}
+
+/* media: a newsstand of every outlet that covered the Network */
+.under--stand {
+  background: var(--lamp);
+}
+
+.under--stand .phead__window {
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 0.2rem 1.6rem;
+  padding: clamp(1.4rem, 3vh, 2rem) var(--gutter);
+  color: var(--night);
+  font-size: clamp(1.15rem, 0.9rem + 1vw, 1.9rem);
+  line-height: 1.25;
+}
+
+.under--stand .phead__window span::after {
+  content: "/";
+  margin-left: 1.6rem;
+  opacity: 0.35;
+  font-style: normal;
+}
+
+.under--stand .phead__window span:last-child::after {
+  content: none;
+}
+
+/* the lift: with motion on, the gate rises off the window once the title is in */
+@keyframes window-lift {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes window-drift {
+  from {
+    transform: translate3d(0, -0.8rem, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.motion .phead__under {
+  animation: window-lift 760ms var(--ease-gate) 260ms both;
+}
+
+.motion .phead__window {
+  animation: window-drift 1100ms var(--ease-out) 260ms both;
+}
+
 /* line-by-line roll for display headings */
 .ln {
   display: block;
@@ -418,12 +571,12 @@ html:not(.motion) .nav.is-open .menu {
   opacity: 0;
   transform: none;
   transition: none;
-  animation: rise-in 720ms var(--ease-out) var(--d, 0ms) both;
+  animation: rise-in 600ms var(--ease-out) var(--d, 0ms) both;
 }
 
 .motion :is(.herogate, .phead, .lost) [data-lines] .ln > span {
   transition: none;
-  animation: line-in 900ms var(--ease-gate) calc(var(--d, 0ms) + var(--i, 0) * 80ms) both;
+  animation: line-in 780ms var(--ease-gate) calc(var(--d, 0ms) + var(--i, 0) * 70ms) both;
 }
 
 /* idle: now and then a car passes and its headlights cross the gate */
@@ -440,7 +593,8 @@ html:not(.motion) .nav.is-open .menu {
 
 .motion .phead::after,
 .motion .lost::after {
-  animation: sweep 15s cubic-bezier(0.4, 0, 0.3, 1) 2.8s infinite;
+  /* first pass waits until the entrance has long settled */
+  animation: sweep 15s cubic-bezier(0.4, 0, 0.3, 1) 6.5s infinite;
 }
 
 /* ---------- footer ---------- */
@@ -507,6 +661,11 @@ html:not(.motion) .nav.is-open .menu {
   display: grid;
   gap: 1.25rem;
   justify-items: start;
+}
+
+/* a page that already closes on the coral band does not ask twice */
+body:has(.band) .footer__cta {
+  display: none;
 }
 
 .footer__line {

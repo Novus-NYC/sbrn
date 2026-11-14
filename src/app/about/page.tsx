@@ -17,6 +17,8 @@ export default function AboutPage() {
       <PageHeader
         kicker="The Network"
         title={["Who", "we are"]}
+        underClass="under--block"
+        under={<Image src="/media/brand/storefront-row.webp" alt="" width={1600} height={782} sizes="100vw" />}
         lead={about.paragraphs[0]}
         aside={
           <dl className="phead__facts">

@@ -2,6 +2,18 @@ import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  // Modifiers that components assemble at runtime (`btn--${variant}`), which the
+  // content scanner cannot see. Without this Tailwind drops them from @layer components.
+  safelist: [
+    "btn--coral",
+    "btn--ghost",
+    "btn--ink",
+    "btn--line",
+    "btn__arrow--out",
+    "btn__arrow--right",
+    "btn__arrow--up",
+    "btn__arrow--down",
+  ],
   theme: {
     extend: {
       colors: {

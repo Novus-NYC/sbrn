@@ -42,9 +42,10 @@ function LampPost({ at }: { at: number }) {
   return (
     <div className="fore__item fore__lamp" style={{ left: `${at}em` }}>
       <span className="fore__glow" />
-      <svg viewBox="0 0 60 300" aria-hidden="true" focusable="false">
-        <rect x="27" y="40" width="6" height="252" fill="#0d131c" />
-        <rect x="22" y="278" width="16" height="22" fill="#0d131c" />
+      {/* Pedestrian height: the head stays below the shop signs at every camera position. */}
+      <svg viewBox="0 0 60 160" aria-hidden="true" focusable="false">
+        <rect x="27" y="40" width="6" height="112" fill="#0d131c" />
+        <rect x="22" y="140" width="16" height="20" fill="#0d131c" />
         <path d="M30 42q0 -30 22 -30" stroke="#0d131c" strokeWidth="5" fill="none" />
         <path d="M40 8h20l-3 12h-14z" fill="#0d131c" />
         <ellipse className="fore__bulb" cx="50" cy="21" rx="7" ry="3" fill="#ffe1a0" />
@@ -67,17 +68,18 @@ function Hydrant({ at }: { at: number }) {
   )
 }
 
-function StreetTree({ at }: { at: number }) {
+/** A curbside tree pit planted with shrubs: low enough that it never crosses a shop sign. */
+function Planter({ at }: { at: number }) {
   return (
     <div className="fore__item fore__tree" style={{ left: `${at}em` }}>
-      <svg viewBox="0 0 200 560" aria-hidden="true" focusable="false">
-        <path d="M100 560V190M100 300l-34 -56M101 262l36 -60M100 232l-16 -46" stroke="#15201c" strokeWidth="9" fill="none" strokeLinecap="round" />
-        <circle cx="100" cy="112" r="92" fill="#1f4b3d" />
-        <circle cx="52" cy="150" r="52" fill="#255848" />
-        <circle cx="150" cy="146" r="54" fill="#1b4336" />
-        <circle cx="104" cy="74" r="58" fill="#2a6352" />
-        <circle cx="70" cy="96" r="26" fill="#316f5c" />
-        <path d="M78 560v-44h44v44M78 536h44" stroke="#0d131c" strokeWidth="4" fill="none" />
+      <svg viewBox="0 0 140 90" aria-hidden="true" focusable="false">
+        <circle cx="40" cy="44" r="26" fill="#1f4b3d" />
+        <circle cx="72" cy="34" r="32" fill="#255848" />
+        <circle cx="104" cy="46" r="24" fill="#1b4336" />
+        <circle cx="62" cy="24" r="14" fill="#2a6352" />
+        <rect x="14" y="58" width="112" height="32" fill="#2a2018" />
+        <rect x="14" y="58" width="112" height="6" fill="#3a2d22" />
+        <path d="M14 74h112" stroke="#1d160f" strokeWidth="2" />
       </svg>
     </div>
   )
@@ -200,12 +202,12 @@ export default function Morning() {
                   onto it for the wide shot. Positions are chosen so a trunk or pole never
                   stands in front of the shop being read, in either state. */}
               <LampPost at={88} />
-              <StreetTree at={132} />
+              <Planter at={132} />
               <LampPost at={176} />
               <LampPost at={306} />
-              <StreetTree at={352} />
+              <Planter at={352} />
               <LampPost at={410} />
-              <StreetTree at={470} />
+              <Planter at={470} />
               <LampPost at={520} />
             </div>
           </div>

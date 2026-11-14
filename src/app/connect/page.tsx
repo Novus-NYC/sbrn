@@ -16,8 +16,10 @@ const MAP_H = 1010
 export default function ConnectPage() {
   return (
     <>
-      <PageHeader kicker="Start here" title={["Connect", "with us"]} lead={connect.text}>
-        <Btn href={site.profileFormUrl}>{connect.formLabel}</Btn>
+      <PageHeader kicker="Start here" title={["Connect", "with us"]} lead={connect.text} tone="coral">
+        <Btn href={site.profileFormUrl} variant="ink">
+          {connect.formLabel}
+        </Btn>
       </PageHeader>
 
       {/* ---- pick your borough: hovering a Chamber lights its pin (CSS :has, no script) ---- */}
@@ -45,8 +47,9 @@ export default function ConnectPage() {
                   <p className="door__name">{c.name}</p>
                   <div className="door__actions">
                     <a className="door__mail" href={mailto(c.email)}>
-                      <span className="label">Email</span>
+                      <span className="label">Write to</span>
                       <span className="door__addr">{c.email}</span>
+                      <Arrow className="door__go" />
                     </a>
                     <a className="door__site" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${c.name} website`}>
                       <span className="label">Website</span>
