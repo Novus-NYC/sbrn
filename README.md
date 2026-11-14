@@ -74,7 +74,7 @@ scripts/prepare-film.sh        encodes a clip for the film slot
 
 ## Film (read this)
 
-The brief asked for a Higgsfield-generated clip scrubbed by scroll as the centerpiece. **No footage was generated.** Higgsfield was not reachable when this was built: there was no Higgsfield connector in the session, the Figma Weave model tools were not linked to an account, and the browser was not signed in to higgsfield.ai (signing in or creating an account was not mine to do). No stock, stand-in or synthetic footage is shipped.
+The brief asked for a Higgsfield-generated clip scrubbed by scroll as the centerpiece. **No footage was generated.** On 2026-11-14 the connected Higgsfield tool quoted 80 credits for two eight-second Cinema Studio 3.0 options, then rejected submission because the Private workspace had no credits (free plan). No job was submitted. Support request ID: `7c8e3d60-2963-4c08-a889-1e24c7dad9aa`. No stock or stand-in footage is shipped. The video requirement remains outstanding until generation access is funded or a clip is supplied.
 
 What was done instead:
 
@@ -116,10 +116,10 @@ Several story photos are small in the source (464 to 570 px wide). They are show
 Run against the production build on 2026-11-14 with a headless-browser crawl of every page (desktop 1440, phone 390 on a throttled mid-range profile: 4x CPU, slow 4G; reduced motion; keyboard; hover) plus an HTML audit. Results are in the delivery notes of the build session; the short version:
 
 - Build and type check pass. No console errors, failed requests or horizontal overflow on any page.
-- Throttled phone: largest paint 2.0 to 2.3 s, layout shift at or below 0.004.
+- Throttled phone, second full crawl: largest content paint 2.0 to 2.4 s, layout shift at or below 0.032. Home layout shift was 0. All nine page types had zero axe violations, console/request errors, horizontal overflow or hidden reduced-motion text. See `docs/qa-summary.json`.
 - Headings, landmarks, alt text, skip link and focus order verified; reduced motion shows every page complete and still.
 
-Frame rate was measured in a headless browser on a software GPU (60 fps there), which is a floor and not a measurement of real phones. It has not been checked on physical devices.
+Frame rate was measured in a headless browser on a software GPU (60 fps there), which is a lab result, not a guarantee of performance on real phones. It has not been checked on physical devices.
 
 ## Deploying
 

@@ -1,11 +1,11 @@
 /**
  * The scroll-scrubbed film band on the home page.
  *
- * STATUS: no footage. The brief asked for Higgsfield-generated video, but no
- * Higgsfield access was available when this site was built (no connector in
- * the session, and the browser was not signed in). Nothing was generated and
- * no stock or stand-in footage is shipped. While `src` is null the band does
- * not render at all, and the page makes no video request.
+ * STATUS: no footage. On 2026-11-14 the Higgsfield connector quoted 80
+ * credits for two 8-second Cinema Studio 3.0 options, but submission was
+ * rejected: the Private workspace had no credits. No job was submitted.
+ * Request ID: 7c8e3d60-2963-4c08-a889-1e24c7dad9aa.
+ * No stand-in footage ships. While desktop is null this band does not render.
  *
  * TO SWITCH IT ON
  *   1. Generate one of the shots in `directions` (or your own), 16:9, 6 to 10 s.
