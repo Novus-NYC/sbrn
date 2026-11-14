@@ -8,7 +8,7 @@ Planning record for later passes. Facts live in `src/lib/data/site.ts`; how to r
 - **Audience:** owners of small businesses in the five boroughs (restaurants, salons, shops, service firms), many of whom speak English as a second language, plus press, funders and partners.
 - **Job:** get an owner to submit the business profile form or email their borough's Chamber. The secondary job is to show the Network is real and effective (stories, press, partners).
 - **Assets:** a Wix scrape: logo mark, the brand's own storefront line drawings and street map, 10 owner stories with photos, 12 Open + Online project screenshots, 39 press items, Chamber and funder logos, legal text, and eight translations of the hero.
-- **Constraints:** no invented facts. Use house rules from `AGENTS.md`: no em dashes, no leading zeroes, a Made by Novus footer link. The requested Higgsfield video was blocked by credits (see README, "Film").
+- **Constraints:** no invented facts. Use house rules from `AGENTS.md`: no em dashes, no leading zeroes, a Made by Novus footer link. There is no video: the signature scroll scene is drawn live in SVG and CSS from the brand's own illustration style.
 
 ## Concept options
 
@@ -152,6 +152,5 @@ Still open from that list:
 
 ## Open items
 
-- **Higgsfield footage** is not generated because the account had no credits. The film slot is built and tested and switches on from `src/lib/data/film.ts`.
 - **Two Chamber emails** must be confirmed with the Chambers (see README, "Content notes").
 - **Physical-device testing** is still needed for frame rate on real phones.
