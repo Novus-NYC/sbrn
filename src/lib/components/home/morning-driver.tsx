@@ -1,6 +1,7 @@
 "use client"
 
-import { eases } from "animejs"
+// only the easing curves (a few hundred bytes), not the animation engine
+import { eases } from "animejs/easings"
 import { useEffect } from "react"
 import { addScene, motionEnabled, scrollTopForProgress } from "@/lib/motion/scroll-rig"
 import { Scrub, setDash, setOpacity, setScaleX, setScaleY, setSvgY, setY } from "@/lib/motion/scrub"
@@ -261,18 +262,21 @@ export default function MorningDriver({ count }: { count: number }) {
           if (p >= s + 0.03 && p <= s + 0.122) index = i
         }
         const reached = Math.min(count - 1, Math.max(0, Math.floor((p - SHOPS_START + 0.02) / SHOP_LEN)))
-        const stateKey = index * 10 + reached
+        let opened = 0
+        for (let i = 0; i < count; i++) if (p >= shopStart(i) + 0.05) opened = i + 1
+        // touch the DOM only when something visible changes, never every frame
+        const stateKey = (index + 1) * 100 + reached * 10 + opened
         if (stateKey !== lastIndex) {
           lastIndex = stateKey
           items.forEach((el, i) => el.classList.toggle("is-on", i === index))
+          // the small loops (steam, balloons) run only on the shop being read
+          shops.forEach((el, i) => el.classList.toggle("is-current", i === index))
           if (countEl) countEl.textContent = String(reached + 1)
           ticks.forEach((b, i) => {
-            b.classList.toggle("is-open", p >= shopStart(i) + 0.05)
+            b.classList.toggle("is-open", i < opened)
             if (i === index) b.setAttribute("aria-current", "step")
             else b.removeAttribute("aria-current")
           })
-        } else {
-          ticks.forEach((b, i) => b.classList.toggle("is-open", p >= shopStart(i) + 0.05))
         }
 
         // idle: the lamp drifts, and follows the pointer, while the gate is down

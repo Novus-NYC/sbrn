@@ -1,6 +1,6 @@
 "use client"
 
-import { animate } from "animejs"
+import { eases } from "animejs/easings"
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
 import { motionEnabled, refreshScenes } from "./scroll-rig"
@@ -66,18 +66,20 @@ function countUp(el: HTMLElement) {
   const end = Number(el.dataset.count)
   if (!Number.isFinite(end)) return
   const suffix = el.dataset.suffix ?? ""
-  const state = { v: 0 }
   const format = (n: number) => Math.round(n).toLocaleString("en-US") + suffix
-  el.textContent = format(0)
-  animate(state, {
-    v: end,
-    duration: end > 100 ? 1700 : 900,
-    ease: "outExpo",
-    onUpdate: () => {
-      el.textContent = format(state.v)
-    },
-    onComplete: () => {
-      el.textContent = format(end)
-    },
-  })
+  const duration = end > 100 ? 1700 : 900
+  const ease = eases.outExpo
+  // A short, self-ending count: a few lines here instead of the animation
+  // engine on every page.
+  let start = 0
+  let last = ""
+  const tick = (now: number) => {
+    if (!start) start = now
+    const t = Math.min(1, (now - start) / duration)
+    const text = format(end * ease(t))
+    if (text !== last) el.textContent = last = text
+    if (t < 1) requestAnimationFrame(tick)
+  }
+  el.textContent = last = format(0)
+  requestAnimationFrame(tick)
 }

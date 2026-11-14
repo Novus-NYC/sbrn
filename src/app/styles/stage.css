@@ -73,6 +73,7 @@
 }
 
 .motion .herogate.is-away .herogate__sweep,
+.motion .herogate.is-away .herogate__cuearrow,
 .motion .herogate.is-away .greetings li {
   animation-play-state: paused;
 }
@@ -216,6 +217,9 @@
 .herogate__cuearrow {
   width: 1.1rem;
   height: 1.1rem;
+}
+
+.motion .herogate__cuearrow {
   animation: cue 1.9s var(--ease-gate) infinite;
 }
 
@@ -383,6 +387,7 @@ html:not(.motion) .street__hydrant {
 }
 
 .b-base,
+.b-awake,
 .b-front {
   position: absolute;
   inset: 0;
@@ -445,14 +450,19 @@ html:not(.motion) .street__hydrant {
 
 .b-steam {
   stroke-dasharray: 6 60;
+}
+
+/* SVG loops repaint their building on every frame, so they run only on the
+   shop being read, and never under reduced motion */
+.motion .b.is-current .b-steam {
   animation: steam 3.2s linear infinite;
 }
 
-.b-steam--2 {
+.motion .b.is-current .b-steam--2 {
   animation-delay: -1.1s;
 }
 
-.b-steam--3 {
+.motion .b.is-current .b-steam--3 {
   animation-delay: -2.1s;
 }
 
@@ -474,6 +484,9 @@ html:not(.motion) .street__hydrant {
 .b-bob {
   transform-box: fill-box;
   transform-origin: 50% 100%;
+}
+
+.motion .b.is-current .b-bob {
   animation: bob 4.6s ease-in-out infinite;
 }
 
@@ -767,6 +780,23 @@ html:not(.motion) .street__hydrant {
 .motion .b-shade,
 .motion .road__shade {
   opacity: 0.66;
+}
+
+/* ---- compositor layers ----
+   Everything the driver fades or moves for long stretches of the walk gets
+   its own layer, so a scroll frame is a composite, not a repaint of the
+   whole stage. (Measured: without these the full-screen stage and every
+   building re-rasterized on every frame.) */
+.motion :is(.b-shade, .road__shade, .b-awake, .sky__night, .sky__dawn, .sky__flare, .skyline, .fore__glow) {
+  will-change: opacity;
+}
+
+.motion .sky__sun {
+  will-change: transform;
+}
+
+.motion :is(.offer__head, .offer__intro, .offer__detail, .offer__finalcta, .offer__nav, .offer__name .ln > span, .offer__promise .ln > span) {
+  will-change: transform, opacity;
 }
 
 .motion .b-gate {

@@ -58,6 +58,8 @@ src/lib/data/media-manifest.json   every source image: original URL, local path,
 src/lib/components/            navbar, footer, page header, primitives (ui.tsx), page sections
 src/lib/components/home/       the morning stage: building.tsx (the block), morning.tsx, morning-driver.tsx
 src/lib/motion/                scroll-rig.ts, scrub.ts, motion-root.tsx, gate-curtain.tsx
+src/lib/i18n/                  languages.ts, translator.ts (in-page translation), language-picker.tsx
+src/app/api/translate/route.ts the translation endpoint
 ```
 
 ## How the motion works
@@ -66,9 +68,42 @@ src/lib/motion/                scroll-rig.ts, scrub.ts, motion-root.tsx, gate-cu
 - **One clock.** `scroll-rig.ts` runs a single `requestAnimationFrame` loop, only while a scene is near the viewport. Each scene reads how far its element has travelled and eases toward that value, so wheel steps arrive as a glide.
 - **Stateless scrubbing.** `scrub.ts` computes every value fresh from the scroll position, so a flick, a scrollbar drag or a keyboard jump always lands on the right picture. (anime.js timelines leave stale values when sought backward across gaps between tweens, which is why the scroll scene does not use one. anime.js supplies the easing curves there, and drives the time-based pieces: the network map drawing itself, the counters.)
 - **The morning is one number.** `morning-driver.tsx` maps scroll progress through the section to the gate, the camera, the sky, the facades, each shop and the copy color. The same number drives all of them, so they cannot disagree.
+- **Built for slow phones.**
+  - Everything the walk fades or moves for long stretches has its own compositor layer: the building night tints, the lit dawn windows (their own SVG), the sky, the sun, the skylines, the copy. A scroll frame is then a composite rather than a repaint.
+  - The small SVG loops (cafe steam, balloons) run only on the shop being read.
+  - Hero loops pause once the gate is up.
+  - The driver touches the DOM only when a visible state changes.
+  - Sections below the walk use `content-visibility: auto`.
+  - Only anime.js's easing curves load up front. The engine loads as the network map approaches.
 - **Cheap to render.** Each building is three layers: daylight facade, a solid night tint whose opacity changes, and a front layer for whatever glows or moves. The night-to-day change is compositor-only. Camera moves are a single transform.
 - **Graceful by default.** CSS describes the finished picture (gates up, daylight, all copy in normal flow). An inline script adds `html.motion` before first paint only when the visitor has not asked for reduced motion; if the app bundle never arrives the class is removed again. Without JavaScript or with reduced motion the home page is a static open block with the five services listed beneath it.
 - **Keyboard.** Tabbing through the pinned walk scrolls each service into view as its link takes focus. The five tick buttons jump to a service. "Skip the walk" leaves the stage.
+
+## Languages
+
+The globe button in the nav shows the site in other languages:
+- **Up front:** New York's five most-spoken languages after English, in the order of NYC Local Law 30's designated citywide languages: Spanish, Chinese, Russian, Bengali and Haitian Creole.
+- **Search:** finds any of 133 languages by English name, native name or code.
+
+The choice persists on the device and carries across pages. A link can open the site in a language directly, for example `/?lang=es`.
+
+How it works:
+- **In-place translation.** `translator.ts` translates the rendered page in place. It changes only the text of text nodes and of `alt`, `aria-label`, `title` and `placeholder`. Nothing is wrapped or moved, so React keeps working and page changes are re-translated as they happen.
+- **Whole-sentence headings.** Headings split into animated lines are translated as one sentence.
+- **Left in English:** the wordmark, the hero's greetings (already in eight languages) and the language names.
+- **Fitting:** a long translation of the hero question is shrunk until it clears the nav, and shop signs squeeze to fit their fascia.
+- **Right-to-left languages** (Arabic, Urdu, Hebrew and others) set each block's reading direction while the page keeps its composition.
+- **Caching:** each language is cached on the device after first use, so switching back is instant.
+
+Translations come from `POST /api/translate`:
+- **With `GOOGLE_TRANSLATE_API_KEY` set:** it uses Google Cloud Translation. That's the supported API; its free tier covers 500,000 characters a month.
+- **Without a key:** it uses Google Translate's public web endpoint. It is free and needs no account, but it is unofficial and can be rate limited. **Set a key before launch.**
+
+The route only translates from English into a listed language. It caps request size, refuses cross-origin calls, and caches results in memory.
+
+Translations are machine made. The language panel says so, and that the English text of the policies is the binding version.
+
+A limitation: the brand fonts are loaded in their Latin cut only, to keep pages light. Languages with letters outside it (Polish, Czech, Vietnamese and others) show those letters in a system font.
 
 ## Why the scroll scene is drawn, not filmed
 

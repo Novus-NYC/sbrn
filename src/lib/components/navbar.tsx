@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { cta, nav } from "@/lib/data/site"
+import LanguagePicker from "@/lib/i18n/language-picker"
 import { Arrow, Roll, Wordmark } from "./ui"
 
 export default function Navbar() {
@@ -110,6 +111,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__end">
+          <LanguagePicker />
           {/* On its own page the action is marked current and painted ink, so it reads against the coral gate. */}
           <Link
             href={cta.href}
@@ -124,9 +126,14 @@ export default function Navbar() {
             className="nav__toggle"
             aria-expanded={open}
             aria-controls="site-menu"
+            aria-label={open ? "Close the site menu" : "Open the site menu"}
             onClick={() => setOpen((v) => !v)}
           >
-            <span className="nav__toggle-label">{open ? "Close" : "Menu"}</span>
+            {/* One-word labels mistranslate ("Menu" becomes "food menu" in Arabic): the
+                visible word stays as is, the accessible name above is a full phrase. */}
+            <span className="nav__toggle-label" translate="no">
+              {open ? "Close" : "Menu"}
+            </span>
             <span className="nav__toggle-icon" aria-hidden="true">
               <i />
               <i />

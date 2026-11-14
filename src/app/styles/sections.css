@@ -2553,3 +2553,37 @@ html:not(.motion) .online__rows {
     grid-column: 1 / -1;
   }
 }
+
+
+/* ---------------- render only what is near the screen ----------------
+   Home sections below the walk, and the footer everywhere, skip layout and
+   paint until they come close. On a slow phone that takes most of the page
+   out of the first render. The intrinsic sizes are rough heights; `auto`
+   remembers the real one after the first render, so nothing jumps back. */
+.net,
+.online,
+.tease,
+.band,
+.footer {
+  content-visibility: auto;
+}
+
+.net {
+  contain-intrinsic-size: auto 900px;
+}
+
+.online {
+  contain-intrinsic-size: auto 1100px;
+}
+
+.tease {
+  contain-intrinsic-size: auto 900px;
+}
+
+.band {
+  contain-intrinsic-size: auto 700px;
+}
+
+.footer {
+  contain-intrinsic-size: auto 800px;
+}

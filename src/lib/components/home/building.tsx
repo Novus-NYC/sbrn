@@ -495,10 +495,8 @@ function Awning({ colors }: { colors: [string, string] }) {
 }
 
 function Front({ spec, kind, sign, id }: { spec: Spec; kind?: ShopKind; sign?: string; id: string }) {
-  const { palette: c, floors } = spec
+  const { palette: c } = spec
   const geo = geometry(spec.layout)
-  const ups = upperWindows(floors)
-  const arch = spec.windows === "arch"
   return (
     <svg className="b-front" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
       <defs>
@@ -525,21 +523,6 @@ function Front({ spec, kind, sign, id }: { spec: Spec; kind?: ShopKind; sign?: s
           <rect x="22" y={OPEN_Y} width={W - 44} height={OPEN_H} />
         </clipPath>
       </defs>
-
-      {/* upper windows that are awake before dawn */}
-      <g className="b-awake">
-        {spec.awake.map((i) => {
-          const p = ups[i]
-          if (!p) return null
-          return (
-            <g key={i}>
-              <path d={glassPath(p, arch)} fill={`url(#${id}-glow)`} />
-              <path d={`M${p.x + p.w / 2} ${p.y}v${p.h}M${p.x} ${p.y + p.h * 0.46}h${p.w}`} stroke={c.trim} strokeWidth="3" fill="none" />
-              <rect x={p.x} y={p.y + p.h * 0.46 + 2} width={p.w} height={p.h * 0.3} fill="#000" opacity="0.1" />
-            </g>
-          )
-        })}
-      </g>
 
       {/* the shop interior */}
       <rect x="22" y={OPEN_Y} width={W - 44} height={OPEN_H} fill="#101823" />
@@ -624,6 +607,39 @@ function Front({ spec, kind, sign, id }: { spec: Spec; kind?: ShopKind; sign?: s
   )
 }
 
+/**
+ * Upper windows lit before dawn, as their own SVG so they sit on their own
+ * compositor layer: fading them at sunrise costs no repaint of the building.
+ */
+function Awake({ spec, id }: { spec: Spec; id: string }) {
+  if (!spec.awake.length) return null
+  const c = spec.palette
+  const ups = upperWindows(spec.floors)
+  const arch = spec.windows === "arch"
+  return (
+    <svg className="b-awake" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id={`${id}-wake`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#fff1c9" />
+          <stop offset="0.55" stopColor="#ffd98a" />
+          <stop offset="1" stopColor="#f9b866" />
+        </linearGradient>
+      </defs>
+      {spec.awake.map((i) => {
+        const p = ups[i]
+        if (!p) return null
+        return (
+          <g key={i}>
+            <path d={glassPath(p, arch)} fill={`url(#${id}-wake)`} />
+            <path d={`M${p.x + p.w / 2} ${p.y}v${p.h}M${p.x} ${p.y + p.h * 0.46}h${p.w}`} stroke={c.trim} strokeWidth="3" fill="none" />
+            <rect x={p.x} y={p.y + p.h * 0.46 + 2} width={p.w} height={p.h * 0.3} fill="#000" opacity="0.1" />
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
 export function Building({
   kind,
   filler,
@@ -648,6 +664,7 @@ export function Building({
     >
       <Facade spec={spec} sign={sign} id={id} />
       <div className="b-shade" />
+      <Awake spec={spec} id={id} />
       <Front spec={spec} kind={kind} sign={sign} id={id} />
     </div>
   )

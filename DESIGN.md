@@ -150,6 +150,26 @@ Still open from that list:
 - A generic build would have used testimonial cards. Here there is one owner quote and a ledger of dollar outcomes.
 - A generic build would have used a blue-and-white municipal palette. Here the palette comes from the brand's own slate and coral, played as night and dawn.
 
+## Languages
+
+The globe in the nav opens the language panel. That panel is a small gate that rolls down from the nav bar.
+- **Up front:** New York's top five languages after English (NYC Local Law 30 order).
+- **Search:** covers 133 languages.
+- **Translation:** machine translation is applied in place (see README, "Languages").
+
+## Mobile performance (2026-11-14)
+
+Measured on an emulated slow phone (6x CPU, slow 4G), home page:
+- blocking time 168 ms to 59 ms;
+- longest startup tasks 165/103 ms to 72/87 ms;
+- main-thread work while scrolling the walk 1,991 ms to 1,400 ms;
+- raster tasks during the walk 3,589 to 1,240.
+
+The causes, all fixed:
+- Opacity changes on unpromoted layers (night tints, sky, dawn windows inside the front SVGs) repainted the full-screen stage and every building on every frame.
+- SVG loops (steam, balloons, cue arrow) ran forever, including under reduced motion.
+- The anime.js engine loaded and parsed on every page.
+
 ## Open items
 
 - **Two Chamber emails** must be confirmed with the Chambers (see README, "Content notes").
