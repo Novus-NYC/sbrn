@@ -1,0 +1,392 @@
+[
+  {
+    "source": "https://static.wixstatic.com/media/cbfe61_772b9a904289438ba85b7bda0631fedf~mv2.jpg",
+    "local": "/media/brand/logo-map.webp",
+    "width": 675,
+    "height": 675,
+    "bytes": 44118,
+    "originalWidth": 675,
+    "originalHeight": 675,
+    "label": "Logo over a street map of New York City"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_bda02c424afa44db804e169848445094~mv2.png",
+    "local": "/media/brand/logo-mark.webp",
+    "width": 1000,
+    "height": 1000,
+    "bytes": 25926,
+    "originalWidth": 1000,
+    "originalHeight": 1000,
+    "label": "NYC Small Business Resource Network logo"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_05290129d6f64d1bb1b15d243f79fdd8~mv2.png",
+    "local": "/media/brand/nyc-street-map.webp",
+    "width": 2800,
+    "height": 1010,
+    "bytes": 318192,
+    "originalWidth": 5131,
+    "originalHeight": 1851,
+    "label": "Street map of the five boroughs"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_d60ef4e742a84d2989e29c6f8d94fd31~mv2.png",
+    "local": "/media/brand/storefront-illustration.webp",
+    "width": 556,
+    "height": 556,
+    "bytes": 42110,
+    "originalWidth": 556,
+    "originalHeight": 556,
+    "label": "Illustration of a shop owner beside a storefront with a striped awning"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/cbfe61_121494d872a6422099c005caf9207e93~mv2.png",
+    "local": "/media/brand/storefront-row.webp",
+    "width": 1600,
+    "height": 782,
+    "bytes": 154394,
+    "originalWidth": 3199,
+    "originalHeight": 1564,
+    "label": "Line illustration of a row of storefronts"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_18958b8de83d48ccbf1143afad7494bb~mv2.png",
+    "local": "/media/icons/design-sessions.webp",
+    "width": 256,
+    "height": 256,
+    "bytes": 7106,
+    "originalWidth": 500,
+    "originalHeight": 500,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_603d33240bbb42be96aeee6472396f06~mv2.png",
+    "local": "/media/icons/project-guidance.webp",
+    "width": 256,
+    "height": 256,
+    "bytes": 6898,
+    "originalWidth": 500,
+    "originalHeight": 500,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_3b927f76308046a7b9dd10333cf4b7dd~mv2.png",
+    "local": "/media/icons/specialist-support.webp",
+    "width": 256,
+    "height": 256,
+    "bytes": 8554,
+    "originalWidth": 500,
+    "originalHeight": 500,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_e19f48e2d51d4d3dad57ecf98a6b32bd~mv2.png",
+    "local": "/media/icons/video-tutorial.webp",
+    "width": 256,
+    "height": 256,
+    "bytes": 6362,
+    "originalWidth": 500,
+    "originalHeight": 500,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_553898c474bc45f4bdbf8403a0fd6aa6~mv2.png",
+    "local": "/media/partners/bronx-chamber.webp",
+    "width": 212,
+    "height": 143,
+    "bytes": 7716,
+    "originalWidth": 212,
+    "originalHeight": 143,
+    "label": "Bronx Chamber of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_986f0b88142041afa1cb6da37bff4af2~mv2.png",
+    "local": "/media/partners/brooklyn-chamber.webp",
+    "width": 900,
+    "height": 305,
+    "bytes": 42850,
+    "originalWidth": 3000,
+    "originalHeight": 1018,
+    "label": "Brooklyn Chamber of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_12ece218243c4c96bca1479119fefd62~mv2.png",
+    "local": "/media/partners/chambers-strip.webp",
+    "width": 879,
+    "height": 110,
+    "bytes": 21516,
+    "originalWidth": 879,
+    "originalHeight": 110,
+    "label": "Logos of the five borough Chambers of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_795c1105f3fa44e18dd90164dfb5b7a8~mv2.png",
+    "local": "/media/partners/manhattan-chamber.webp",
+    "width": 900,
+    "height": 302,
+    "bytes": 41372,
+    "originalWidth": 1352,
+    "originalHeight": 454,
+    "label": "Manhattan Chamber of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_4597033ca4f54585a65f3fee7bbdc824~mv2.png",
+    "local": "/media/partners/partnership-fund.webp",
+    "width": 900,
+    "height": 150,
+    "bytes": 38284,
+    "originalWidth": 2299,
+    "originalHeight": 383,
+    "label": "Partnership Fund for New York City"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/6cff0f_0a7e810539cb463f9de761a871c78fa2~mv2.jpg",
+    "local": "/media/partners/queens-chamber.webp",
+    "width": 900,
+    "height": 338,
+    "bytes": 11820,
+    "originalWidth": 1023,
+    "originalHeight": 384,
+    "label": "Queens Chamber of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_ec693076c02145a1ba41ff49615eb086~mv2.png",
+    "local": "/media/partners/staten-island-chamber.webp",
+    "width": 900,
+    "height": 459,
+    "bytes": 73616,
+    "originalWidth": 1600,
+    "originalHeight": 816,
+    "label": "Staten Island Chamber of Commerce"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_30cf79c56cd643a599bfe6607e44730d~mv2.jpg",
+    "local": "/media/partners/wells-fargo.webp",
+    "width": 900,
+    "height": 204,
+    "bytes": 14054,
+    "originalWidth": 2400,
+    "originalHeight": 544,
+    "label": "Wells Fargo"
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_d104407c35974069b60786425e83ce60~mv2.jpg",
+    "local": "/media/projects/a-princess-and-an-heiress.webp",
+    "width": 921,
+    "height": 792,
+    "bytes": 55054,
+    "originalWidth": 921,
+    "originalHeight": 792,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_18eaf838408e4c9fa47fdd055a6b9a1d~mv2.png",
+    "local": "/media/projects/broadway-silk-store.webp",
+    "width": 2000,
+    "height": 1041,
+    "bytes": 227310,
+    "originalWidth": 3346,
+    "originalHeight": 1742,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_8b31614e00214002aee1b859d3c0a78b~mv2.png",
+    "local": "/media/projects/casa-lu-art-space.webp",
+    "width": 2000,
+    "height": 1084,
+    "bytes": 110428,
+    "originalWidth": 3346,
+    "originalHeight": 1814,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_8f3c120c578c4076bfc074d1d332e8cb~mv2.png",
+    "local": "/media/projects/cornels-catering.webp",
+    "width": 2000,
+    "height": 1041,
+    "bytes": 127442,
+    "originalWidth": 3346,
+    "originalHeight": 1742,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_33890a5ae8bf42e1b6bb29709c7e33e6~mv2.png",
+    "local": "/media/projects/eat-soccer.webp",
+    "width": 1827,
+    "height": 865,
+    "bytes": 106570,
+    "originalWidth": 1827,
+    "originalHeight": 865,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_749a56bfbb244374be14a92abd34043c~mv2.jpg",
+    "local": "/media/projects/eleven-island-enterprises.webp",
+    "width": 921,
+    "height": 792,
+    "bytes": 72116,
+    "originalWidth": 921,
+    "originalHeight": 792,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_910693b019134c3ca96e2f40aa97e325~mv2.jpg",
+    "local": "/media/projects/harlems-heaven-hats.webp",
+    "width": 921,
+    "height": 792,
+    "bytes": 74048,
+    "originalWidth": 921,
+    "originalHeight": 792,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_41d448f0f56b4576bfc5a5dcb30f992d~mv2.png",
+    "local": "/media/projects/mojazz-dance.webp",
+    "width": 2000,
+    "height": 1022,
+    "bytes": 194310,
+    "originalWidth": 3346,
+    "originalHeight": 1710,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_4d90e3e400394a529d3d03aab30ac98d~mv2.png",
+    "local": "/media/projects/mole-poblano-asuncion.webp",
+    "width": 2000,
+    "height": 1067,
+    "bytes": 101562,
+    "originalWidth": 3364,
+    "originalHeight": 1794,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_184319b436ed4d65b5ac2d39d14f1b2c~mv2.jpg",
+    "local": "/media/projects/sankofa-learning-place.webp",
+    "width": 921,
+    "height": 792,
+    "bytes": 61862,
+    "originalWidth": 921,
+    "originalHeight": 792,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/eb57aa_54b5acc8022a4bb2b7df57600d36bdfe~mv2.jpg",
+    "local": "/media/projects/simple-skin-spa.webp",
+    "width": 921,
+    "height": 794,
+    "bytes": 32724,
+    "originalWidth": 921,
+    "originalHeight": 794,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_9ed7f29b3a0b484ba510f0be84c7ae33~mv2.png",
+    "local": "/media/projects/xenia-world-wide-travel.webp",
+    "width": 2000,
+    "height": 1041,
+    "bytes": 154284,
+    "originalWidth": 3346,
+    "originalHeight": 1742,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_5eadfff6c2854a399a936990010bff5e~mv2.jpg",
+    "local": "/media/stories/brooklyn-burgers-and-beer.webp",
+    "width": 971,
+    "height": 728,
+    "bytes": 135932,
+    "originalWidth": 971,
+    "originalHeight": 728,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_0f91eaf774824dada8fca6950acceebf~mv2.jpg",
+    "local": "/media/stories/chocobar-cortes.webp",
+    "width": 1147,
+    "height": 860,
+    "bytes": 87096,
+    "originalWidth": 1147,
+    "originalHeight": 860,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_d0adc24ebe1d44cd9205aa0822587e44~mv2.jpg",
+    "local": "/media/stories/harlems-heaven-hats.webp",
+    "width": 464,
+    "height": 348,
+    "bytes": 29562,
+    "originalWidth": 464,
+    "originalHeight": 348,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_f25a337c75a4464bbb6d3fd565bd0adb~mv2.jpeg",
+    "local": "/media/stories/la-bomboniera-marylu.webp",
+    "width": 888,
+    "height": 666,
+    "bytes": 58756,
+    "originalWidth": 888,
+    "originalHeight": 666,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_36e2668fcee64e4ab2dd112d590091c4~mv2.jpg",
+    "local": "/media/stories/madefresh-organic.webp",
+    "width": 569,
+    "height": 427,
+    "bytes": 30346,
+    "originalWidth": 569,
+    "originalHeight": 427,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_1300dbe0ef914f019ee0b202e386135c~mv2.jpg",
+    "local": "/media/stories/neat-dry-clean.webp",
+    "width": 566,
+    "height": 425,
+    "bytes": 34676,
+    "originalWidth": 566,
+    "originalHeight": 425,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_8c9b6d597def4d0daa2fb81c53c6d2ca~mv2.jpg",
+    "local": "/media/stories/ourtbox-cafe.webp",
+    "width": 1238,
+    "height": 825,
+    "bytes": 96712,
+    "originalWidth": 1238,
+    "originalHeight": 825,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_995ff43c2520482e81092392f73b3768~mv2.png",
+    "local": "/media/stories/pan-african-solutions.webp",
+    "width": 760,
+    "height": 539,
+    "bytes": 24826,
+    "originalWidth": 760,
+    "originalHeight": 539,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_a44084fe6a4f4dbca85aa8292187bc27~mv2.jpg",
+    "local": "/media/stories/valid-vibes.webp",
+    "width": 1061,
+    "height": 796,
+    "bytes": 61820,
+    "originalWidth": 1061,
+    "originalHeight": 796,
+    "label": ""
+  },
+  {
+    "source": "https://static.wixstatic.com/media/fa6e29_3e625d372bd14f14a9279e3bdd926180~mv2.jpg",
+    "local": "/media/stories/vincents-barber-shop.webp",
+    "width": 1071,
+    "height": 803,
+    "bytes": 167910,
+    "originalWidth": 1071,
+    "originalHeight": 803,
+    "label": ""
+  }
+]
