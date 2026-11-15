@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import PageHeader from "@/lib/components/page-header"
+import ConnectForm from "@/lib/components/connect-form"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
 import { ask, chambers, connect, mailto, site } from "@/lib/data/site"
 
@@ -17,10 +18,14 @@ export default function ConnectPage() {
   return (
     <>
       <PageHeader kicker="Start here" title={["Connect", "with us"]} lead={connect.text} tone="coral" heroImage={{ src: "/media/brand/nyc-street-map.webp", alt: "Illustrated street map of the five boroughs" }}>
-        <Btn href={site.profileFormUrl} variant="ink">
+        <Btn href="#intake-title" variant="ink">
           {connect.formLabel}
         </Btn>
       </PageHeader>
+
+      <section className="intake-section section-pad" data-tone="day" aria-labelledby="intake-title">
+        <div className="wrap"><ConnectForm /><p className="intake__fallback">Need to send a request now? <a href={site.profileFormUrl} target="_blank" rel="noreferrer">Open the current intake form</a>.</p></div>
+      </section>
 
       {/* ---- pick your borough: hovering a Chamber lights its pin (CSS :has, no script) ---- */}
       <section className="reach section-pad" data-tone="day" aria-labelledby="reach-h">
