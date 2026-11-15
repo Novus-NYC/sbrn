@@ -2570,16 +2570,17 @@ html:not(.motion) .online__rows {
 .overview__name { font-size: clamp(1.05rem, 1.4vw, 1.5rem); line-height: 1.12; max-width: 11rem; }
 @media (max-width: 800px) { .overview__services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; } .overview__services::before { display: none; } .overview__icon { width: 5.5rem; height: 5.5rem; } .overview__services a { min-height: 0; } .overview__services li:last-child { grid-column: 1 / -1; } }
 
-.story--photo { position: relative; isolation: isolate; overflow: hidden; min-height: 45rem; display: flex; align-items: center; }
-.story--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8,17,27,.94), rgba(8,17,27,.76) 55%, rgba(8,17,27,.16)); }
+.story--photo { position: relative; isolation: isolate; overflow: hidden; min-height: 45rem; display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,.35); }
+.story--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8,17,27,.93), rgba(8,17,27,.68) 48%, rgba(8,17,27,.12)); }
 .story--photo .parallax-image { z-index: -2; }
-.story--photo .parallax-image img { object-position: 50% 54%; }
+.story--photo .parallax-image img { object-position: 78% 60%; transform: scale(1.38) translate3d(0, var(--parallax-shift), 0); }
 .story--photo__inner { width: 100%; position: relative; }
 .story--photo__inner > .label { color: var(--lamp); margin-bottom: 1rem; }
 .story--photo .story__h { color: var(--white); max-width: 53rem; }
 .story--photo .story__text { color: #eef1f4; margin-top: 2rem; max-width: 43rem; }
 .story--photo .story__credit { display: inline-block; margin-top: 2rem; font-size: var(--t-xs); color: #eef1f4; text-decoration: underline; }
-@media (max-width: 720px) { .story--photo { min-height: 0; } .story--photo::before { background: rgba(8,17,27,.8); } }
+@media (max-width: 720px) { .story--photo { min-height: 0; } .story--photo::before { background: rgba(8,17,27,.77); } }
+@media (prefers-reduced-motion: reduce) { .story--photo .parallax-image img { transform: none; } }
 
 /* A compact borough index, with each image aligned to its actual story. */
 .boroughs { background-color: #e8ebed; background-image: repeating-linear-gradient(0deg, transparent 0 39px, rgba(30,45,60,.035) 40px); }

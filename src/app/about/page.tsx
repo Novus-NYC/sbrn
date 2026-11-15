@@ -6,6 +6,10 @@ import PageHeader from "@/lib/components/page-header"
 import { Arrow, Lines } from "@/lib/components/ui"
 import { about, chambers, mailto, partners } from "@/lib/data/site"
 
+// Both panels use the same full-resolution view so the city continues as the
+// narrative moves from the introduction to the people the Network serves.
+const skyline = "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Lower_Manhattan_Skyline_2024.jpg/3840px-Lower_Manhattan_Skyline_2024.jpg"
+
 export const metadata: Metadata = {
   title: "Who we are",
   description:
@@ -18,7 +22,7 @@ export default function AboutPage() {
       <PageHeader
         kicker="The Network"
         title={["Who", "we are"]}
-        heroImage={{ src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Lower_Manhattan_Skyline_2024.jpg/1280px-Lower_Manhattan_Skyline_2024.jpg", alt: "Lower Manhattan skyline photographed from Pier 57 in 2024", credit: "Kidfly182, CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" }}
+        heroImage={{ src: skyline, alt: "Lower Manhattan skyline photographed from Pier 57 in 2024", credit: "Kidfly182, CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" }}
         lead={about.paragraphs[0]}
         aside={
           <dl className="phead__facts">
@@ -37,8 +41,8 @@ export default function AboutPage() {
 
       <section className="story story--photo section-pad" data-tone="night" aria-labelledby="story-h">
         <ParallaxImage
-          src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/The_Corner_Bookstore%2C_93rd_Street_and_Madison_corner%2C_Carnegie_Hill%2C_Upper_East_Side%2C_Manhattan.jpg/960px-The_Corner_Bookstore%2C_93rd_Street_and_Madison_corner%2C_Carnegie_Hill%2C_Upper_East_Side%2C_Manhattan.jpg"
-          alt="The Corner Bookstore at Madison Avenue and 93rd Street in Carnegie Hill"
+          src={skyline}
+          alt="Lower Manhattan from Pier 57, continuing the view from the page introduction"
           sizes="100vw"
         />
         <div className="wrap story--photo__inner">
@@ -49,7 +53,7 @@ export default function AboutPage() {
             <p>{about.paragraphs[2]}</p>
             <p>{about.paragraphs[3]}</p>
           </div>
-          <a className="story__credit" href="https://commons.wikimedia.org/wiki/File:The_Corner_Bookstore,_93rd_Street_and_Madison_corner,_Carnegie_Hill,_Upper_East_Side,_Manhattan.jpg" target="_blank" rel="noreferrer">Carnegie Hill photograph: Deans Charbal, CC BY-SA 4.0</a>
+          <a className="story__credit" href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" target="_blank" rel="noreferrer">Skyline photograph: Kidfly182, CC BY 4.0</a>
         </div>
       </section>
 
