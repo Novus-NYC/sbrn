@@ -539,8 +539,8 @@ html:not(.motion) .street__hydrant {
    section) drives the gate, the sky, the camera and every shop.
 ================================================================== */
 .motion .morning {
-  height: 760vh;
-  height: 760svh;
+  height: 1050vh;
+  height: 1050svh;
 }
 
 .motion .morning__stage {
@@ -976,12 +976,13 @@ html:not(.motion) .street__hydrant {
 .offer__skip {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
+  min-height: 3.4rem;
   /* a chip of night so it never sits on the road markings */
-  padding-inline: 0.7rem;
-  background: rgba(10, 17, 27, 0.82);
+  padding-inline: 1.1rem;
+  background: rgba(10, 17, 27, 0.94);
   color: var(--white);
-  font-size: var(--t-xs);
+  font-size: var(--t-s);
+  font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.25em;
@@ -999,7 +1000,7 @@ html:not(.motion) .street__hydrant {
 
 @media (max-width: 720px) {
   .motion .morning {
-    height: 700svh;
+    height: 980svh;
   }
   .motion .offer__intro {
     max-width: none;

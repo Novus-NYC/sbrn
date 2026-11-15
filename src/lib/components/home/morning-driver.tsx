@@ -89,8 +89,8 @@ export default function MorningDriver({ count }: { count: number }) {
       scrub.add("cam.f", setF, 0, shopStart(0) + 0.105, centers[0] - drift * 1.6, centers[0] + drift)
       for (let i = 1; i < count; i++) {
         const s = shopStart(i)
-        scrub.add("cam.f", setF, s - 0.04, s + 0.035, centers[i - 1] + drift, centers[i] - drift, eases.inOutSine)
-        scrub.add("cam.f", setF, s + 0.035, s + 0.105, centers[i] - drift, centers[i] + drift)
+        scrub.add("cam.f", setF, s - 0.02, s + 0.04, centers[i - 1] + drift, centers[i] - drift, eases.inOutSine)
+        scrub.add("cam.f", setF, s + 0.04, s + 0.105, centers[i] - drift, centers[i] + drift)
       }
       const mid = centers[Math.floor(count / 2)]
       scrub.add("cam.f", setF, WIDE_START - 0.005, 0.975, centers[count - 1] + drift, mid, eases.inOutSine)
@@ -133,7 +133,7 @@ export default function MorningDriver({ count }: { count: number }) {
       scrub.add("intro.o", setOpacity(intro), shopStart(0) + 0.004, shopStart(0) + 0.028, 1, 0)
       scrub.add("intro.y", setY(intro, "px"), 0.085, 0.13, 28, 0, eases.outCubic)
       scrub.add("intro.y", setY(intro, "px"), shopStart(0) + 0.004, shopStart(0) + 0.028, 0, -18, eases.inCubic)
-      scrub.add("nav", setOpacity(nav), 0.13, 0.16, 0, 1)
+      scrub.add("nav", setOpacity(nav), 0.103, 0.116, 0, 1)
 
       /* ---- each shop opens ---- */
       shops.forEach((shop, i) => {
@@ -182,11 +182,11 @@ export default function MorningDriver({ count }: { count: number }) {
         if (item) {
           const line = setY(all<HTMLElement>(item, ".offer__name .ln > span"))
           const detail = all<HTMLElement>(item, ".offer__detail")
-          scrub.add(`${id}.name`, line, s + 0.032, s + 0.066, 110, 0, eases.outCubic)
-          scrub.add(`${id}.name`, line, s + 0.106, s + 0.126, 0, -112, eases.inCubic)
-          scrub.add(`${id}.detail.o`, setOpacity(detail), s + 0.052, s + 0.076, 0, 1)
-          scrub.add(`${id}.detail.o`, setOpacity(detail), s + 0.102, s + 0.118, 1, 0)
-          scrub.add(`${id}.detail.y`, setY(detail, "px"), s + 0.052, s + 0.08, 16, 0, eases.outCubic)
+          scrub.add(`${id}.name`, line, s + 0.027, s + 0.056, 110, 0, eases.outCubic)
+          scrub.add(`${id}.name`, line, s + 0.135, s + 0.145, 0, -112, eases.inCubic)
+          scrub.add(`${id}.detail.o`, setOpacity(detail), s + 0.045, s + 0.065, 0, 1)
+          scrub.add(`${id}.detail.o`, setOpacity(detail), s + 0.137, s + 0.145, 1, 0)
+          scrub.add(`${id}.detail.y`, setY(detail, "px"), s + 0.045, s + 0.068, 16, 0, eases.outCubic)
         }
       })
 
@@ -258,7 +258,7 @@ export default function MorningDriver({ count }: { count: number }) {
         let index = -1
         for (let i = 0; i < count; i++) {
           const s = shopStart(i)
-          if (p >= s + 0.03 && p <= s + 0.122) index = i
+          if (p >= s + 0.03 && p <= s + 0.141) index = i
         }
         const reached = Math.min(count - 1, Math.max(0, Math.floor((p - SHOPS_START + 0.02) / SHOP_LEN)))
         const stateKey = index * 10 + reached
