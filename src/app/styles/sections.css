@@ -2646,3 +2646,6 @@ html:not(.motion) .online__rows {
 .press__moment .voice { font-size: clamp(1.8rem, 3.4vw, 4rem); max-width: 50rem; line-height: 1.08; margin: .45rem 0 1rem; }
 .press__moment a { color: #e5ebf2; font-size: var(--t-xs); text-decoration: underline; }
 @media (max-width: 640px) { .press__moment { height: 21rem; } .press__moment .voice { font-size: 1.8rem; } }
+.lost-next { background: var(--day); }
+.lost-next p { font-size: var(--t-m); margin-bottom: 1.5rem; }
+.lost-next .wrap > div { display: flex; flex-wrap: wrap; gap: 1rem; }
