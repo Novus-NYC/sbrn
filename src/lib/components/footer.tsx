@@ -6,18 +6,20 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="footer footer--editorial" data-tone="night">
-      <div className="wrap footer__top">
-        <div className="footer__identity">
-          <Link href="/" className="footer__brand" aria-label="NYC Small Business Resource Network home">
-            <span className="display footer__nyc">NYC</span>
-            <span className="display footer__name">Small Business<br />Resource Network</span>
-          </Link>
-          <p>Personalized guidance for New York City small businesses, through the Chambers of Commerce in all five boroughs.</p>
-        </div>
-        <div className="footer__cta">
-          <p className="label">Get started</p>
-          <p className="voice footer__line">Your business has a place here.</p>
-          <Btn href={cta.href}>{cta.label}</Btn>
+      <div className="footer__scene">
+        <div className="wrap footer__top">
+          <div className="footer__identity">
+            <Link href="/" className="footer__brand" aria-label="NYC Small Business Resource Network home">
+              <span className="display footer__nyc">NYC</span>
+              <span className="display footer__name">Small Business<br />Resource Network</span>
+            </Link>
+            <p>Personalized guidance for New York City small businesses, through the Chambers of Commerce in all five boroughs.</p>
+          </div>
+          <div className="footer__cta">
+            <p className="label">Get started</p>
+            <p className="voice footer__line">Your business has a place here.</p>
+            <Btn href={cta.href}>{cta.label}</Btn>
+          </div>
         </div>
       </div>
       <div className="wrap footer__links">
