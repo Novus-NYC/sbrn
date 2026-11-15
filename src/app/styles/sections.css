@@ -2636,3 +2636,13 @@ html:not(.motion) .online__rows {
 .intake__status { margin-top: 1.5rem; padding: 1.25rem; border-left: 4px solid var(--coral-ink); background: var(--day); }
 .intake__fallback { max-width: 72rem; margin: 1rem auto 0; } .intake__fallback a { text-decoration: underline; color: var(--coral-ink); }
 @media (max-width: 640px) { .intake__grid, .intake__checks { grid-template-columns: 1fr; } .intake__end { align-items: start; flex-direction: column; } }
+
+.press__year { padding-top: 0; }
+.press__moment { height: clamp(18rem, 34vw, 33rem); position: relative; isolation: isolate; color: var(--white); display: flex; align-items: flex-end; overflow: hidden; margin-bottom: clamp(2rem, 5vw, 4rem); }
+.press__moment::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(9,18,29,.9), rgba(9,18,29,.12) 75%); }
+.press__moment .parallax-image { z-index: -2; }
+.press__moment-inner { width: 100%; padding-bottom: clamp(1.5rem, 4vw, 3.5rem); }
+.press__moment .label { color: var(--lamp); }
+.press__moment .voice { font-size: clamp(1.8rem, 3.4vw, 4rem); max-width: 50rem; line-height: 1.08; margin: .45rem 0 1rem; }
+.press__moment a { color: #e5ebf2; font-size: var(--t-xs); text-decoration: underline; }
+@media (max-width: 640px) { .press__moment { height: 21rem; } .press__moment .voice { font-size: 1.8rem; } }
