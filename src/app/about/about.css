@@ -141,6 +141,32 @@
   }
 }
 
+.about-chapters {
+  border-block: 1px solid var(--about-rule);
+}
+
+.about-chapters ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(1rem, 3.5vw, 3rem);
+}
+
+.about-chapters a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  color: var(--about-muted);
+  font-size: var(--t-s);
+  font-weight: 600;
+}
+
+.about-chapters a:hover,
+.about-chapters a:focus-visible {
+  color: var(--lamp);
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
 .about-eyebrow {
   color: var(--lamp);
 }
@@ -521,9 +547,10 @@
 }
 
 .about-atlas {
-  padding-block: clamp(3rem, 7svh, 5rem) clamp(4rem, 10svh, 7rem);
-  background: linear-gradient(var(--night), var(--slate) 19rem);
-  color: var(--white);
+  padding-block: clamp(3.75rem, 8vw, 8rem);
+  border-block: 1px solid var(--about-rule);
+  background: linear-gradient(160deg, var(--about-night), var(--about-harbor) 77%);
+  color: var(--about-cream);
 }
 
 .about-atlas__head {
@@ -535,14 +562,13 @@
   margin-bottom: clamp(1.75rem, 4.3vw, 3.5rem);
 }
 
-.about-atlas__title {
-  font-size: clamp(2.8rem, 7vw, 7rem);
-  margin-inline-start: -.025em;
+.about-atlas__head .about-section-title {
+  margin-top: .6rem;
 }
 
-.about-atlas__head p {
+.about-atlas__head > p {
   max-width: 38ch;
-  color: var(--day);
+  color: var(--about-muted);
   font-size: var(--t-body);
   text-wrap: pretty;
 }
@@ -567,7 +593,7 @@
   overflow: clip;
   aspect-ratio: 1550 / 1010;
   border: 1px solid rgb(255 255 255 / 24%);
-  background: #1a2939;
+  background: var(--about-night);
 }
 
 .about-atlas__canvas {
@@ -578,7 +604,7 @@
 }
 
 .about-atlas__canvas img {
-  opacity: .31;
+  opacity: .41;
 }
 
 .about-atlas__pin {
@@ -707,8 +733,8 @@
 /* The Network's storefront illustration carries the street into the founding credits. */
 .about-partners {
   padding-block: clamp(3.75rem, 8svh, 6.5rem);
-  background: var(--concrete);
-  color: var(--ink);
+  background: var(--about-slate);
+  color: var(--about-cream);
 }
 
 .about-partners__layout {
@@ -718,23 +744,24 @@
   gap: clamp(2rem, 6vw, 6.5rem);
 }
 
-.about-partners__title {
+.about-partners__head .about-section-title {
   max-width: 13ch;
-  color: var(--coral-ink);
   font-size: clamp(2.9rem, 5.7vw, 6.1rem);
-  line-height: .97;
+  text-wrap: wrap;
 }
 
 .about-partners__head p {
   max-width: 38ch;
   margin-top: 1.15rem;
+  color: var(--about-muted);
 }
 
 .about-partners__illustration {
   width: 100%;
   height: auto;
   margin-top: clamp(1.25rem, 3svh, 2.5rem);
-  mix-blend-mode: multiply;
+  opacity: .68;
+  mask-image: linear-gradient(#000 65%, transparent);
 }
 
 .about-partners__credits {
@@ -744,13 +771,13 @@
 
 .about-partners__credits h3 {
   margin-bottom: .65rem;
-  color: var(--coral-ink);
+  color: var(--lamp);
   font-size: var(--t-s);
   font-weight: 700;
 }
 
 .about-partners__credits ul {
-  border-bottom: 1px solid rgb(20 28 39 / 35%);
+  border-bottom: 1px solid var(--about-rule);
 }
 
 .about-partners__credits a {
@@ -759,14 +786,14 @@
   align-items: center;
   gap: .9rem;
   padding: .95rem .3rem;
-  border-top: 1px solid rgb(20 28 39 / 35%);
+  border-top: 1px solid var(--about-rule);
   line-height: 1.24;
   transition: background-color var(--dur-1);
 }
 
 .about-partners__credits a:hover,
 .about-partners__credits a:focus-visible {
-  background: var(--day);
+  background: var(--about-harbor);
 }
 
 .about-partners__credits strong {
@@ -777,14 +804,14 @@
 .about-partners__credits small {
   display: block;
   margin-top: .32rem;
-  color: var(--ink-2);
+  color: var(--about-muted);
   font-size: var(--t-s);
 }
 
 .about-partners__credits svg {
   width: 1.12rem;
   height: 1.12rem;
-  color: var(--coral-ink);
+  color: var(--lamp);
   transition: transform var(--dur-1) var(--ease-out);
 }
 
@@ -802,5 +829,101 @@
     max-height: 13rem;
     object-fit: contain;
     object-position: left bottom;
+  }
+}
+
+
+.about-milestones {
+  margin-top: clamp(3rem, 6vw, 6rem);
+}
+
+.about-milestones h3 {
+  margin-bottom: 1.35rem;
+  font-size: var(--t-l);
+  line-height: 1.05;
+}
+
+.about-milestones ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem clamp(1.15rem, 3vw, 3.5rem);
+}
+
+.about-milestones li {
+  padding-top: .95rem;
+  border-top: 2px solid var(--about-rule);
+}
+
+.about-milestones li:focus-within {
+  border-color: var(--lamp);
+}
+
+.about-milestones .alink {
+  align-items: end;
+  color: var(--about-cream);
+  text-transform: none;
+  white-space: normal;
+  letter-spacing: 0;
+}
+
+.about-milestones time {
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--lamp);
+  font-size: clamp(2rem, 3.5vw, 3.4rem);
+}
+
+.about-milestones li p {
+  max-width: 32ch;
+  margin-top: .65rem;
+  color: var(--about-muted);
+  font-size: var(--t-s);
+}
+
+.about-next {
+  padding-block: clamp(4.25rem, 9vw, 8rem);
+  border-block: 1px solid var(--about-rule);
+  background-color: var(--about-harbor);
+}
+
+.about-next__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  align-items: end;
+  gap: clamp(1.2rem, 5vw, 6rem);
+}
+
+.about-next .about-section-title {
+  max-width: 12ch;
+  text-wrap: wrap;
+}
+
+.about-next__inner p {
+  max-width: 36ch;
+  color: var(--about-muted);
+}
+
+.about-next__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem 1.15rem;
+  margin-top: 1.25rem;
+}
+
+.about-next__actions .btn {
+  max-width: 100%;
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.about-next__actions .alink {
+  color: var(--lamp);
+}
+
+@media (max-width: 740px) {
+  .about-next__inner,
+  .about-milestones ol {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

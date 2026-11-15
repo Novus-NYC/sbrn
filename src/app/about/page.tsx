@@ -3,10 +3,9 @@ import Image from "next/image"
 import BusinessOutcomes from "@/lib/components/about/business-outcomes"
 import ChamberDirectory from "@/lib/components/about/chamber-directory"
 import StreetScene from "@/lib/components/about/street-scene"
-import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { offer, partners, site } from "@/lib/data/site"
+import { connect, offer, partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -15,6 +14,20 @@ export const metadata: Metadata = {
   description:
     "Meet the five borough Chambers of Commerce behind the NYC Small Business Resource Network and find free, personalized guidance for your business.",
 }
+
+const chapters = [
+  ["network-story", "How it began"],
+  ["support", "How we help"],
+  ["outcomes", "Business outcomes"],
+  ["chambers", "Borough chambers"],
+] as const
+
+// Milestones link to their source coverage in the Media archive.
+const milestones = [
+  { year: "2021", title: "Open + Online launches", description: "The program helps neighborhood businesses build a stronger online presence." },
+  { year: "2022", title: "New York City invests $1.5 million", description: "The City announces funding for continued support through the Network." },
+  { year: "2026", title: "Federal funding for Staten Island", description: "$3 million is announced for the Staten Island Chamber’s work through the Network." },
+] as const
 
 export default function AboutPage() {
   return (
@@ -43,6 +56,13 @@ export default function AboutPage() {
           </p>
         </div>
       </header>
+      <nav className="about-chapters" aria-label="On this page">
+        <ul className="wrap">
+          {chapters.map(([id, label]) => (
+            <li key={id}><a href={`#${id}`}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
 
       <section id="network-story" className="about-story" aria-labelledby="story-h">
         <div className="wrap about-story__intro">
@@ -113,8 +133,11 @@ export default function AboutPage() {
       <section id="chambers" className="about-atlas" aria-labelledby="chambers-h">
         <div className="wrap">
           <header className="about-atlas__head" data-reveal="">
-            <Lines id="chambers-h" as="h2" className="display about-atlas__title" lines={["Five chambers.", "One network."]} />
-            <p>Find your borough on the map to reach the Chamber of Commerce that works with businesses in your neighborhood.</p>
+            <div>
+              <p className="label about-eyebrow">Five boroughs</p>
+              <h2 id="chambers-h" className="voice about-section-title">Find your chamber.</h2>
+            </div>
+            <p>Choose your borough on the map to find the chamber that works with businesses in your neighborhood.</p>
           </header>
           <ChamberDirectory />
         </div>
@@ -123,7 +146,7 @@ export default function AboutPage() {
       <section className="about-partners" aria-labelledby="partners-h">
         <div className="wrap about-partners__layout">
           <div className="about-partners__head">
-            <h2 id="partners-h" className="voice about-partners__title" data-reveal="">The partnership behind the Network.</h2>
+            <h2 id="partners-h" className="voice about-section-title" data-reveal="">The partnership behind the Network.</h2>
             <p data-reveal="">Public agencies, nonprofits and business organizations help the borough chambers connect local owners with advice and services.</p>
             <Image
               src="/media/brand/storefront-row.webp"
@@ -166,9 +189,34 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+        <div className="wrap about-milestones">
+          <h3 className="voice" data-reveal="">How the work grew.</h3>
+          <ol>
+            {milestones.map(({ year, title, description }) => (
+              <li key={year} data-reveal="">
+                <ArrowLink href={`/media#y${year}`}>
+                  <time className="display tnum" dateTime={year}>{year}</time>
+                  <strong>{title}</strong>
+                </ArrowLink>
+                <p>{description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
-      <ConnectBand />
+      <section className="about-next slats" aria-labelledby="about-next-h">
+        <div className="wrap about-next__inner" data-reveal="">
+          <h2 id="about-next-h" className="voice about-section-title">Let’s talk about your business.</h2>
+          <div>
+            <p>{connect.text}</p>
+            <div className="about-next__actions">
+              <Btn href={site.profileFormUrl}>{connect.formLabel}</Btn>
+              <ArrowLink href="#chambers">Or email your chamber</ArrowLink>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
