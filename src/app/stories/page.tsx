@@ -18,7 +18,7 @@ export default function StoriesPage() {
         kicker="Stories"
         title={["Our impact on", "small businesses"]}
         lead={storiesIntro.text}
-        heroImage={{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/SoHo_Manhattan_February_2026.jpg/3840px-SoHo_Manhattan_February_2026.jpg", alt: "A street scene in SoHo, Manhattan", credit: "Kidfly182, CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:SoHo_Manhattan_February_2026.jpg" }}
+        heroImage={{ src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Little_Prince_Restaurant_Exterior_%E2%80%93_August_2023_%E2%80%93_by_MainlyTwelve.jpg/3840px-Little_Prince_Restaurant_Exterior_%E2%80%93_August_2023_%E2%80%93_by_MainlyTwelve.jpg", alt: "The Little Prince restaurant storefront on Prince Street in SoHo", credit: "MainlyTwelve, CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Little_Prince_Restaurant_Exterior_%E2%80%93_August_2023_%E2%80%93_by_MainlyTwelve.jpg" }}
       >
         <nav aria-label="Boroughs">
           <ul className="jump">
