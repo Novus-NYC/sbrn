@@ -17,8 +17,7 @@ export default function AboutPage() {
       <PageHeader
         kicker="The Network"
         title={["Who", "we are"]}
-        underClass="under--block"
-        under={<Image src="/media/brand/storefront-row.webp" alt="" width={1600} height={782} sizes="100vw" />}
+        heroImage={{ src: "https://upload.wikimedia.org/wikipedia/commons/7/70/Lower_Manhattan_Skyline_2024.jpg", alt: "Lower Manhattan skyline photographed from Pier 57 in 2024" }}
         lead={about.paragraphs[0]}
         aside={
           <dl className="phead__facts">
