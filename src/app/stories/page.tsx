@@ -49,7 +49,7 @@ export default function StoriesPage() {
                 <div className="borough__stories">
                   {list.map((s) => (
                     <article key={s.slug} id={s.slug} className="tale">
-                      <figure className="shutter tale__img" data-reveal="" >
+                      <figure className="tale__img" data-reveal="">
                         <Image
                           src={s.image.src}
                           alt={s.image.alt}
