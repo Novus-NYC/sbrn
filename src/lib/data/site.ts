@@ -326,7 +326,7 @@ export const storiesIntro = {
   text: "Learn how the Small Business Resource Network assisted these businesses across the five boroughs by connecting them to resources and offering personalized support that helped them to grow and thrive.",
 } as const;
 
-export const brooklynBurgersPhoto: ImageAsset = {
+const brooklynBurgersPhoto: ImageAsset = {
   src: "/media/stories/brooklyn-burgers-and-beer.webp",
   width: 971,
   height: 728,

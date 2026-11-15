@@ -18,8 +18,8 @@ export default function StreetScene({ children }: { children: ReactNode }) {
       stop = desktopMotion.matches
         ? addScene(track, {
             onUpdate: ({ progress }) => {
-              track.style.setProperty("--street-shift", `${(0.5 - progress) * 42}px`)
-              track.style.setProperty("--street-scale", String(1.03 + progress * 0.08))
+              track.style.setProperty("--street-shift", `${(0.5 - progress) * 30}px`)
+              track.style.setProperty("--street-scale", String(1.045 + progress * 0.07))
             },
           })
         : undefined

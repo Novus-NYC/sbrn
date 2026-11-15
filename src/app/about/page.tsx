@@ -5,7 +5,7 @@ import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { brooklynBurgersPhoto, partners, site } from "@/lib/data/site"
+import { partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -44,30 +44,42 @@ export default function AboutPage() {
       </header>
 
       <section id="network-story" className="about-story" aria-labelledby="story-h">
+        <div className="wrap about-story__intro">
+          <p className="label about-eyebrow" data-reveal="">How it began</p>
+          <h2 id="story-h" className="voice about-section-title" data-reveal="">The city needed a way to stay open.</h2>
+        </div>
         <StreetScene>
-          <div className="wrap about-story__head">
-            <p className="label about-story__place" data-reveal="">Park Slope, Brooklyn</p>
-            <h2 id="story-h" className="voice about-story__title" data-reveal="">
-              Serving the small businesses that make New York, New York.
-            </h2>
-          </div>
           <div className="about-story__scene">
-            <div className="about-story__photo">
-              <Image
-                src={brooklynBurgersPhoto.src}
-                alt={brooklynBurgersPhoto.alt}
-                fill
-                sizes="(max-width: 900px) 100vw, 74vw"
-              />
-            </div>
+            <Image
+              src="/media/about/mott-street-night.webp"
+              alt="Restaurant signs and lanterns lighting the storefronts along Mott Street in Manhattan’s Chinatown"
+              fill
+              sizes="(max-width: 600px) 720px, 100vw"
+            />
           </div>
-          <div className="wrap about-story__end">
-            <div className="about-story__caption" data-reveal="">
-              <p>We started in 2020, when COVID-19 put neighborhood businesses at risk. In Park Slope, our Brooklyn team helped Brooklyn Burgers &amp; Beer secure $2,500 in relief after the September 2023 flood.</p>
-              <ArrowLink href="/stories#brooklyn-burgers-and-beer">Read the Park Slope story</ArrowLink>
-            </div>
+          <div className="wrap about-story__beats">
+            <article className="about-story__beat" data-reveal="">
+              <p className="label about-eyebrow"><time dateTime="2020">2020</time></p>
+              <h3 className="voice">The chambers joined forces.</h3>
+              <p>When COVID-19 threatened neighborhood businesses, New York City’s five borough Chambers of Commerce came together to give owners a place to turn for help.</p>
+              <ArrowLink href="/media#y2020">Read about the launch</ArrowLink>
+            </article>
+            <article className="about-story__beat" data-reveal="">
+              <h3 className="voice">Support stayed close to home.</h3>
+              <p>Small Business Support Specialists work through the borough chambers. They help owners find financing, work through lease questions, reach customers online, and plan their next move.</p>
+              <ArrowLink href="#chambers">Find your local chamber</ArrowLink>
+            </article>
           </div>
         </StreetScene>
+        <div className="wrap about-story__credit">
+          <p>Mott Street, Chinatown</p>
+          <p className="about-photo-credit">
+            <a href="https://commons.wikimedia.org/wiki/File:Mott_Street,_Chinatown,_New_York-L1002097.jpg" target="_blank" rel="noreferrer">Photo by Frank Schulenburg</a>
+            <span aria-hidden="true"> / </span>
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>
+            <span> (resized and cropped)</span>
+          </p>
+        </div>
       </section>
 
       <section id="chambers" className="about-atlas" aria-labelledby="chambers-h">
