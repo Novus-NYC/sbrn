@@ -25,7 +25,7 @@ export default function MediaPage() {
   const items = press as Item[]
   const years = Array.from(new Set(items.map((i) => i.date.slice(0, 4))))
   const outlets = new Set(items.map((i) => i.outlet)).size
-  // every outlet that covered the Network, most frequent first: the newsstand under the gate
+  // Every outlet with coverage of the Network, most frequent first.
   const tally = new Map<string, number>()
   for (const i of items) tally.set(i.outlet, (tally.get(i.outlet) ?? 0) + 1)
   const outletNames = [...tally.entries()].sort((x, y) => y[1] - x[1]).map(([o]) => o)
@@ -50,6 +50,18 @@ export default function MediaPage() {
           </ul>
         </nav>
       </PageHeader>
+
+      <section className="coverage" data-tone="night" aria-labelledby="coverage-title">
+        <div className="wrap">
+          <div className="coverage__intro"><p className="label">Independent coverage and public records</p><h2 id="coverage-title" className="voice">Featured across New York</h2><p>Reporting from citywide publications, borough newsrooms, and public agencies.</p></div>
+          <ul className="coverage__outlets">{outletNames.map((name, index) => {
+            const article = items.find((item) => item.outlet === name && item.url)
+            return <li key={name} data-reveal="" style={{ ["--d" as string]: `${Math.min(index % 4, 3) * 60}ms` }}>
+              {article?.url ? <a href={article.url} target="_blank" rel="noreferrer"><span className="coverage__ordinal tnum">{index + 1}</span><span>{name}</span><span aria-hidden="true">↗</span></a> : <span className="coverage__still"><span className="coverage__ordinal tnum">{index + 1}</span><span>{name}</span></span>}
+            </li>
+          })}</ul>
+        </div>
+      </section>
 
       <div className="press" data-tone="day">
         {years.map((y) => {
