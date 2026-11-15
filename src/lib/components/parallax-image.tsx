@@ -3,12 +3,13 @@
 import Image from "next/image"
 import { useEffect, useRef } from "react"
 
-export default function ParallaxImage({ src, alt, sizes = "100vw", className = "", priority = false }: {
+export default function ParallaxImage({ src, alt, sizes = "100vw", className = "", priority = false, optimized = false }: {
   src: string
   alt: string
   sizes?: string
   className?: string
   priority?: boolean
+  optimized?: boolean
 }) {
   const frame = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -29,5 +30,5 @@ export default function ParallaxImage({ src, alt, sizes = "100vw", className = "
     observer.observe(el)
     return () => { observer.disconnect(); window.removeEventListener("scroll", schedule); cancelAnimationFrame(raf) }
   }, [])
-  return <div ref={frame} className={`parallax-image ${className}`}><Image src={src} alt={alt} fill sizes={sizes} priority={priority} unoptimized /></div>
+  return <div ref={frame} className={`parallax-image ${className}`}><Image src={src} alt={alt} fill sizes={sizes} priority={priority} unoptimized={!optimized} /></div>
 }

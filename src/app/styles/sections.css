@@ -770,25 +770,6 @@ html:not(.motion) .online__rows {
   font-size: var(--t-body);
 }
 
-.phead__facts {
-  display: grid;
-  gap: 0.9rem;
-  padding-left: 1.5rem;
-  border-left: 2px solid rgba(255, 255, 255, 0.24);
-}
-
-.phead__facts dd {
-  margin: 0 0 0.3rem;
-  font-size: clamp(2.6rem, 4.2vw, 4.25rem);
-  /* the comma's tail hangs below the baseline: leave it room above the label */
-  line-height: 1;
-}
-
-.phead__facts dt {
-  color: var(--mist);
-  font-size: clamp(0.875rem, 0.9vw, 1rem);
-}
-
 .jump {
   display: flex;
   flex-wrap: wrap;
@@ -849,14 +830,6 @@ html:not(.motion) .online__rows {
 @media (max-width: 860px) {
   .phead__grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .phead__facts {
-    grid-template-columns: repeat(3, auto);
-    justify-content: start;
-    gap: 1.5rem;
-    padding: 1rem 0 0;
-    border-left: 0;
-    border-top: 2px solid rgba(255, 255, 255, 0.24);
   }
 }
 

@@ -1,40 +1,55 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import ConnectBand from "@/lib/components/connect-band"
-import PageHeader from "@/lib/components/page-header"
-import { Arrow, ArrowLink, Lines } from "@/lib/components/ui"
-import { about, brooklynBurgersPhoto, chambers, mailto, partners } from "@/lib/data/site"
+import ParallaxImage from "@/lib/components/parallax-image"
+import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
+import { about, brooklynBurgersPhoto, chambers, mailto, partners, site } from "@/lib/data/site"
 
-const skyline = "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Lower_Manhattan_Skyline_2024.jpg/3840px-Lower_Manhattan_Skyline_2024.jpg"
+import "./about.css"
 
 export const metadata: Metadata = {
   title: "Who we are",
   description:
-    "A public-private partnership of New York City's five borough Chambers of Commerce, built to give small businesses personalized guidance as they open and reopen.",
+    "Meet the five borough Chambers of Commerce behind the NYC Small Business Resource Network and find free, personalized guidance for your business.",
 }
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
-        kicker="The Network"
-        title={["Who", "we are"]}
-        heroImage={{ src: skyline, alt: "Lower Manhattan skyline photographed from Pier 57 in 2024", credit: "Kidfly182, CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" }}
-        lead={about.paragraphs[0]}
-        aside={
-          <dl className="phead__facts">
-            {about.facts.map((f) => (
-              <div key={f.label}>
-                <dd className="display tnum">
-                  {f.value.toLocaleString("en-US")}
-                  {f.suffix}
-                </dd>
-                <dt className="label">{f.label}</dt>
+      <header className="about-hero">
+        <ParallaxImage
+          src="/media/about/lower-manhattan.webp"
+          alt="Lower Manhattan and the Hudson River seen from Pier 57"
+          sizes="(max-width: 860px) max(100vw, 1050px), 88vw"
+          className="about-hero__photo"
+          priority
+          optimized
+        />
+        <div className="wrap about-hero__inner">
+          <div className="about-hero__intro">
+            <p className="label about-hero__kicker" data-reveal="">{site.name}</p>
+            <Lines as="h1" className="display about-hero__title" lines={["Built for", "New York."]} />
+            <p className="about-hero__lead" data-reveal="">
+              New York City’s five borough Chambers of Commerce offer free, one-on-one guidance to local business owners.
+            </p>
+            <Btn href="#chambers" variant="ghost" arrow="down">Find your borough</Btn>
+          </div>
+          <dl className="about-hero__facts">
+            {about.facts.slice(1).reverse().map((fact) => (
+              <div key={fact.label}>
+                <dt>{fact.label === "Small businesses" ? "Small businesses citywide" : "Borough chambers"}</dt>
+                <dd className="display tnum">{fact.value.toLocaleString("en-US")}{fact.suffix}</dd>
               </div>
             ))}
           </dl>
-        }
-      />
+          <p className="about-hero__credit">
+            <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" target="_blank" rel="noreferrer">Photo by Kidfly182</a>
+            <span aria-hidden="true"> / </span>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
+            <span> (cropped)</span>
+          </p>
+        </div>
+      </header>
 
       <section className="story section-pad" data-tone="day" aria-labelledby="story-h">
         <div className="wrap grid12">
@@ -58,7 +73,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="chambers section-pad" data-tone="night" aria-labelledby="chambers-h">
+      <section id="chambers" className="chambers section-pad" data-tone="night" aria-labelledby="chambers-h">
         <div className="wrap">
           <div className="chambers__top">
             <Lines id="chambers-h" as="h2" className="display chambers__h" lines={["Five Chambers.", "One Network."]} />
