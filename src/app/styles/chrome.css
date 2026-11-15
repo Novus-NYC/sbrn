@@ -756,7 +756,7 @@ body:has(.band) .footer__cta {
 /* The About page opens on an actual Manhattan skyline. */
 .parallax-image { position: absolute; inset: 0; overflow: hidden; --parallax-shift: 0%; }
 .parallax-image img { object-fit: cover; transform: scale(1.18) translate3d(0, var(--parallax-shift), 0); will-change: transform; }
-.phead--photo { isolation: isolate; background: var(--night); min-height: min(80svh, 47rem); display: flex; align-items: flex-end; }
+.phead--photo { isolation: isolate; background: var(--night); display: flex; align-items: flex-end; }
 .phead__photo { z-index: -2; }
 .phead--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8,17,27,.9), rgba(8,17,27,.62) 58%, rgba(8,17,27,.24)), linear-gradient(0deg, rgba(8,17,27,.48), transparent 45%); }
 .phead--photo .phead__title { font-size: clamp(4rem, 9vw, 10rem); }
@@ -764,7 +764,7 @@ body:has(.band) .footer__cta {
 @media (prefers-reduced-motion: reduce) { .parallax-image img { transform: none; will-change: auto; } }
 
 /* Interior pages each use their own photographed or illustrated canvas. */
-.phead { isolation: isolate; background: var(--night); min-height: min(75svh, 45rem); display: flex; align-items: flex-end; }
+.phead { isolation: isolate; background: var(--night); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; }
 .phead:not(.phead--photo) { background: var(--slate); }
 .phead__grid { position: relative; z-index: 1; width: 100%; }
 .phead--photo .phead__photo img { object-position: 50% 45%; }
@@ -774,7 +774,7 @@ body:has(.reach) .phead__photo img { object-position: 50% 55%; }
 body:has(.press) .phead__photo img { object-position: 50% 35%; filter: saturate(.55); }
 .phead--coral .phead__kicker { color: var(--lamp); }
 .phead--photo .phead__extra { position: relative; }
-@media (max-width: 720px) { .phead { min-height: 36rem; } .phead--photo::before { background: linear-gradient(0deg, rgba(8,17,27,.91), rgba(8,17,27,.4)); } }
+@media (max-width: 720px) { .phead--photo::before { background: linear-gradient(0deg, rgba(8,17,27,.91), rgba(8,17,27,.4)); } }
 /* Resolved editorial footer: brand and invitation above the utility rows. */
 .footer--editorial { padding-top: clamp(4rem, 8vw, 8rem); background: #211f25; }
 .footer--editorial .footer__top { align-items: start; padding-bottom: clamp(3rem, 7vw, 6rem); }
