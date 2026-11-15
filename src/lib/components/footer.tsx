@@ -1,117 +1,34 @@
-import Image from "next/image"
 import Link from "next/link"
-import { chambers, cta, nav, site } from "@/lib/data/site"
-import { Btn, Roll } from "./ui"
+import { cta, nav, site } from "@/lib/data/site"
+import { Btn } from "./ui"
 
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="footer" data-tone="night">
-      {/* The brand's own storefront line drawing sits on the footer like a block at dusk. */}
-      <div className="footer__block" aria-hidden="true">
-        <Image
-          src="/media/brand/storefront-row.webp"
-          alt=""
-          width={1600}
-          height={782}
-          sizes="(max-width: 720px) 180vw, 100vw"
-          className="footer__blockimg"
-        />
-      </div>
-
+    <footer className="footer footer--editorial" data-tone="night">
       <div className="wrap footer__top">
-        <div className="footer__lockup">
-          <p className="footer__nyc display" aria-hidden="true">
-            NYC
-          </p>
-          <p className="footer__name display">
-            <span>Small Business</span>
-            <span>Resource Network</span>
-          </p>
+        <div className="footer__identity">
+          <Link href="/" className="footer__brand" aria-label="NYC Small Business Resource Network home">
+            <span className="display footer__nyc">NYC</span>
+            <span className="display footer__name">Small Business<br />Resource Network</span>
+          </Link>
+          <p>Personalized guidance for New York City small businesses, through the Chambers of Commerce in all five boroughs.</p>
         </div>
         <div className="footer__cta">
-          <p className="voice footer__line">Tell us what you need.</p>
+          <p className="label">Get started</p>
+          <p className="voice footer__line">Your business has a place here.</p>
           <Btn href={cta.href}>{cta.label}</Btn>
         </div>
       </div>
-
-      <div className="wrap footer__cols">
-        <div>
-          <h2 className="label footer__h">Find us</h2>
-          <address className="footer__addr">
-            {site.name}
-            <br />
-            {site.address.careOf}
-            <br />
-            {site.address.street}
-            <br />
-            {site.address.city}
-          </address>
-          <a className="ulink footer__mail" href={`mailto:${site.email}`}>
-            {site.email}
-          </a>
-        </div>
-
-        <nav aria-label="Footer">
-          <h2 className="label footer__h">Pages</h2>
-          <ul className="footer__list">
-            <li>
-              <Link href="/">
-                <Roll>Home</Roll>
-              </Link>
-            </li>
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href}>
-                  <Roll>{item.label}</Roll>
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link href={cta.href}>
-                <Roll>{cta.label}</Roll>
-              </Link>
-            </li>
-          </ul>
+      <div className="wrap footer__links">
+        <nav aria-label="Footer pages">
+          <ul><li><Link href="/">Home</Link></li>{nav.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}<li><Link href={cta.href}>{cta.label}</Link></li></ul>
         </nav>
-
-        <div>
-          <h2 className="label footer__h">Your borough&rsquo;s Chamber</h2>
-          <ul className="footer__list">
-            {chambers.map((c) => (
-              <li key={c.id}>
-                <a href={c.url} target="_blank" rel="noopener noreferrer">
-                  <Roll>{c.borough}</Roll>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="label footer__h">Fine print</h2>
-          <ul className="footer__list">
-            <li>
-              <Link href="/privacy-policy">
-                <Roll>Privacy Policy</Roll>
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms-of-service">
-                <Roll>Terms of Service</Roll>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
       </div>
-
       <div className="wrap footer__base">
-        <p>
-          &copy; {year} {site.name}
-        </p>
-        <a className="ulink" href="https://novusnyc.org" target="_blank" rel="noopener noreferrer">
-          Made by Novus
-        </a>
+        <p>&copy; {year} {site.name}</p>
+        <div className="footer__fine"><Link href="/privacy-policy">Privacy Policy</Link><Link href="/terms-of-service">Terms of Service</Link><a href="https://novusnyc.org" target="_blank" rel="noreferrer">Made by Novus</a></div>
       </div>
     </footer>
   )
