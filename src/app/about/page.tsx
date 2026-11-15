@@ -5,7 +5,7 @@ import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { partners, site } from "@/lib/data/site"
+import { offer, partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -79,6 +79,31 @@ export default function AboutPage() {
             <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>
             <span> (resized and cropped)</span>
           </p>
+        </div>
+      </section>
+
+      <section id="support" className="about-services" aria-labelledby="support-h">
+        <div className="wrap about-services__layout">
+          <header className="about-services__head">
+            <p className="label about-eyebrow">How we help</p>
+            <h2 id="support-h" className="voice about-section-title">Bring us a question.</h2>
+            <p>Tell us what you’re working on. A specialist at your borough chamber can help you find resources and decide what to do next.</p>
+            <ArrowLink href="/connect">Tell us what you need</ArrowLink>
+          </header>
+          <div className="about-services__topics">
+            {offer.services.map((service, index) => (
+              <details key={service.id} name="about-services" open={index === 0}>
+                <summary className="display">
+                  {service.name}
+                  <span className="about-services__sign" aria-hidden="true" />
+                </summary>
+                <div className="about-services__description">
+                  <p>{service.proof}</p>
+                  {service.storySlug && <ArrowLink href={`/stories#${service.storySlug}`}>Read the business story</ArrowLink>}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
