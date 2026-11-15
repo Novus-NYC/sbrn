@@ -2553,3 +2553,19 @@ html:not(.motion) .online__rows {
     grid-column: 1 / -1;
   }
 }
+
+/* Home: a simple service index after the animated storefront walk. */
+.overview { background: var(--slate); color: var(--white); padding-block: clamp(4rem, 8vw, 8rem); }
+.overview__heading { text-align: center; max-width: 52rem; margin: 0 auto clamp(3rem, 7vw, 6rem); }
+.overview__heading .label { color: var(--lamp); }
+.overview__heading h2 { font-size: var(--t-xl); margin: 0.5rem 0 1rem; }
+.overview__heading p:last-child { font-size: var(--t-m); line-height: 1.45; color: #e5eaf0; }
+.overview__services { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; position: relative; }
+.overview__services::before { content: ""; position: absolute; top: 3.5rem; left: 5%; right: 5%; border-top: 2px dotted var(--coral); }
+.overview__services a { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.15rem; color: inherit; min-height: 12rem; }
+.overview__icon { width: 7rem; height: 7rem; border-radius: 50%; background: var(--white); color: var(--slate); display: grid; place-items: center; transition: transform 350ms ease, color 350ms ease; }
+.overview__icon svg { width: 3.25rem; height: 3.25rem; }
+.overview__services a:hover .overview__icon, .overview__services a:focus-visible .overview__icon { transform: translateY(-0.4rem); color: var(--coral-ink); }
+.overview__rule { width: 2.5rem; height: 3px; background: var(--coral); }
+.overview__name { font-size: clamp(1.05rem, 1.4vw, 1.5rem); line-height: 1.12; max-width: 11rem; }
+@media (max-width: 800px) { .overview__services { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; } .overview__services::before { display: none; } .overview__icon { width: 5.5rem; height: 5.5rem; } .overview__services a { min-height: 0; } .overview__services li:last-child { grid-column: 1 / -1; } }
