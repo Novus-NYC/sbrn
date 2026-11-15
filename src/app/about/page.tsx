@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
@@ -51,26 +52,31 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <section className="story section-pad" data-tone="day" aria-labelledby="story-h">
-        <div className="wrap grid12">
-          <div className="story__copy">
-            <h2 id="story-h" className="voice story__h" data-reveal="">
+      <section className="about-story" aria-labelledby="story-h">
+        <StreetScene>
+          <div className="wrap about-story__head">
+            <p className="label about-story__place" data-reveal="">Park Slope, Brooklyn</p>
+            <h2 id="story-h" className="voice about-story__title" data-reveal="">
               Serving the small businesses that make New York, New York.
             </h2>
-            <div className="prose story__text" data-reveal="">
-              <p className="story__lead">{about.paragraphs[1]}</p>
-              <p>{about.paragraphs[2]}</p>
-              <p>{about.paragraphs[3]}</p>
+          </div>
+          <div className="about-story__scene">
+            <div className="about-story__photo">
+              <Image
+                src={brooklynBurgersPhoto.src}
+                alt={brooklynBurgersPhoto.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 74vw"
+              />
             </div>
           </div>
-          <figure className="story__art" data-reveal="">
-            <Image {...brooklynBurgersPhoto} sizes="(max-width: 860px) 92vw, 46vw" />
-            <figcaption>
-              <span>Brooklyn Burgers &amp; Beer, Park Slope</span>
-              <ArrowLink href="/stories#brooklyn-burgers-and-beer">Read their story</ArrowLink>
-            </figcaption>
-          </figure>
-        </div>
+          <div className="wrap about-story__end">
+            <div className="about-story__caption" data-reveal="">
+              <p>We started in 2020, when COVID-19 put neighborhood businesses at risk. In Park Slope, our Brooklyn team helped Brooklyn Burgers &amp; Beer secure $2,500 in relief after the September 2023 flood.</p>
+              <ArrowLink href="/stories#brooklyn-burgers-and-beer">Read the Park Slope story</ArrowLink>
+            </div>
+          </div>
+        </StreetScene>
       </section>
 
       <section id="chambers" className="chambers section-pad" data-tone="night" aria-labelledby="chambers-h">
