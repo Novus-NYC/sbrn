@@ -211,7 +211,7 @@ export const partners = {
     },
   ],
   collaboration: [
-    { name: "NYC Department of Small Business Services", url: "https://www1.nyc.gov/site/sbs/index.page" },
+    { name: "NYC Department of Small Business Services", url: "https://www.nyc.gov/site/sbs/" },
     { name: "Partnership for New York City", url: "https://pfnyc.org/" },
   ],
 } as const;

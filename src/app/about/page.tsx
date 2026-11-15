@@ -90,39 +90,45 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="partners section-pad" data-tone="concrete" aria-labelledby="partners-h">
-        <div className="wrap grid12">
-          <div className="partners__head">
-            <h2 id="partners-h" className="label partners__label" data-reveal="">
-              Our partners
-            </h2>
-            <p className="voice partners__lead" data-reveal="">
-              A public-private partnership, launched in the wake of COVID-19.
-            </p>
+      <section className="about-partners" aria-labelledby="partners-h">
+        <div className="wrap about-partners__layout">
+          <div className="about-partners__head">
+            <h2 id="partners-h" className="voice about-partners__title" data-reveal="">The partnership behind the Network.</h2>
+            <p data-reveal="">Public agencies, nonprofits and business organizations help the borough chambers connect local owners with advice and services.</p>
+            <Image
+              src="/media/brand/storefront-row.webp"
+              alt=""
+              width={1600}
+              height={782}
+              sizes="(max-width: 740px) 92vw, 47vw"
+              className="about-partners__illustration"
+            />
           </div>
-          <div className="partners__cols">
+          <div className="about-partners__credits">
             <div data-reveal="">
-              <h3 className="label partners__h">Launched and funded by</h3>
-              <ul className="partners__list">
-                {partners.funding.map((p) => (
-                  <li key={p.name}>
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="partner">
-                      <span className="partner__name">{p.name}</span>
-                      {p.role ? <span className="partner__role">{p.role}</span> : null}
-                      <Arrow dir="out" className="partner__go" />
+              <h3>Launched and funded by</h3>
+              <ul>
+                {partners.funding.map((partner) => (
+                  <li key={partner.name}>
+                    <a href={partner.url} target="_blank" rel="noreferrer">
+                      <span>
+                        <strong>{partner.name}</strong>
+                        {partner.role && <small>{partner.role}</small>}
+                      </span>
+                      <Arrow dir="out" />
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            <div data-reveal="" style={{ ["--d" as string]: "120ms" }}>
-              <h3 className="label partners__h">In collaboration with</h3>
-              <ul className="partners__list">
-                {partners.collaboration.map((p) => (
-                  <li key={p.name}>
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="partner">
-                      <span className="partner__name">{p.name}</span>
-                      <Arrow dir="out" className="partner__go" />
+            <div data-reveal="">
+              <h3>In collaboration with</h3>
+              <ul>
+                {partners.collaboration.map((partner) => (
+                  <li key={partner.name}>
+                    <a href={partner.url} target="_blank" rel="noreferrer">
+                      <strong>{partner.name}</strong>
+                      <Arrow dir="out" />
                     </a>
                   </li>
                 ))}
