@@ -46,7 +46,7 @@ export default function MediaPage() {
         kicker="Media"
         title={["In the", "news"]}
         lead={`${items.length} reports and stories from ${outlets} sources, ${years[years.length - 1]} to ${years[0]}.`}
-        heroImage={{ src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Times_Square_Newsstand.jpg/960px-Times_Square_Newsstand.jpg", alt: "New York City newsstand", credit: "Tomas Fano, CC BY-SA 2.0", source: "https://commons.wikimedia.org/wiki/File:Times_Square_Newsstand.jpg" }}
+        heroImage={{ src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/2008_newsstand_NYC_USA_2453239739.jpg/3840px-2008_newsstand_NYC_USA_2453239739.jpg", alt: "Readers browsing newspapers and magazines at a Manhattan street newsstand", credit: "Ray Dehler, CC BY 2.0", source: "https://commons.wikimedia.org/wiki/File:2008_newsstand_NYC_USA_2453239739.jpg" }}
       >
         <nav aria-label="Years">
           <ul className="jump">
@@ -79,7 +79,7 @@ export default function MediaPage() {
           const list = items.filter((i) => i.date.startsWith(y))
           return (
             <section key={y} id={`y${y}`} className="press__year" aria-labelledby={`y${y}-h`}>
-              <div className="press__moment">
+              <div className={`press__moment press__moment--${y}`}>
                 <ParallaxImage src={moments[y].src} alt={moments[y].alt} sizes="100vw" />
                 <div className="wrap press__moment-inner"><p className="label">The year in context</p><p className="voice">{moments[y].title}</p><span>{moments[y].source ? <a href={moments[y].source} target="_blank" rel="noreferrer">Photo: {moments[y].credit}</a> : moments[y].credit}</span></div>
               </div>

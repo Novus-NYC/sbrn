@@ -2646,7 +2646,14 @@ html:not(.motion) .online__rows {
 .press__moment .label { color: var(--lamp); }
 .press__moment .voice { font-size: clamp(1.8rem, 3.4vw, 4rem); max-width: 50rem; line-height: 1.08; margin: .45rem 0 1rem; }
 .press__moment a { color: #e5ebf2; font-size: var(--t-xs); text-decoration: underline; }
-@media (max-width: 640px) { .press__moment { height: 21rem; } .press__moment .voice { font-size: 1.8rem; } }
+/* The 2022 event photograph is a group portrait. Give it a dedicated right
+   pane so all three faces stay in frame at wide viewport ratios. */
+.press__moment--2022 { background: #182a3b; }
+.press__moment--2022 .parallax-image { left: 40%; }
+.press__moment--2022 .parallax-image img { object-fit: contain; object-position: right center; transform: scale(1.04) translate3d(0, var(--parallax-shift), 0); }
+.press__moment--2022::before { background: linear-gradient(90deg, #182a3b 14%, rgba(24,42,59,.38) 57%, transparent), linear-gradient(0deg, rgba(9,18,29,.7), transparent 65%); }
+@media (max-width: 640px) { .press__moment { height: 21rem; } .press__moment .voice { font-size: 1.8rem; } .press__moment--2022 { height: 29rem; } .press__moment--2022 .parallax-image { inset: 0 0 auto; height: 62%; } .press__moment--2022 .parallax-image img { object-position: center top; transform: none; } .press__moment--2022::before { background: linear-gradient(0deg, #182a3b 28%, transparent 70%); } }
+@media (prefers-reduced-motion: reduce) { .press__moment--2022 .parallax-image img { transform: none; } }
 .lost-next { background: var(--day); }
 .lost-next p { font-size: var(--t-m); margin-bottom: 1.5rem; }
 .lost-next .wrap > div { display: flex; flex-wrap: wrap; gap: 1rem; }
