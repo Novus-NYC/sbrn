@@ -5,6 +5,8 @@
   --about-cream: #fff3e0;
   --about-muted: #c8d2de;
   --about-rule: rgb(230 238 249 / 22%);
+  --about-chapters-height: 0px;
+  --about-sticky-offset: calc(var(--nav-h) + var(--about-chapters-height));
   background: var(--about-night);
   color: var(--about-cream);
 }
@@ -202,7 +204,10 @@
 }
 
 .about-chapters {
+  position: relative;
+  z-index: 3;
   border-block: 1px solid var(--about-rule);
+  background: var(--about-night);
 }
 
 .about-chapters ul {
@@ -212,19 +217,54 @@
 }
 
 .about-chapters a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 3rem;
   color: var(--about-muted);
   font-size: var(--t-s);
   font-weight: 600;
+  transition: color var(--dur-1);
 }
 
 .about-chapters a:hover,
-.about-chapters a:focus-visible {
+.about-chapters a:focus-visible,
+.about-chapters a[aria-current="location"] {
   color: var(--lamp);
-  text-decoration: underline;
-  text-underline-offset: .25em;
+}
+
+.about-chapters a[aria-current="location"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: currentColor;
+}
+
+@media (max-width: 649px) {
+  .about-chapters ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-chapters a {
+    min-height: 2.75rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .about-page {
+    --about-chapters-height: calc(3rem + 2px);
+  }
+
+  .about-chapters {
+    position: sticky;
+    top: var(--nav-h);
+  }
+
+  .about-page :is(section[id], .about-atlas__entry[id]) {
+    scroll-margin-top: var(--about-chapters-height);
+  }
 }
 
 .about-eyebrow {
@@ -239,7 +279,7 @@
 
 .about-story__intro {
   container-type: inline-size;
-  padding-block: clamp(3.75rem, 8vw, 7.5rem) clamp(1.8rem, 4.5vw, 3.6rem);
+  padding-block: clamp(3.2rem, 6vw, 6rem) clamp(1.8rem, 4.5vw, 3.6rem);
 }
 
 .about-story__intro .about-section-title {
@@ -325,7 +365,7 @@
 
   .about-story__scene {
     aspect-ratio: auto;
-    height: min(48rem, calc(94svh - var(--nav-h)));
+    height: min(48rem, calc(94svh - var(--about-sticky-offset)));
   }
 }
 
@@ -339,7 +379,7 @@
   .about-story__scene {
     grid-area: street;
     position: sticky;
-    top: var(--nav-h);
+    top: var(--about-sticky-offset);
     align-self: start;
   }
 
@@ -652,7 +692,7 @@
 @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
   .about-atlas__map {
     position: sticky;
-    top: calc(var(--nav-h) + 1rem);
+    top: calc(var(--about-sticky-offset) + 1rem);
   }
 }
 

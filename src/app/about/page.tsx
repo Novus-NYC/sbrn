@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image, { getImageProps } from "next/image"
 import BusinessOutcomes from "@/lib/components/about/business-outcomes"
 import ChamberDirectory from "@/lib/components/about/chamber-directory"
+import ChapterNav from "@/lib/components/about/chapter-nav"
 import StreetScene from "@/lib/components/about/street-scene"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
 import { about, connect, offer, partners, site } from "@/lib/data/site"
@@ -36,13 +37,6 @@ const { props: skylinePortrait } = getImageProps({
 })
 
 const [, businessesAtLaunch, boroughs] = about.facts
-
-const chapters = [
-  ["network-story", "How it began"],
-  ["support", "How we help"],
-  ["outcomes", "Business outcomes"],
-  ["chambers", "Borough chambers"],
-] as const
 
 // Milestones link to their source coverage in the Media archive.
 const milestones = [
@@ -91,13 +85,7 @@ export default function AboutPage() {
           </div>
         </div>
       </header>
-      <nav className="about-chapters" aria-label="On this page">
-        <ul className="wrap">
-          {chapters.map(([id, label]) => (
-            <li key={id}><a href={`#${id}`}>{label}</a></li>
-          ))}
-        </ul>
-      </nav>
+      <ChapterNav />
 
       <section id="network-story" className="about-story" aria-labelledby="story-h">
         <div className="wrap about-story__intro">
