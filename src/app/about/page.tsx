@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import ParallaxImage from "@/lib/components/parallax-image"
 import ConnectBand from "@/lib/components/connect-band"
 import PageHeader from "@/lib/components/page-header"
 import { Arrow, Lines } from "@/lib/components/ui"
@@ -34,25 +35,21 @@ export default function AboutPage() {
         }
       />
 
-      <section className="story section-pad" data-tone="day" aria-labelledby="story-h">
-        <div className="wrap grid12">
-          <figure className="story__art" data-reveal="">
-            <Image
-              src="/media/brand/storefront-illustration.webp"
-              alt="Illustration of a shop owner standing beside a storefront with a striped awning"
-              width={556}
-              height={556}
-              sizes="(max-width: 860px) 70vw, 30vw"
-            />
-          </figure>
-          <div className="story__copy">
-            <Lines id="story-h" as="h2" className="voice story__h" lines={["Serving the small businesses", "that make New York, New York."]} />
-            <div className="prose story__text" data-reveal="">
-              <p className="story__lead">{about.paragraphs[1]}</p>
-              <p>{about.paragraphs[2]}</p>
-              <p>{about.paragraphs[3]}</p>
-            </div>
+      <section className="story story--photo section-pad" data-tone="night" aria-labelledby="story-h">
+        <ParallaxImage
+          src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/The_Corner_Bookstore%2C_93rd_Street_and_Madison_corner%2C_Carnegie_Hill%2C_Upper_East_Side%2C_Manhattan.jpg/960px-The_Corner_Bookstore%2C_93rd_Street_and_Madison_corner%2C_Carnegie_Hill%2C_Upper_East_Side%2C_Manhattan.jpg"
+          alt="The Corner Bookstore at Madison Avenue and 93rd Street in Carnegie Hill"
+          sizes="100vw"
+        />
+        <div className="wrap story--photo__inner">
+          <p className="label" data-reveal="">Every neighborhood has a story</p>
+          <Lines id="story-h" as="h2" className="voice story__h" lines={["Serving the small businesses", "that make New York, New York."]} />
+          <div className="prose story__text" data-reveal="">
+            <p className="story__lead">{about.paragraphs[1]}</p>
+            <p>{about.paragraphs[2]}</p>
+            <p>{about.paragraphs[3]}</p>
           </div>
+          <a className="story__credit" href="https://commons.wikimedia.org/wiki/File:The_Corner_Bookstore,_93rd_Street_and_Madison_corner,_Carnegie_Hill,_Upper_East_Side,_Manhattan.jpg" target="_blank" rel="noreferrer">Carnegie Hill photograph: Deans Charbal, CC BY-SA 4.0</a>
         </div>
       </section>
 
