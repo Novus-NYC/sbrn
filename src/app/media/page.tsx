@@ -83,7 +83,10 @@ export default function MediaPage() {
 
       <section className="coverage" data-tone="night" aria-labelledby="coverage-title">
         <div className="wrap">
-          <div className="coverage__intro"><p className="label">As featured in</p><h2 id="coverage-title" className="voice">The city is talking.</h2><p>Explore reporting on the Small Business Resource Network from citywide and borough newsrooms.</p></div>
+          <div className="coverage__intro">
+            <h2 id="coverage-title" className="voice">From the local press</h2>
+            <p>Read how New York newsrooms covered the businesses we serve, from recovering after floods to reaching customers online.</p>
+          </div>
         </div>
         <LogoReel rows={logoRows} showAllLabel="Show all outlets" />
       </section>

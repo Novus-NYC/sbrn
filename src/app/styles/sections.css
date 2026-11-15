@@ -2598,11 +2598,32 @@ html:not(.motion) .online__rows {
 .tale__fig { font-size: clamp(2.4rem, 4vw, 4.5rem); }
 @media (max-width: 640px) { .borough__side { align-items: flex-start; } .tale, .tale--flip { grid-template-columns: minmax(0,1fr); gap: 1.25rem; } .tale__img { aspect-ratio: 4 / 3; } }
 
-.coverage { background: #263849; color: var(--white); padding-block: clamp(4rem, 8vw, 7rem); }
-.coverage__intro { display: grid; grid-template-columns: 1fr 2fr; gap: .75rem 3rem; align-items: baseline; margin-bottom: clamp(2.5rem, 5vw, 5rem); }
-.coverage__intro .label { color: var(--lamp); }
-.coverage__intro h2 { grid-column: 2; font-size: clamp(2.5rem, 5vw, 5.5rem); line-height: 1; }
-.coverage__intro p:last-child { grid-column: 2; color: #d7e0e8; }
+.coverage {
+  background: #263849;
+  color: var(--white);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.coverage__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: .75rem clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: 1.2rem;
+  margin-bottom: .9rem;
+  border-top: 1px solid var(--line-night);
+}
+
+.coverage__intro h2 {
+  font-size: clamp(2.5rem, 5vw, 5.25rem);
+  line-height: 1;
+}
+
+.coverage__intro p {
+  max-width: 40ch;
+  color: var(--day);
+}
+
 .logo-reel__controls {
   display: flex;
   justify-content: flex-end;
@@ -2765,8 +2786,7 @@ html:not(.motion) .online__rows {
 }
 
 @media (max-width: 600px) {
-  .coverage__intro { display: block; }
-  .coverage__intro h2 { margin: 1rem 0; }
+  .coverage__intro { grid-template-columns: 1fr; }
 }
 
 .intake-section { background: #e8ebed; }
