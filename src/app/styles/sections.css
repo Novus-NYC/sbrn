@@ -2430,6 +2430,7 @@ html:not(.motion) .online__rows {
 }
 
 .logo-reel:is([data-expanded="true"], :has(a:focus-visible)) .logo-reel__group {
+  width: 100%;
   flex-wrap: wrap;
   row-gap: var(--reel-gap);
 }
@@ -2446,6 +2447,7 @@ html:not(.motion) .online__rows {
   }
 
   .logo-reel__group {
+    width: 100%;
     flex-wrap: wrap;
     row-gap: var(--reel-gap);
   }
