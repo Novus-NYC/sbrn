@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import BusinessOutcomes from "@/lib/components/about/business-outcomes"
 import ChamberDirectory from "@/lib/components/about/chamber-directory"
 import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
@@ -106,6 +107,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <BusinessOutcomes />
 
       <section id="chambers" className="about-atlas" aria-labelledby="chambers-h">
         <div className="wrap">
