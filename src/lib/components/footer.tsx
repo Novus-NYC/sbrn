@@ -13,7 +13,6 @@ export default function Footer() {
               <span className="display footer__nyc">NYC</span>
               <span className="display footer__name">Small Business<br />Resource Network</span>
             </Link>
-            <p>Personalized guidance for New York City small businesses, through the Chambers of Commerce in all five boroughs.</p>
           </div>
           <div className="footer__cta">
             <p className="label">Get started</p>

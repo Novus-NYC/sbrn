@@ -777,13 +777,13 @@ body:has(.press) .phead__photo img { object-position: 67% 50%; }
 @media (max-width: 720px) { .phead--photo::before { background: linear-gradient(0deg, rgba(8,17,27,.91), rgba(8,17,27,.4)); } }
 /* Resolved editorial footer: brand and invitation above the utility rows. */
 .footer--editorial { padding-top: 0; background: #211f25; }
-.footer__scene { padding-top: clamp(4rem, 8vw, 8rem); background-color: #1d2632; background-image: linear-gradient(0deg, rgba(15,22,31,.88), rgba(15,22,31,.72)), url('/media/brand/storefront-row.webp'); background-blend-mode: multiply; background-size: cover; background-position: center 42%; }
+.footer__scene { position: relative; padding-top: clamp(4rem, 8vw, 8rem); background: #1d2632; isolation: isolate; }
+.footer__scene::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url('/media/brand/storefront-row.webp') center 68% / cover no-repeat; opacity: .28; pointer-events: none; }
 .footer--editorial .footer__top { align-items: start; padding-bottom: clamp(3rem, 7vw, 6rem); }
 .footer__identity { max-width: 61rem; }
 .footer__brand { display: inline-flex; align-items: center; gap: .85rem; color: #f1ad88; }
 .footer--editorial .footer__nyc { font-size: clamp(7rem, 11vw, 13rem); line-height: .78; }
 .footer--editorial .footer__name { display: block; padding: 0; border: 0; font-size: clamp(2rem, 3vw, 3.5rem); line-height: .98; text-transform: uppercase; white-space: normal; }
-.footer__identity p { margin-top: 2rem; color: #cbc6ca; line-height: 1.55; max-width: 29rem; }
 .footer--editorial .footer__cta { max-width: 28rem; }
 .footer--editorial .footer__cta .label { color: #f1ad88; }
 .footer--editorial .footer__line { color: var(--white); font-size: clamp(1.8rem, 2.8vw, 3rem); line-height: 1.16; }
