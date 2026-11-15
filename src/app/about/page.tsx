@@ -4,7 +4,7 @@ import BusinessOutcomes from "@/lib/components/about/business-outcomes"
 import ChamberDirectory from "@/lib/components/about/chamber-directory"
 import StreetScene from "@/lib/components/about/street-scene"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { connect, offer, partners, site } from "@/lib/data/site"
+import { about, connect, offer, partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -34,6 +34,8 @@ const { props: skylinePortrait } = getImageProps({
   quality: 88,
   loading: "eager",
 })
+
+const [, businessesAtLaunch, boroughs] = about.facts
 
 const chapters = [
   ["network-story", "How it began"],
@@ -69,12 +71,24 @@ export default function AboutPage() {
               <a href="#network-story" className="about-hero__story-link">Get to know the Network <Arrow dir="down" /></a>
             </div>
           </div>
-          <p className="about-photo-credit">
-            <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_night_skyline_20261003_%E2%80%93_2.jpg" target="_blank" rel="noreferrer">Photo by VynedJ</a>
-            <span aria-hidden="true"> / </span>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
-            <span> (resized and cropped)</span>
-          </p>
+          <div className="about-hero__corner">
+            <dl className="about-hero__facts">
+              <div>
+                <dt>Borough chambers</dt>
+                <dd className="display tnum">{boroughs.value}</dd>
+              </div>
+              <div>
+                <dt>Small businesses citywide at the Network’s 2020 launch</dt>
+                <dd className="display tnum">{businessesAtLaunch.value.toLocaleString("en-US")}{businessesAtLaunch.suffix}</dd>
+              </div>
+            </dl>
+            <p className="about-photo-credit">
+              <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_night_skyline_20261003_%E2%80%93_2.jpg" target="_blank" rel="noreferrer">Photo by VynedJ</a>
+              <span aria-hidden="true"> / </span>
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
+              <span> (resized and cropped)</span>
+            </p>
+          </div>
         </div>
       </header>
       <nav className="about-chapters" aria-label="On this page">
