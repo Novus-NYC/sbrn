@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
-import Image from "next/image"
+import Image, { getImageProps } from "next/image"
 import BusinessOutcomes from "@/lib/components/about/business-outcomes"
 import ChamberDirectory from "@/lib/components/about/chamber-directory"
 import StreetScene from "@/lib/components/about/street-scene"
-import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
 import { connect, offer, partners, site } from "@/lib/data/site"
 
@@ -14,6 +13,27 @@ export const metadata: Metadata = {
   description:
     "Meet the five borough Chambers of Commerce behind the NYC Small Business Resource Network and find free, personalized guidance for your business.",
 }
+
+const skylineAlt = "The illuminated skyline of Lower Manhattan seen from the Staten Island Ferry"
+const { props: skyline } = getImageProps({
+  src: "/media/about/skyline-after-dark.webp",
+  alt: skylineAlt,
+  width: 4608,
+  height: 3072,
+  sizes: "(min-width: 1000px) 73vw, 100vw",
+  quality: 88,
+  loading: "eager",
+  fetchPriority: "high",
+})
+const { props: skylinePortrait } = getImageProps({
+  src: "/media/about/skyline-after-dark-portrait.webp",
+  alt: skylineAlt,
+  width: 1500,
+  height: 2375,
+  sizes: "100vw",
+  quality: 88,
+  loading: "eager",
+})
 
 const chapters = [
   ["network-story", "How it began"],
@@ -33,14 +53,12 @@ export default function AboutPage() {
   return (
     <div className="about-page">
       <header className="about-hero">
-        <ParallaxImage
-          src="/media/about/brooklyn-bridge-night.webp"
-          alt="The illuminated Brooklyn Bridge and Lower Manhattan skyline reflected in the East River"
-          sizes="(max-width: 780px) 1080px, 100vw"
-          className="about-hero__photo"
-          priority
-          optimized
-        />
+        <picture className="about-hero__photo">
+          <source media="(max-width: 780px)" srcSet={skylinePortrait.srcSet} sizes={skylinePortrait.sizes} />
+          {/* getImageProps provides the optimized sources for this art-directed picture. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img {...skyline} />
+        </picture>
         <div className="wrap about-hero__inner">
           <div className="about-hero__intro">
             <p className="label about-hero__kicker">{site.name}</p>
@@ -52,7 +70,10 @@ export default function AboutPage() {
             </div>
           </div>
           <p className="about-photo-credit">
-            <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge_at_night.jpg" target="_blank" rel="noreferrer">Photo by Kai Pilger</a>
+            <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_night_skyline_20261003_%E2%80%93_2.jpg" target="_blank" rel="noreferrer">Photo by VynedJ</a>
+            <span aria-hidden="true"> / </span>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
+            <span> (resized and cropped)</span>
           </p>
         </div>
       </header>

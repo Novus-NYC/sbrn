@@ -21,12 +21,24 @@
 }
 
 .about-hero__photo {
+  position: absolute;
+  inset: 0;
   z-index: -2;
-  background: var(--about-night);
 }
 
 .about-hero__photo img {
-  object-position: 56% 58%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 34% 50%;
+}
+
+@media (min-width: 1000px) {
+  .about-hero__photo {
+    inset-inline-start: 27%;
+    mask-image: linear-gradient(90deg, transparent, #000 28%);
+  }
 }
 
 .about-hero::before {
@@ -35,8 +47,8 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgb(11 19 30 / 95%) 0%, rgb(11 19 30 / 75%) 28%, rgb(11 19 30 / 15%) 60%, transparent 82%),
-    linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 67%) 12%, transparent 45%, transparent 75%, rgb(11 19 30 / 72%));
+    linear-gradient(90deg, var(--about-night) 8%, rgb(11 19 30 / 88%) 31%, rgb(11 19 30 / 14%) 56%, transparent 78%),
+    linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 72%) 10%, transparent 31%, transparent 78%, rgb(11 19 30 / 60%));
 }
 
 .about-hero__inner {
@@ -53,7 +65,7 @@
 
 .about-hero__title {
   margin-inline-start: -.035em;
-  font-size: clamp(4.65rem, 10.4vw, 10.5rem);
+  font-size: clamp(4.65rem, 9.2vw, 9.85rem);
   line-height: .89;
 }
 
@@ -123,13 +135,13 @@
   }
 
   .about-hero__photo img {
-    object-position: 70% 48%;
+    object-position: 53% 50%;
   }
 
   .about-hero::before {
     background:
-      linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 88%) 21%, rgb(11 19 30 / 65%) 46%, transparent 77%),
-      linear-gradient(180deg, rgb(11 19 30 / 80%), transparent 24%);
+      linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 92%) 19%, rgb(11 19 30 / 73%) 43%, transparent 73%),
+      linear-gradient(180deg, rgb(11 19 30 / 67%), transparent 25%);
   }
 
   .about-hero__title {
