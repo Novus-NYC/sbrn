@@ -795,3 +795,6 @@ body:has(.band) .footer--editorial .footer__cta { display: grid; }
 .footer__fine { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; }
 .footer--editorial .footer__base a { color: #cbc6ca; }
 @media (max-width: 700px) { .footer--editorial .footer__top { display: grid; } .footer__links { display: grid; } .footer__links ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .2rem 1rem; } }
+
+.phead__credit { position: absolute; right: var(--edge); bottom: .6rem; z-index: 2; color: #e6edf5; font-size: .75rem; text-decoration: underline; text-shadow: 0 1px 2px var(--night); }
+body:has(.press) .phead__photo img { object-position: 50% 38%; }

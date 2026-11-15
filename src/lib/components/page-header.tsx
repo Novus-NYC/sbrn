@@ -11,21 +11,14 @@ type Props = {
   children?: ReactNode
   /** Coral highlights the path to get in touch. */
   tone?: "night" | "coral"
-  /**
-   * What shows under the gate once it lifts: each page's own shop window
-   * (real photos, real sites, real outlets). Decorative: the same content is on
-   * the page below in full.
-   */
-  under?: ReactNode
-  underClass?: string
-  heroImage?: { src: string; alt: string }
+  heroImage?: { src: string; alt: string; credit?: string; source?: string }
 }
 
 /**
  * Every inner page opens on the gate, with its name painted across the slats.
  * Each page lifts it on something different: that is its own window.
  */
-export default function PageHeader({ kicker, title, lead, aside, children, tone = "night", under, underClass = "", heroImage }: Props) {
+export default function PageHeader({ kicker, title, lead, aside, children, tone = "night", heroImage }: Props) {
   return (
     <>
     <header className={`phead ${heroImage ? "phead--photo" : ""} ${tone === "coral" ? "phead--coral" : ""}`}>
@@ -54,6 +47,7 @@ export default function PageHeader({ kicker, title, lead, aside, children, tone 
         ) : null}
       </div>
 
+      {heroImage?.source && heroImage.credit ? <a className="phead__credit" href={heroImage.source} target="_blank" rel="noreferrer">Photo: {heroImage.credit}</a> : null}
     </header>
 
     </>
