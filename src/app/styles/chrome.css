@@ -151,6 +151,36 @@ html:not(.js) .nav::before {
   gap: 0.75rem;
 }
 
+.language-picker { position: relative; display: flex; align-items: center; }
+.language-picker select {
+  appearance: none;
+  width: clamp(5.2rem, 9vw, 8.5rem);
+  min-height: 2.75rem;
+  padding: .45rem 1.35rem .45rem .6rem;
+  color: currentColor;
+  background: rgba(16, 24, 35, .48);
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 0;
+  font: 700 .82rem var(--f-text);
+  cursor: pointer;
+}
+.language-picker::after { content: "⌄"; position: absolute; right: .45rem; pointer-events: none; }
+.language-picker select option { color: #101823; background: #fff; }
+.language-picker select:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
+.language-picker__status {
+  position: absolute;
+  right: 0;
+  top: calc(100% + .5rem);
+  width: max-content;
+  max-width: min(20rem, 85vw);
+  padding: .65rem .8rem;
+  background: var(--night);
+  color: var(--white);
+  font-size: .82rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+
 .nav__toggle {
   display: none;
   align-items: center;
@@ -210,6 +240,9 @@ html:not(.js) .nav::before {
 }
 
 @media (max-width: 520px) {
+  .language-picker select { width: 5.2rem; font-size: .75rem; }
+  .nav__end { gap: .4rem; }
+  .nav__toggle-label { display: none; }
   .nav__cta {
     display: none;
   }

@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { cta, nav } from "@/lib/data/site"
 import { Arrow, Roll, Wordmark } from "./ui"
+import LanguageSwitcher from "./language-switcher"
 
-export default function Navbar() {
+export default function Navbar({ translationsEnabled = false }: { translationsEnabled?: boolean }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -110,6 +111,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__end">
+          {translationsEnabled && <LanguageSwitcher />}
           {/* On its own page the action is marked current and painted ink, so it reads against the coral gate. */}
           <Link
             href={cta.href}

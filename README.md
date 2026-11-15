@@ -95,7 +95,11 @@ Everything comes from `raw messy data/` (a Wix export of nycsmallbusinessresourc
 
 ### Not carried over
 
-- **Translations.** The original offers eight translated versions (Spanish, Chinese, Korean, Russian, Haitian Creole, Urdu, Tagalog, Greek). This build is English only. The hero shows the source's own translation of "We are here to help you" in each of those languages, but the pages themselves are not translated. The scraped translations are in `raw messy data/<lang>/` if localized routes are wanted.
+- **Translations.** The original offered eight translated versions. The language control supports Spanish, Chinese, Korean, Russian, Haitian Creole, Urdu, Tagalog and Greek, translating page copy, form labels, image descriptions, navigation and legal text. It is shown only when `GOOGLE_TRANSLATE_API_KEY` is configured on the server. The control remembers a visitor’s choice in their browser; `?lang=es` (and the other language codes) can open a page in that language. Translation is machine generated and should be reviewed before presenting legal copy as authoritative. The English page remains the source of record.
+
+### Translation setup
+
+Enable **Cloud Translation - Basic (v2)** for a Google Cloud project and set `GOOGLE_TRANSLATE_API_KEY` as a server-side environment variable on the deployment. Restrict the key to the Translation API and set a conservative project quota before enabling it: visitors’ page copy is translated on demand and this service is billed by usage. The key is never sent to the browser. Without the key the language control stays hidden and the English site remains usable. The saved source translations cover only portions of the old site, so they do not provide complete translations of the current draft.
 - **The business profile form** is the Network's existing external form (FormTitan). It is linked, not rebuilt.
 
 ## Media

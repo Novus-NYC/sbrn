@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip" href="#main">
           Skip to content
         </a>
-        <Navbar />
+        <Navbar translationsEnabled={Boolean(process.env.GOOGLE_TRANSLATE_API_KEY)} />
         <main id="main" tabIndex={-1}>
           {children}
         </main>
