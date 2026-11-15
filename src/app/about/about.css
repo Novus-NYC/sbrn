@@ -301,3 +301,188 @@
     transform: none;
   }
 }
+
+/* Leave the street in view long enough to connect it with its borough. */
+.about-atlas {
+  padding-block: clamp(3rem, 7svh, 5rem) clamp(4rem, 10svh, 7rem);
+  background: linear-gradient(var(--night), var(--slate) 19rem);
+  color: var(--white);
+}
+
+.about-atlas__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 1.4rem 3.5rem;
+  margin-bottom: clamp(1.75rem, 4.3vw, 3.5rem);
+}
+
+.about-atlas__title {
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  margin-inline-start: -.025em;
+}
+
+.about-atlas__head p {
+  max-width: 38ch;
+  color: var(--day);
+  font-size: var(--t-body);
+  text-wrap: pretty;
+}
+
+.about-atlas__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4.2vw, 4.5rem);
+  align-items: start;
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .about-atlas__map {
+    position: sticky;
+    top: calc(var(--nav-h) + 1rem);
+  }
+}
+
+.about-atlas__frame {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  aspect-ratio: 1550 / 1010;
+  border: 1px solid rgb(255 255 255 / 24%);
+  background: #1a2939;
+}
+
+.about-atlas__canvas {
+  /* Preserve the original map aspect ratio and move the NYC portion into view. */
+  position: absolute;
+  inset: 0 auto 0 calc(-760 / 1550 * 100%);
+  width: calc(2800 / 1550 * 100%);
+}
+
+.about-atlas__canvas img {
+  opacity: .31;
+}
+
+.about-atlas__pin {
+  position: absolute;
+  transform: translate(-1.375rem, -50%);
+}
+
+.about-atlas__pin--manhattan,
+.about-atlas__pin--queens {
+  transform: translate(calc(-100% + 1.375rem), -50%);
+}
+
+.about-atlas__pin a {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.75rem;
+  padding-inline: .95rem;
+  color: var(--white);
+}
+
+.about-atlas__pin--manhattan a,
+.about-atlas__pin--queens a {
+  flex-direction: row-reverse;
+}
+
+.about-atlas__pin-label {
+  padding: .2rem .37rem;
+  background: var(--night);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.about-atlas__dot {
+  flex: none;
+  width: .85rem;
+  height: .85rem;
+  border: 2px solid var(--lamp);
+  border-radius: 50%;
+  background: var(--night);
+  transition: background-color var(--dur-1), box-shadow var(--dur-1);
+}
+
+.about-atlas__pin[data-active="true"],
+.about-atlas__pin:focus-within {
+  z-index: 1;
+}
+
+.about-atlas__pin[data-active="true"] .about-atlas__dot,
+.about-atlas__pin a:focus-visible .about-atlas__dot {
+  background: var(--lamp);
+  box-shadow: 0 0 0 .3rem rgb(255 197 92 / 25%);
+}
+
+.about-atlas__pin[data-active="true"] .about-atlas__pin-label {
+  background: var(--lamp);
+  color: var(--night);
+}
+
+.about-atlas__pin a:focus-visible {
+  outline-offset: -.15rem;
+}
+
+.about-atlas__list {
+  border-bottom: 1px solid rgb(255 255 255 / 24%);
+}
+
+.about-atlas__entry {
+  position: relative;
+  min-width: 0;
+  padding: 1rem .9rem .65rem;
+  border-top: 1px solid rgb(255 255 255 / 24%);
+  border-inline-start: 2px solid transparent;
+  transition: background-color var(--dur-1), border-color var(--dur-1);
+}
+
+.about-atlas__entry:target,
+.about-atlas__entry[data-active="true"],
+.about-atlas__entry:focus-within {
+  border-inline-start-color: var(--lamp);
+  background: rgb(16 24 35 / 42%);
+}
+
+.about-atlas__borough {
+  font-size: clamp(2rem, 3.4vw, 3.5rem);
+  line-height: 1;
+}
+
+.about-atlas__name {
+  margin-block: .35rem .2rem;
+  color: var(--day);
+}
+
+.about-atlas__links {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 0 1.35rem;
+}
+
+.about-atlas__links a {
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--lamp);
+  font-size: var(--t-s);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.about-atlas__links svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+@media (max-width: 900px) {
+  .about-atlas__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

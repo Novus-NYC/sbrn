@@ -903,83 +903,6 @@ html:not(.motion) .online__rows {
 }
 
 /* ---------------- about ---------------- */
-.chambers__top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem 3rem;
-}
-
-.chambers__h {
-  font-size: var(--t-xl);
-  margin-left: -0.03em;
-}
-
-.chambers__logos {
-  width: min(100%, 34rem);
-  height: auto;
-  filter: brightness(1.5);
-}
-
-.chambers__list {
-  margin-top: clamp(2.5rem, 6vh, 4rem);
-  border-bottom: 1px solid var(--line-night);
-}
-
-.chamber {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1.3fr) auto;
-  align-items: center;
-  gap: 0.4rem 2rem;
-  padding-block: clamp(0.9rem, 2.2vh, 1.4rem);
-  border-top: 1px solid var(--line-night);
-}
-
-.chamber__borough {
-  font-size: clamp(2rem, 1.2rem + 2.8vw, 4rem);
-  transition: color var(--dur-1) ease;
-}
-
-.chamber:hover .chamber__borough,
-.chamber:focus-within .chamber__borough {
-  color: var(--coral);
-}
-
-.chamber__name {
-  color: var(--mist);
-}
-
-.chamber__link,
-.chamber__site {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  overflow-wrap: anywhere;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
-  text-underline-offset: 0.24em;
-  transition: text-decoration-color var(--dur-1) ease, color var(--dur-1) ease;
-}
-
-.chamber__site svg {
-  width: 0.95rem;
-  height: 0.95rem;
-  transition: transform 420ms var(--ease-gate);
-}
-
-@media (hover: hover) {
-  .chamber__link:hover,
-  .chamber__site:hover {
-    color: var(--coral);
-    text-decoration-color: var(--coral);
-  }
-  .chamber__site:hover svg {
-    transform: translate3d(0.18rem, -0.18rem, 0);
-  }
-}
-
 .partners .grid12 {
   row-gap: 2.5rem;
 }
@@ -1092,17 +1015,7 @@ html:not(.motion) .online__rows {
   .partners__cols {
     grid-column: 1 / -1;
   }
-  .chamber {
-    grid-template-columns: 1fr auto;
-  }
-  .chamber__name,
-  .chamber__link {
-    grid-column: 1 / -1;
-  }
-  .chamber__site {
-    grid-column: 2;
-    grid-row: 1;
-  }
+
 }
 
 /* ---------------- stories ---------------- */

@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import ChamberDirectory from "@/lib/components/about/chamber-directory"
 import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { about, brooklynBurgersPhoto, chambers, mailto, partners, site } from "@/lib/data/site"
+import { about, brooklynBurgersPhoto, partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -79,35 +80,13 @@ export default function AboutPage() {
         </StreetScene>
       </section>
 
-      <section id="chambers" className="chambers section-pad" data-tone="night" aria-labelledby="chambers-h">
+      <section id="chambers" className="about-atlas" aria-labelledby="chambers-h">
         <div className="wrap">
-          <div className="chambers__top">
-            <Lines id="chambers-h" as="h2" className="display chambers__h" lines={["Five Chambers.", "One Network."]} />
-            <Image
-              src="/media/partners/chambers-strip.webp"
-              alt="Logos of the Bronx, Brooklyn, Manhattan, Queens and Staten Island Chambers of Commerce"
-              width={879}
-              height={110}
-              sizes="(max-width: 860px) 90vw, 36rem"
-              className="chambers__logos"
-              data-reveal=""
-            />
-          </div>
-          <ul className="chambers__list">
-            {chambers.map((c, i) => (
-              <li key={c.id} className="chamber" data-reveal="" style={{ ["--d" as string]: `${i * 60}ms` }}>
-                <span className="display chamber__borough">{c.borough}</span>
-                <span className="chamber__name">{c.name}</span>
-                <a className="chamber__link" href={mailto(c.email)}>
-                  {c.email}
-                </a>
-                <a className="chamber__site" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${c.name} website`}>
-                  <span>Website</span>
-                  <Arrow dir="out" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <header className="about-atlas__head" data-reveal="">
+            <Lines id="chambers-h" as="h2" className="display about-atlas__title" lines={["Five chambers.", "One network."]} />
+            <p>Find your borough on the map to reach the Chamber of Commerce that works with businesses in your neighborhood.</p>
+          </header>
+          <ChamberDirectory />
         </div>
       </section>
 
