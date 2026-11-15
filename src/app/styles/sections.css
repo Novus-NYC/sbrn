@@ -2823,10 +2823,17 @@ html:not(.motion) .online__rows {
 .press__moment .label { color: var(--lamp); }
 .press__moment .voice { font-size: clamp(1.8rem, 3.4vw, 4rem); max-width: 50rem; line-height: 1.08; margin: .45rem 0 1rem; }
 .press__moment a { color: #e5ebf2; font-size: var(--t-xs); text-decoration: underline; }
-/* Frame the faces near the top while the event photo fills the entire banner. */
-.press__moment--2022 .parallax-image img { object-position: center 5%; }
-.press__moment--2022::before { background: linear-gradient(90deg, rgba(9,18,29,.88), rgba(9,18,29,.18) 72%), linear-gradient(0deg, rgba(9,18,29,.72), transparent 70%); }
-@media (max-width: 640px) { .press__moment { height: 21rem; } .press__moment .voice { font-size: 1.8rem; } .press__moment--2022 { height: 26rem; } .press__moment--2022 .parallax-image img { object-position: 50% 5%; } }
+.press__moment--2022 .parallax-image img {
+  object-position: 50% 23%;
+  transform: none;
+  will-change: auto;
+}
+
+@media (max-width: 640px) {
+  .press__moment { height: 21rem; }
+  .press__moment .voice { font-size: 1.8rem; }
+  .press__moment--2022 .parallax-image img { object-position: 56% center; }
+}
 .lost-next { background: var(--day); }
 .lost-next p { font-size: var(--t-m); margin-bottom: 1.5rem; }
 .lost-next .wrap > div { display: flex; flex-wrap: wrap; gap: 1rem; }
