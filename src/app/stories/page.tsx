@@ -47,9 +47,9 @@ export default function StoriesPage() {
                   <p className="label borough__count">{list.length} stories</p>
                 </div>
                 <div className="borough__stories">
-                  {list.map((s, i) => (
-                    <article key={s.slug} id={s.slug} className={`tale ${i % 2 ? "tale--flip" : ""}`}>
-                      <figure className="shutter tale__img" data-reveal="" style={{ aspectRatio: `${s.image.width} / ${s.image.height}` }}>
+                  {list.map((s) => (
+                    <article key={s.slug} id={s.slug} className="tale">
+                      <figure className="shutter tale__img" data-reveal="" >
                         <Image
                           src={s.image.src}
                           alt={s.image.alt}

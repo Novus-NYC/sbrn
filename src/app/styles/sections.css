@@ -2580,3 +2580,19 @@ html:not(.motion) .online__rows {
 .story--photo .story__text { color: #eef1f4; margin-top: 2rem; max-width: 43rem; }
 .story--photo .story__credit { display: inline-block; margin-top: 2rem; font-size: var(--t-xs); color: #eef1f4; text-decoration: underline; }
 @media (max-width: 720px) { .story--photo { min-height: 0; } .story--photo::before { background: rgba(8,17,27,.8); } }
+
+/* A compact borough index, with each image aligned to its actual story. */
+.boroughs { background-color: #e8ebed; background-image: repeating-linear-gradient(0deg, transparent 0 39px, rgba(30,45,60,.035) 40px); }
+.borough { padding-block: clamp(3rem, 5vw, 5rem); border-color: rgba(20,28,39,.28); }
+.borough:nth-child(even) { background-color: rgba(255,255,255,.45); }
+.borough__side { grid-column: 1 / -1; position: static; top: auto; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--ink); padding-bottom: 1rem; }
+.borough__name { font-size: clamp(2.8rem, 5vw, 5.5rem); }
+.borough__stories { grid-column: 1 / -1; gap: 2rem; }
+.tale, .tale--flip { grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; padding: 1rem 0 2rem; border-bottom: 1px solid var(--line); }
+.tale:last-child { border-bottom: 0; padding-bottom: 0; }
+.tale__img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--slate); }
+.tale__img img { width: 100%; height: 100%; object-fit: cover; }
+.tale__body { max-width: 43rem; }
+.tale__fact { display: flex; align-items: baseline; gap: 1rem; }
+.tale__fig { font-size: clamp(2.4rem, 4vw, 4.5rem); }
+@media (max-width: 640px) { .borough__side { align-items: flex-start; } .tale, .tale--flip { grid-template-columns: minmax(0,1fr); gap: 1.25rem; } .tale__img { aspect-ratio: 4 / 3; } }
