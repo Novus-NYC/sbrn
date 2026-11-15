@@ -6,10 +6,10 @@ type Props = {
   kicker: string
   title: readonly string[]
   lead?: ReactNode
-  /** something particular to the page, set against the gate */
+  /** A page-specific supporting detail. */
   aside?: ReactNode
   children?: ReactNode
-  /** The gate's paint. Coral is the open sign: used where the page is the way in. */
+  /** Coral highlights the path to get in touch. */
   tone?: "night" | "coral"
   /**
    * What shows under the gate once it lifts: each page's own shop window
@@ -53,13 +53,9 @@ export default function PageHeader({ kicker, title, lead, aside, children, tone 
           </div>
         ) : null}
       </div>
-      <span className="gatebar" aria-hidden="true" />
+
     </header>
-    {under ? (
-      <div className={`phead__under ${underClass}`} aria-hidden="true">
-        <div className="phead__window">{under}</div>
-      </div>
-    ) : null}
+
     </>
   )
 }

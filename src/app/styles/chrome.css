@@ -762,3 +762,16 @@ body:has(.band) .footer__cta {
 .phead--photo .phead__title { font-size: clamp(4rem, 9vw, 10rem); }
 .phead--photo .phead__lead { color: #edf1f6; }
 @media (prefers-reduced-motion: reduce) { .parallax-image img { transform: none; will-change: auto; } }
+
+/* Interior pages each use their own photographed or illustrated canvas. */
+.phead { isolation: isolate; background: var(--night); min-height: min(75svh, 45rem); display: flex; align-items: flex-end; }
+.phead:not(.phead--photo) { background: var(--slate); }
+.phead__grid { position: relative; z-index: 1; width: 100%; }
+.phead--photo .phead__photo img { object-position: 50% 45%; }
+body:has(.boroughs) .phead__photo img { object-position: 50% 62%; }
+body:has(.build) .phead__photo img { object-position: 50% 25%; }
+body:has(.reach) .phead__photo img { object-position: 50% 55%; }
+body:has(.press) .phead__photo img { object-position: 50% 35%; filter: saturate(.55); }
+.phead--coral .phead__kicker { color: var(--lamp); }
+.phead--photo .phead__extra { position: relative; }
+@media (max-width: 720px) { .phead { min-height: 36rem; } .phead--photo::before { background: linear-gradient(0deg, rgba(8,17,27,.91), rgba(8,17,27,.4)); } }

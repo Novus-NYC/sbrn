@@ -16,7 +16,7 @@ const MAP_H = 1010
 export default function ConnectPage() {
   return (
     <>
-      <PageHeader kicker="Start here" title={["Connect", "with us"]} lead={connect.text} tone="coral">
+      <PageHeader kicker="Start here" title={["Connect", "with us"]} lead={connect.text} tone="coral" heroImage={{ src: "/media/brand/nyc-street-map.webp", alt: "Illustrated street map of the five boroughs" }}>
         <Btn href={site.profileFormUrl} variant="ink">
           {connect.formLabel}
         </Btn>

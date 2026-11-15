@@ -13,7 +13,7 @@ export default function TermsPage() {
   const doc = data as LegalData
   return (
     <>
-      <PageHeader kicker="Fine print" title={["Terms of", "Service"]} lead={`${doc.dateLabel}: ${doc.date}`} />
+      <PageHeader kicker="Fine print" title={["Terms of", "Service"]} lead={`${doc.dateLabel}: ${doc.date}`} heroImage={{ src: "/media/brand/nyc-street-map.webp", alt: "Illustrated map of New York City streets" }} />
       <LegalDoc data={doc} />
     </>
   )

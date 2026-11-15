@@ -22,10 +22,7 @@ export default function OpenOnlinePage() {
       <PageHeader
         kicker="A program of the Network"
         title={["Open", "+ Online"]}
-        underClass="under--sites"
-        under={openOnline.projects.map((p) => (
-          <Image key={p.slug} src={`/media/projects/${p.slug}.webp`} alt="" width={p.w} height={p.h} sizes="(max-width: 720px) 40vw, 16vw" />
-        ))}
+        heroImage={{ src: "/media/projects/harlems-heaven-hats.webp", alt: "Website project created for Harlem’s Heaven Hats" }}
         lead={openOnline.lead}
         aside={
           <div className="doorsign" role="note">

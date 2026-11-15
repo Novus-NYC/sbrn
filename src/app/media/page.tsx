@@ -35,12 +35,7 @@ export default function MediaPage() {
         kicker="Media"
         title={["In the", "news"]}
         lead={`${items.length} stories from ${outlets} outlets, ${years[years.length - 1]} to ${years[0]}.`}
-        underClass="under--stand"
-        under={outletNames.map((o) => (
-          <span key={o} className="voice">
-            {o}
-          </span>
-        ))}
+        heroImage={{ src: "/media/brand/nyc-street-map.webp", alt: "Map of New York City neighborhoods served by the Network" }}
       >
         <nav aria-label="Years">
           <ul className="jump">
