@@ -4,6 +4,7 @@ import ConnectBand from "@/lib/components/connect-band"
 import LogoReel from "@/lib/components/logo-reel"
 import PageHeader from "@/lib/components/page-header"
 import { Arrow } from "@/lib/components/ui"
+import { outletLanes, outletMarks } from "@/lib/data/media-outlets"
 import press from "@/lib/data/press.json"
 
 export const metadata: Metadata = {
@@ -15,20 +16,10 @@ export const metadata: Metadata = {
 /** `url` is null where the article is no longer online (checked 2026-11-14). */
 type Item = { date: string; title: string; outlet: string; kind: string; url: string | null }
 
-// Each mark represents an outlet with an SBRN story in the archive below.
-const featuredOutlets = [
-  [
-    { name: "The New York Times", src: "/media/press/new-york-times.svg", outlet: "The New York Times", width: 512, height: 86 },
-    { name: "ABC 7 New York", src: "/media/press/abc7.svg", outlet: "ABC 7 NY", width: 1000, height: 732 },
-    { name: "PIX11", src: "/media/press/pix11.svg", outlet: "PIX11", width: 3167, height: 1000 },
-    { name: "Spectrum News NY1", src: "/media/press/ny1.svg", outlet: "NY1", width: 1543, height: 411 },
-  ],
-  [
-    { name: "News 12", src: "/media/press/news12.svg", outlet: "News 12", width: 78, height: 22 },
-    { name: "amNewYork", src: "/media/press/amnewyork.svg", outlet: "amNewYork", width: 699, height: 107 },
-    { name: "Staten Island Advance", src: "/media/press/staten-island-advance.webp", outlet: "Staten Island Advance", width: 720, height: 142 },
-  ],
-] as const
+function archiveEntryId(item: Item) {
+  const source = item.outlet.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "")
+  return `press-${item.date}-${source}`
+}
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -50,21 +41,31 @@ const moments: Record<string, { src: string; alt: string; title: string; credit:
 
 export default function MediaPage() {
   const items = press as Item[]
-  const logoRows = featuredOutlets.map((outlets) => ({
-    repeat: 5,
-    marks: outlets.flatMap(({ name, outlet, ...image }) => {
-      const href = items.find((item) => item.outlet === outlet && item.url)?.url
-      return href ? [{ name, href, image }] : []
+  const sources = new Map<string, Item>()
+  for (const item of items) {
+    const preferred = sources.get(item.outlet)
+    if (!preferred || (!preferred.url && item.url)) sources.set(item.outlet, item)
+  }
+
+  const placed = new Set(outletLanes.flat())
+  const remaining = [...sources.keys()].filter((source) => !placed.has(source))
+  const logoRows = [...outletLanes, remaining].map((lane) => ({
+    repeat: 2,
+    marks: lane.flatMap((name) => {
+      const item = sources.get(name)
+      if (!item) return []
+      const mark = outletMarks[name]
+      const href = item.url ?? `#${archiveEntryId(item)}`
+      return [{ name, href, ...mark }]
     }),
   }))
   const years = Array.from(new Set(items.map((i) => i.date.slice(0, 4))))
-  const outlets = new Set(items.map((i) => i.outlet)).size
   return (
     <>
       <PageHeader
         kicker="Media"
         title={["In the", "news"]}
-        lead={`${items.length} reports and stories from ${outlets} sources, ${years[years.length - 1]} to ${years[0]}.`}
+        lead={`${items.length} reports and stories from ${sources.size} sources, ${years[years.length - 1]} to ${years[0]}.`}
         heroImage={{ src: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/2008_newsstand_NYC_USA_2453239739.jpg/3840px-2008_newsstand_NYC_USA_2453239739.jpg", alt: "Readers browsing newspapers and magazines at a Manhattan street newsstand", credit: "Ray Dehler, CC BY 2.0", source: "https://commons.wikimedia.org/wiki/File:2008_newsstand_NYC_USA_2453239739.jpg" }}
       >
         <nav aria-label="Years">
@@ -85,7 +86,7 @@ export default function MediaPage() {
         <div className="wrap">
           <div className="coverage__intro">
             <h2 id="coverage-title" className="voice">From the local press</h2>
-            <p>Read how New York newsrooms covered the businesses we serve, from recovering after floods to reaching customers online.</p>
+            <p>Browse coverage and public records about the businesses we serve, from flood recovery to getting local shops online.</p>
           </div>
         </div>
         <LogoReel rows={logoRows} showAllLabel="Show all outlets" />
@@ -111,6 +112,7 @@ export default function MediaPage() {
                 </div>
                 <ol className="press__list">
                   {list.map((item, i) => {
+                    const archiveTarget = !item.url && sources.get(item.outlet) === item
                     const body = (
                       <>
                         <span className="clip__meta">
@@ -124,7 +126,7 @@ export default function MediaPage() {
                       </>
                     )
                     return (
-                      <li key={item.date + item.title} data-reveal="" style={{ ["--d" as string]: `${Math.min(i, 6) * 45}ms` }}>
+                      <li key={item.date + item.title} id={archiveTarget ? archiveEntryId(item) : undefined} tabIndex={archiveTarget ? -1 : undefined} data-reveal={archiveTarget ? undefined : ""} style={{ ["--d" as string]: `${Math.min(i, 6) * 45}ms` }}>
                         {item.url ? (
                           <a className="clip" href={item.url} target="_blank" rel="noopener noreferrer">
                             {body}
