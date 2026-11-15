@@ -2491,70 +2491,59 @@ html:not(.motion) .online__rows {
 }
 
 /* ---------------- open + online: funders ---------------- */
-.funders .grid12 {
-  align-items: start;
-  row-gap: 2.5rem;
+.funders.section-pad {
+  padding-block: clamp(3.75rem, 7vw, 6.25rem);
 }
 
 .funders__head {
-  grid-column: 1 / span 4;
+  max-width: 57rem;
+  text-align: center;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .funders__h {
-  font-size: var(--t-l);
+  font-size: clamp(2.55rem, 5vw, 4.5rem);
+  line-height: 1;
   color: var(--coral);
 }
 
-.funders__lead {
-  width: min(100%, 15rem);
-  margin-top: 1.5rem;
-  padding: 0.9rem 1rem;
-  background: var(--white);
+.funders__head p {
+  max-width: 42ch;
+  margin: .85rem auto 0;
+  color: var(--day);
 }
 
-.funders__lead img {
-  width: 100%;
-  height: auto;
+.funders .logo-reel__rows {
+  --reel-gap: 0px;
+  --reel-item-size: clamp(10rem, 17vw, 16rem);
+  --reel-item-height: clamp(5.5rem, 9vw, 8rem);
+  --reel-mark-height: clamp(2.4rem, 4.5vw, 4rem);
+  --reel-logo-width: 11.5rem;
+  --reel-duration: 140s;
+  background: var(--day);
+  color: var(--ink);
 }
 
-.funders__tiers {
-  grid-column: 6 / span 7;
-  display: grid;
-  gap: clamp(1.5rem, 4vh, 2.5rem);
+.funders .logo-reel__row + .logo-reel__row {
+  --reel-item-height: clamp(5.5rem, 7vw, 7rem);
+  --reel-item-size: clamp(10rem, 14vw, 13rem);
+  --reel-mark-height: 2.5rem;
+  --reel-logo-width: 9.5rem;
+  --reel-duration: 105s;
+  border-top: 1px solid var(--line);
 }
 
-.funders__tier {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2em 1.1em;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--line-night);
-  font-family: var(--f-display);
-  font-stretch: 70%;
-  font-weight: 800;
-  text-transform: uppercase;
-  line-height: 1.02;
+.funders .logo-reel__mark img {
+  width: min(100%, var(--reel-logo-width));
+  height: var(--reel-mark-height);
 }
 
-.funders__tier--1 {
-  font-size: clamp(2rem, 1.2rem + 3vw, 4.2rem);
-}
-
-.funders__tier--2 {
-  font-size: clamp(1.35rem, 1rem + 1.5vw, 2.4rem);
-  color: #e6ebf2;
-}
-
-.funders__tier--3 {
-  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.6rem);
-  color: var(--mist);
-}
-
-@media (max-width: 860px) {
-  .funders__head,
-  .funders__tiers {
-    grid-column: 1 / -1;
-  }
+.funders .logo-reel__name {
+  max-width: 22ch;
+  font-size: var(--t-s);
+  font-weight: 650;
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 /* Home: a simple service index after the animated storefront walk. */
@@ -2751,7 +2740,7 @@ html:not(.motion) .online__rows {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .coverage .logo-reel:not([data-expanded="true"], :has(a:focus-visible)) .logo-reel__row {
+  :is(.coverage, .funders) .logo-reel:not([data-expanded="true"], :has(a:focus-visible)) .logo-reel__row {
     mask-image: linear-gradient(90deg, transparent, #000 min(3%, 3rem), #000 max(97%, calc(100% - 3rem)), transparent);
   }
 }

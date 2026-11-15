@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import BrowserFrame from "@/lib/components/browser-frame"
 import ConnectBand from "@/lib/components/connect-band"
+import LogoReel from "@/lib/components/logo-reel"
 import BuildSteps from "@/lib/components/online/build-steps"
 import PageHeader from "@/lib/components/page-header"
 import { Lines } from "@/lib/components/ui"
@@ -147,25 +148,14 @@ export default function OpenOnlinePage() {
 
       {/* ---- funders ---- */}
       <section className="funders section-pad" data-tone="night" aria-labelledby="funders-h">
-        <div className="wrap grid12">
-          <div className="funders__head">
-            <h2 id="funders-h" className="voice funders__h" data-reveal="">
-              Thank you to our funders
-            </h2>
-            <div className="funders__lead" data-reveal="" style={{ ["--d" as string]: "120ms" }}>
-              <Image src="/media/partners/wells-fargo.webp" alt="Wells Fargo" width={900} height={204} sizes="240px" />
-            </div>
-          </div>
-          <div className="funders__tiers">
-            {openOnline.funders.slice(1).map((tier, t) => (
-              <ul key={t} className={`funders__tier funders__tier--${t + 1}`} data-reveal="" style={{ ["--d" as string]: `${t * 90}ms` }}>
-                {tier.map((name) => (
-                  <li key={name}>{name}</li>
-                ))}
-              </ul>
-            ))}
-          </div>
+        <div className="wrap funders__head" data-reveal="">
+          <h2 id="funders-h" className="voice funders__h">Thank you to our funders</h2>
+          <p>These funders helped New York City small businesses get free websites, branding and search guidance.</p>
         </div>
+        <LogoReel
+          rows={openOnline.funders.map((marks, index) => ({ marks, repeat: index === 0 ? 3 : 1 }))}
+          showAllLabel="Show all funders"
+        />
       </section>
 
       <ConnectBand />

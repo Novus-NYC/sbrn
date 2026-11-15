@@ -216,6 +216,12 @@ export const partners = {
   ],
 } as const;
 
+const funderMark = (slug: string, width: number, height: number) => ({
+  src: `/media/funders/${slug}.webp`,
+  width,
+  height,
+});
+
 export const openOnline = {
   name: "Open + Online",
   fullName: "NYC Small Biz: Open + Online",
@@ -271,24 +277,34 @@ export const openOnline = {
     { name: "Casa Lu Art Space", url: "https://www.casaluartspace.com/", slug: "casa-lu-art-space", w: 2000, h: 1084 },
     { name: "Cornel’s Catering", url: "https://www.cornelscatering.com/", slug: "cornels-catering", w: 2000, h: 1041 },
   ],
-  /** Grouped exactly as the original page groups them. */
+  /** Order follows the original acknowledgment, with its lead funders in the first row. */
   funders: [
-    ["Wells Fargo"],
-    ["Amazon", "Bank of America", "Crown Castle", "KKR", "Macy’s"],
     [
-      "Capital One Bank",
-      "Centerview Partners",
-      "Chris Hughes",
-      "Deanna Mulligan",
-      "Deutsche Bank of Americas Foundation",
-      "First Republic Bank",
-      "Fiserv and Clover",
-      "Medidata Solutions (a Dassault Systèmes Company)",
-      "Meta",
-      "Wachtell, Lipton, Rosen & Katz",
-      "West Monroe",
+      { name: "Wells Fargo", image: funderMark("wells-fargo", 500, 109) },
+      { name: "Amazon", image: funderMark("amazon", 500, 167) },
+      { name: "Bank of America", image: funderMark("bank-of-america", 500, 50) },
+      { name: "Crown Castle", image: funderMark("crown-castle", 500, 135) },
+      { name: "KKR", image: funderMark("kkr", 500, 119) },
+      { name: "Macy’s", image: funderMark("macys", 500, 136) },
     ],
-    ["AlleyCorp", "Google", "IAC", "Kirkland & Ellis", "Silicon Valley Bank"],
+    [
+      { name: "Capital One Bank", image: funderMark("capital-one", 500, 180) },
+      { name: "Centerview Partners" },
+      { name: "Chris Hughes" },
+      { name: "Deanna Mulligan" },
+      { name: "Deutsche Bank of Americas Foundation" },
+      { name: "First Republic Bank", image: funderMark("first-republic", 500, 185) },
+      { name: "Fiserv and Clover" },
+      { name: "Medidata Solutions (a Dassault Systèmes Company)" },
+      { name: "Meta", image: funderMark("meta", 500, 101) },
+      { name: "Wachtell, Lipton, Rosen & Katz" },
+      { name: "West Monroe", image: funderMark("west-monroe", 500, 104) },
+      { name: "AlleyCorp", image: funderMark("alleycorp", 163, 192) },
+      { name: "Google", image: funderMark("google", 500, 166) },
+      { name: "IAC", image: funderMark("iac", 398, 140) },
+      { name: "Kirkland & Ellis", image: funderMark("kirkland-ellis", 500, 35) },
+      { name: "Silicon Valley Bank", image: funderMark("silicon-valley-bank", 349, 69) },
+    ],
   ],
 } as const;
 
