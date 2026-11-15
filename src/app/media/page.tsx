@@ -14,6 +14,21 @@ export const metadata: Metadata = {
 /** `url` is null where the article is no longer online (checked 2026-11-14). */
 type Item = { date: string; title: string; outlet: string; kind: string; url: string | null }
 
+// Each mark represents an outlet with an SBRN story in the archive below.
+const featuredOutlets = [
+  [
+    { name: "The New York Times", src: "https://upload.wikimedia.org/wikipedia/commons/0/02/The_New_York_Times_Logo.svg", outlet: "The New York Times", width: 512, height: 86 },
+    { name: "ABC 7 New York", src: "https://upload.wikimedia.org/wikipedia/commons/a/a3/WABC_TV_New_2021.svg", outlet: "ABC 7 NY", width: 1000, height: 732 },
+    { name: "PIX11", src: "https://upload.wikimedia.org/wikipedia/commons/2/29/PIX11_2017.svg", outlet: "PIX11", width: 3167, height: 1000 },
+    { name: "Spectrum News NY1", src: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Spectrum_News_NY1_%282023%29.svg", outlet: "NY1", width: 1543, height: 411 },
+  ],
+  [
+    { name: "News 12", src: "https://upload.wikimedia.org/wikipedia/commons/6/6b/News_12_Networks_logo.svg", outlet: "News 12", width: 78, height: 22 },
+    { name: "amNewYork", src: "https://upload.wikimedia.org/wikipedia/commons/c/c2/AM_New_York.svg", outlet: "amNewYork", width: 699, height: 107 },
+    { name: "Staten Island Advance", src: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Staten_Island_Advance_Masthead.png", outlet: "Staten Island Advance", width: 1165, height: 230 },
+  ],
+] as const
+
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 /** "2024-01-22" becomes "Jan 22": no leading zeroes in visible dates. */
@@ -36,10 +51,6 @@ export default function MediaPage() {
   const items = press as Item[]
   const years = Array.from(new Set(items.map((i) => i.date.slice(0, 4))))
   const outlets = new Set(items.map((i) => i.outlet)).size
-  // Every outlet with coverage of the Network, most frequent first.
-  const tally = new Map<string, number>()
-  for (const i of items) tally.set(i.outlet, (tally.get(i.outlet) ?? 0) + 1)
-  const outletNames = [...tally.entries()].sort((x, y) => y[1] - x[1]).map(([o]) => o)
   return (
     <>
       <PageHeader
@@ -64,13 +75,28 @@ export default function MediaPage() {
 
       <section className="coverage" data-tone="night" aria-labelledby="coverage-title">
         <div className="wrap">
-          <div className="coverage__intro"><p className="label">Independent coverage and public records</p><h2 id="coverage-title" className="voice">Featured across New York</h2><p>Reporting from citywide publications, borough newsrooms, and public agencies.</p></div>
-          <ul className="coverage__outlets">{outletNames.map((name, index) => {
-            const article = items.find((item) => item.outlet === name && item.url)
-            return <li key={name} data-reveal="" style={{ ["--d" as string]: `${Math.min(index % 4, 3) * 60}ms` }}>
-              {article?.url ? <a href={article.url} target="_blank" rel="noreferrer"><span className="coverage__ordinal tnum">{index + 1}</span><span>{name}</span><span aria-hidden="true">↗</span></a> : <span className="coverage__still"><span className="coverage__ordinal tnum">{index + 1}</span><span>{name}</span></span>}
-            </li>
-          })}</ul>
+          <div className="coverage__intro"><p className="label">As featured in</p><h2 id="coverage-title" className="voice">The city is talking.</h2><p>Explore reporting on the Small Business Resource Network from citywide and borough newsrooms.</p></div>
+        </div>
+        <div className="coverage__marquee" aria-label="News outlets featuring the Small Business Resource Network">
+          {featuredOutlets.map((row, rowIndex) => (
+            <div className={"coverage__lane coverage__lane--" + (rowIndex + 1)} key={rowIndex}>
+              <ul className="coverage__track">
+                {[...row, ...row].map((outlet, index) => {
+                  const articleUrl = items.find((item) => item.outlet === outlet.outlet && item.url)?.url
+                  if (!articleUrl) return null
+                  return (
+                    <li className={index >= row.length ? "coverage__duplicate" : undefined} aria-hidden={index >= row.length ? true : undefined} key={outlet.name + "-" + index}>
+                      <a href={articleUrl} target="_blank" rel="noopener noreferrer" tabIndex={index >= row.length ? -1 : undefined} aria-label={"Read " + outlet.name + " coverage of SBRN (opens in a new tab)"}>
+                        {/* The original wordmarks preserve each publication's own typography. */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={outlet.src} alt={outlet.name} width={outlet.width} height={outlet.height} loading="lazy" />
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
