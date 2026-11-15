@@ -2721,20 +2721,40 @@ html:not(.motion) .online__rows {
 }
 
 .coverage .logo-reel__rows {
-  --reel-item-height: clamp(5.4rem, 9vw, 8rem);
-  --reel-mark-height: clamp(2.4rem, 4vw, 4.5rem);
+  --reel-gap: 0px;
+  --reel-item-height: clamp(5.6rem, 9vw, 8rem);
+  --reel-mark-height: clamp(2.75rem, 4.5vw, 4.25rem);
+  --reel-logo-width: 13rem;
+  background: var(--day);
+  color: var(--ink);
+  border-block: 1px solid var(--line);
 }
 
-.coverage .logo-reel__row:nth-child(even) {
-  --reel-item-height: clamp(4.5rem, 7vw, 6rem);
-  --reel-mark-height: 2.75rem;
+.coverage .logo-reel__row + .logo-reel__row {
+  --reel-item-height: clamp(4.75rem, 7vw, 6rem);
+  --reel-mark-height: 2.65rem;
   --reel-item-size: clamp(10rem, 17vw, 16rem);
+  --reel-logo-width: 11rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .coverage .logo-reel:not([data-expanded="true"], :has(a:focus-visible)) .logo-reel__row {
+    mask-image: linear-gradient(90deg, transparent, #000 min(3%, 3rem), #000 max(97%, calc(100% - 3rem)), transparent);
+  }
+}
+
+.coverage .logo-reel__item {
+  border-inline-end: 1px solid var(--line);
 }
 
 .coverage .logo-reel__mark {
-  background: var(--day);
-  color: var(--ink);
   transition: background-color var(--dur-1);
+}
+
+.coverage .logo-reel__mark img {
+  width: min(100%, var(--reel-logo-width));
+  height: var(--reel-mark-height);
 }
 
 .coverage .logo-reel__mark:hover,

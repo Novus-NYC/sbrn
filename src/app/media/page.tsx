@@ -18,15 +18,15 @@ type Item = { date: string; title: string; outlet: string; kind: string; url: st
 // Each mark represents an outlet with an SBRN story in the archive below.
 const featuredOutlets = [
   [
-    { name: "The New York Times", src: "https://upload.wikimedia.org/wikipedia/commons/0/02/The_New_York_Times_Logo.svg", outlet: "The New York Times", width: 512, height: 86 },
-    { name: "ABC 7 New York", src: "https://upload.wikimedia.org/wikipedia/commons/a/a3/WABC_TV_New_2021.svg", outlet: "ABC 7 NY", width: 1000, height: 732 },
-    { name: "PIX11", src: "https://upload.wikimedia.org/wikipedia/commons/2/29/PIX11_2017.svg", outlet: "PIX11", width: 3167, height: 1000 },
-    { name: "Spectrum News NY1", src: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Spectrum_News_NY1_%282023%29.svg", outlet: "NY1", width: 1543, height: 411 },
+    { name: "The New York Times", src: "/media/press/new-york-times.svg", outlet: "The New York Times", width: 512, height: 86 },
+    { name: "ABC 7 New York", src: "/media/press/abc7.svg", outlet: "ABC 7 NY", width: 1000, height: 732 },
+    { name: "PIX11", src: "/media/press/pix11.svg", outlet: "PIX11", width: 3167, height: 1000 },
+    { name: "Spectrum News NY1", src: "/media/press/ny1.svg", outlet: "NY1", width: 1543, height: 411 },
   ],
   [
-    { name: "News 12", src: "https://upload.wikimedia.org/wikipedia/commons/6/6b/News_12_Networks_logo.svg", outlet: "News 12", width: 78, height: 22 },
-    { name: "amNewYork", src: "https://upload.wikimedia.org/wikipedia/commons/c/c2/AM_New_York.svg", outlet: "amNewYork", width: 699, height: 107 },
-    { name: "Staten Island Advance", src: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Staten_Island_Advance_Masthead.png", outlet: "Staten Island Advance", width: 1165, height: 230 },
+    { name: "News 12", src: "/media/press/news12.svg", outlet: "News 12", width: 78, height: 22 },
+    { name: "amNewYork", src: "/media/press/amnewyork.svg", outlet: "amNewYork", width: 699, height: 107 },
+    { name: "Staten Island Advance", src: "/media/press/staten-island-advance.webp", outlet: "Staten Island Advance", width: 720, height: 142 },
   ],
 ] as const
 
