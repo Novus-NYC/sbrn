@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import ParallaxImage from "@/lib/components/parallax-image"
 import ConnectBand from "@/lib/components/connect-band"
+import LogoReel from "@/lib/components/logo-reel"
 import PageHeader from "@/lib/components/page-header"
 import { Arrow } from "@/lib/components/ui"
 import press from "@/lib/data/press.json"
@@ -49,6 +50,13 @@ const moments: Record<string, { src: string; alt: string; title: string; credit:
 
 export default function MediaPage() {
   const items = press as Item[]
+  const logoRows = featuredOutlets.map((outlets) => ({
+    repeat: 5,
+    marks: outlets.flatMap(({ name, outlet, ...image }) => {
+      const href = items.find((item) => item.outlet === outlet && item.url)?.url
+      return href ? [{ name, href, image }] : []
+    }),
+  }))
   const years = Array.from(new Set(items.map((i) => i.date.slice(0, 4))))
   const outlets = new Set(items.map((i) => i.outlet)).size
   return (
@@ -77,27 +85,7 @@ export default function MediaPage() {
         <div className="wrap">
           <div className="coverage__intro"><p className="label">As featured in</p><h2 id="coverage-title" className="voice">The city is talking.</h2><p>Explore reporting on the Small Business Resource Network from citywide and borough newsrooms.</p></div>
         </div>
-        <div className="coverage__marquee" aria-label="News outlets featuring the Small Business Resource Network">
-          {featuredOutlets.map((row, rowIndex) => (
-            <div className={"coverage__lane coverage__lane--" + (rowIndex + 1)} key={rowIndex}>
-              <ul className="coverage__track">
-                {[...row, ...row].map((outlet, index) => {
-                  const articleUrl = items.find((item) => item.outlet === outlet.outlet && item.url)?.url
-                  if (!articleUrl) return null
-                  return (
-                    <li className={index >= row.length ? "coverage__duplicate" : undefined} aria-hidden={index >= row.length ? true : undefined} key={outlet.name + "-" + index}>
-                      <a href={articleUrl} target="_blank" rel="noopener noreferrer" tabIndex={index >= row.length ? -1 : undefined} aria-label={"Read " + outlet.name + " coverage of SBRN (opens in a new tab)"}>
-                        {/* The original wordmarks preserve each publication's own typography. */}
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={outlet.src} alt={outlet.name} width={outlet.width} height={outlet.height} loading="lazy" />
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <LogoReel rows={logoRows} showAllLabel="Show all outlets" />
       </section>
 
       <div className="press" data-tone="day">
