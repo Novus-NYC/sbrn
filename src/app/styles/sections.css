@@ -779,14 +779,14 @@ html:not(.motion) .online__rows {
 
 .phead__facts dd {
   margin: 0 0 0.3rem;
-  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  font-size: clamp(2.6rem, 4.2vw, 4.25rem);
   /* the comma's tail hangs below the baseline: leave it room above the label */
   line-height: 1;
 }
 
 .phead__facts dt {
   color: var(--mist);
-  font-size: var(--t-xs);
+  font-size: clamp(0.875rem, 0.9vw, 1rem);
 }
 
 .jump {
