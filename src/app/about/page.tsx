@@ -5,7 +5,7 @@ import StreetScene from "@/lib/components/about/street-scene"
 import ConnectBand from "@/lib/components/connect-band"
 import ParallaxImage from "@/lib/components/parallax-image"
 import { Arrow, ArrowLink, Btn, Lines } from "@/lib/components/ui"
-import { about, brooklynBurgersPhoto, partners, site } from "@/lib/data/site"
+import { brooklynBurgersPhoto, partners, site } from "@/lib/data/site"
 
 import "./about.css"
 
@@ -17,43 +17,33 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="about-page">
       <header className="about-hero">
         <ParallaxImage
-          src="/media/about/lower-manhattan.webp"
-          alt="Lower Manhattan and the Hudson River seen from Pier 57"
-          sizes="(max-width: 860px) max(100vw, 1050px), 88vw"
+          src="/media/about/brooklyn-bridge-night.webp"
+          alt="The illuminated Brooklyn Bridge and Lower Manhattan skyline reflected in the East River"
+          sizes="(max-width: 780px) 1080px, 100vw"
           className="about-hero__photo"
           priority
           optimized
         />
         <div className="wrap about-hero__inner">
           <div className="about-hero__intro">
-            <p className="label about-hero__kicker" data-reveal="">{site.name}</p>
-            <Lines as="h1" className="display about-hero__title" lines={["Built for", "New York."]} />
-            <p className="about-hero__lead" data-reveal="">
-              New York City’s five borough Chambers of Commerce offer free, one-on-one guidance to local business owners.
-            </p>
-            <Btn href="#chambers" variant="ghost" arrow="down">Find your borough</Btn>
+            <p className="label about-hero__kicker">{site.name}</p>
+            <Lines as="h1" className="display about-hero__title" lines={["Local help.", <span key="citywide" className="voice">Citywide.</span>]} />
+            <p className="about-hero__lead">Free, one-on-one help for New York City businesses from the Chambers of Commerce in all five boroughs.</p>
+            <div className="about-hero__actions">
+              <Btn href="#chambers" arrow="down">Find your borough</Btn>
+              <a href="#network-story" className="about-hero__story-link">Get to know the Network <Arrow dir="down" /></a>
+            </div>
           </div>
-          <dl className="about-hero__facts">
-            {about.facts.slice(1).reverse().map((fact) => (
-              <div key={fact.label}>
-                <dt>{fact.label === "Small businesses" ? "Small businesses citywide" : "Borough chambers"}</dt>
-                <dd className="display tnum">{fact.value.toLocaleString("en-US")}{fact.suffix}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="about-hero__credit">
-            <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" target="_blank" rel="noreferrer">Photo by Kidfly182</a>
-            <span aria-hidden="true"> / </span>
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
-            <span> (cropped)</span>
+          <p className="about-photo-credit">
+            <a href="https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge_at_night.jpg" target="_blank" rel="noreferrer">Photo by Kai Pilger</a>
           </p>
         </div>
       </header>
 
-      <section className="about-story" aria-labelledby="story-h">
+      <section id="network-story" className="about-story" aria-labelledby="story-h">
         <StreetScene>
           <div className="wrap about-story__head">
             <p className="label about-story__place" data-reveal="">Park Slope, Brooklyn</p>
@@ -139,6 +129,6 @@ export default function AboutPage() {
       </section>
 
       <ConnectBand />
-    </>
+    </div>
   )
 }

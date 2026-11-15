@@ -1,22 +1,32 @@
-/* The panorama sets the scale before the page moves down to a single storefront. */
+.about-page {
+  --about-night: #0b131e;
+  --about-slate: #151f2d;
+  --about-harbor: #172738;
+  --about-cream: #fff3e0;
+  --about-muted: #c8d2de;
+  --about-rule: rgb(230 238 249 / 22%);
+  background: var(--about-night);
+  color: var(--about-cream);
+}
+
+/* The skyline stays legible through the full-height riverfront photograph. */
 .about-hero {
   position: relative;
   isolation: isolate;
   display: grid;
   align-items: end;
-  min-height: min(52rem, 94svh);
-  padding-top: calc(var(--nav-h) + clamp(2.75rem, 8svh, 6rem));
-  background: var(--night);
-  color: var(--white);
+  min-height: min(55rem, 94svh);
+  padding-top: calc(var(--nav-h) + clamp(3rem, 10svh, 7rem));
+  overflow: clip;
 }
 
 .about-hero__photo {
-  inset-inline-start: 12%;
   z-index: -2;
+  background: var(--about-night);
 }
 
 .about-hero__photo img {
-  object-position: 43% 56%;
+  object-position: 56% 58%;
 }
 
 .about-hero::before {
@@ -25,118 +35,108 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, var(--night) 2%, rgb(16 24 35 / 95%) 16%, rgb(16 24 35 / 58%) 45%, transparent 80%),
-    linear-gradient(0deg, var(--night), rgb(16 24 35 / 80%) 16%, transparent 66%);
+    linear-gradient(90deg, rgb(11 19 30 / 95%) 0%, rgb(11 19 30 / 75%) 28%, rgb(11 19 30 / 15%) 60%, transparent 82%),
+    linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 67%) 12%, transparent 45%, transparent 75%, rgb(11 19 30 / 72%));
 }
 
 .about-hero__inner {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 1.5rem 2rem;
-  padding-bottom: 1.1rem;
+  gap: 1.5rem;
+  padding-bottom: 1.2rem;
 }
 
 .about-hero__kicker {
-  margin-bottom: 1.15rem;
+  margin-bottom: clamp(.9rem, 2.5vw, 1.7rem);
   color: var(--lamp);
 }
 
 .about-hero__title {
-  font-size: clamp(4.35rem, 10.2vw, 10.25rem);
   margin-inline-start: -.035em;
+  font-size: clamp(4.65rem, 10.4vw, 10.5rem);
+  line-height: .89;
+}
+
+.about-hero__title .voice {
+  color: var(--lamp);
+  text-transform: none;
+  letter-spacing: -.045em;
 }
 
 .about-hero__lead {
-  max-width: 32ch;
-  margin-block: 1.35rem 1.65rem;
-  color: var(--day);
+  max-width: 34ch;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  color: var(--about-cream);
   font-size: var(--t-m);
-  line-height: 1.36;
+  line-height: 1.42;
   text-wrap: pretty;
 }
 
-.about-hero__facts {
+.about-hero__actions {
   display: flex;
-  align-items: start;
-  gap: clamp(1rem, 3vw, 3rem);
-  padding-top: .85rem;
-  border-top: 1px solid rgb(255 255 255 / 45%);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem 1.35rem;
+  margin-top: clamp(1.3rem, 3vw, 2.25rem);
 }
 
-.about-hero__facts div {
-  display: flex;
-  flex-direction: column-reverse;
+.about-hero__story-link {
+  display: inline-flex;
+  align-items: center;
   gap: .45rem;
-}
-
-.about-hero__facts dd {
-  margin: 0;
-  font-size: clamp(2rem, 4.2vw, 4.1rem);
-  line-height: 1;
-}
-
-.about-hero__facts dt {
+  min-height: 2.75rem;
+  font-weight: 600;
   font-size: var(--t-s);
-  color: var(--day);
+  text-decoration: underline;
+  text-underline-offset: .2em;
 }
 
-.about-hero__credit {
-  grid-column: 2;
-  width: fit-content;
-  justify-self: end;
-  color: var(--mist);
+.about-hero__story-link svg {
+  width: .95rem;
+  height: .95rem;
+}
+
+.about-photo-credit {
+  color: var(--about-muted);
   font-size: var(--t-xs);
 }
 
-.about-hero__credit a {
+.about-hero .about-photo-credit {
+  justify-self: end;
+}
+
+.about-photo-credit a {
   display: inline-block;
   padding-block: .25rem;
+  color: inherit;
   text-decoration: underline;
-  text-underline-offset: .14em;
+  text-underline-offset: .17em;
 }
 
-.about-hero__credit a:hover {
-  color: var(--white);
+.about-photo-credit a:hover {
+  color: var(--about-cream);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 780px) {
   .about-hero {
-    min-height: min(43rem, 93svh);
-    padding-top: calc(var(--nav-h) + clamp(4.5rem, 14svh, 8rem));
-  }
-
-  .about-hero__photo {
-    inset: 0 0 auto;
-    height: min(30rem, 73%);
-    mask-image: linear-gradient(#000 62%, transparent);
+    min-height: min(45rem, 94svh);
   }
 
   .about-hero__photo img {
-    object-position: 36% 52%;
+    object-position: 70% 48%;
   }
 
   .about-hero::before {
-    background: linear-gradient(0deg, var(--night) 21%, rgb(16 24 35 / 76%) 47%, rgb(16 24 35 / 26%) 84%);
-  }
-
-  .about-hero__inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.35rem;
-    padding-bottom: .75rem;
+    background:
+      linear-gradient(0deg, var(--about-night), rgb(11 19 30 / 88%) 21%, rgb(11 19 30 / 65%) 46%, transparent 77%),
+      linear-gradient(180deg, rgb(11 19 30 / 80%), transparent 24%);
   }
 
   .about-hero__title {
-    font-size: clamp(3.25rem, 14.5vw, 6.8rem);
+    font-size: clamp(3.65rem, 14vw, 7.1rem);
   }
 
-  .about-hero__facts {
-    justify-content: space-between;
-  }
-
-  .about-hero__credit {
-    grid-column: 1;
+  .about-hero .about-photo-credit {
     justify-self: start;
   }
 }
