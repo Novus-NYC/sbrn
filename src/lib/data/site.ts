@@ -310,6 +310,13 @@ export const storiesIntro = {
   text: "Learn how the Small Business Resource Network assisted these businesses across the five boroughs by connecting them to resources and offering personalized support that helped them to grow and thrive.",
 } as const;
 
+export const brooklynBurgersPhoto: ImageAsset = {
+  src: "/media/stories/brooklyn-burgers-and-beer.webp",
+  width: 971,
+  height: 728,
+  alt: "Six people standing outside the blue storefront of Brooklyn Burgers & Beer",
+};
+
 export const stories: Story[] = [
   {
     slug: "pan-african-solutions",
@@ -331,12 +338,7 @@ export const stories: Story[] = [
     name: "Brooklyn Burgers & Beer",
     place: "Park Slope",
     url: "https://www.brooklynburgersandbeer.com/",
-    image: {
-      src: "/media/stories/brooklyn-burgers-and-beer.webp",
-      width: 971,
-      height: 728,
-      alt: "Six people standing outside the blue storefront of Brooklyn Burgers & Beer",
-    },
+    image: brooklynBurgersPhoto,
     fact: { figure: "$2,500", label: "donated after the September 2023 flood" },
     body: "Brooklyn Burgers & Beer in Park Slope was severely impacted by flood waters in September 2023. With assistance from the SBRN team at the Brooklyn Chamber of Commerce, the business received a donation of $2,500 from Brooklyn Methodist Hospital - New York-Presbyterian. Additionally, the manager of the restaurant was interested in taking courses offered by the Business Solutions Center. Our team shared a list of upcoming courses with registration links so that he may further his education and run the business more effectively.",
   },

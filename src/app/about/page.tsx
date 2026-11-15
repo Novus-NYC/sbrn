@@ -1,13 +1,10 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import ParallaxImage from "@/lib/components/parallax-image"
 import ConnectBand from "@/lib/components/connect-band"
 import PageHeader from "@/lib/components/page-header"
-import { Arrow, Lines } from "@/lib/components/ui"
-import { about, chambers, mailto, partners } from "@/lib/data/site"
+import { Arrow, ArrowLink, Lines } from "@/lib/components/ui"
+import { about, brooklynBurgersPhoto, chambers, mailto, partners } from "@/lib/data/site"
 
-// Both panels use the same full-resolution view so the city continues as the
-// narrative moves from the introduction to the people the Network serves.
 const skyline = "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Lower_Manhattan_Skyline_2024.jpg/3840px-Lower_Manhattan_Skyline_2024.jpg"
 
 export const metadata: Metadata = {
@@ -39,21 +36,25 @@ export default function AboutPage() {
         }
       />
 
-      <section className="story story--photo section-pad" data-tone="night" aria-labelledby="story-h">
-        <ParallaxImage
-          src={skyline}
-          alt="Lower Manhattan from Pier 57, continuing the view from the page introduction"
-          sizes="100vw"
-        />
-        <div className="wrap story--photo__inner">
-          <p className="label" data-reveal="">Every neighborhood has a story</p>
-          <Lines id="story-h" as="h2" className="voice story__h" lines={["Serving the small businesses", "that make New York, New York."]} />
-          <div className="prose story__text" data-reveal="">
-            <p className="story__lead">{about.paragraphs[1]}</p>
-            <p>{about.paragraphs[2]}</p>
-            <p>{about.paragraphs[3]}</p>
+      <section className="story section-pad" data-tone="day" aria-labelledby="story-h">
+        <div className="wrap grid12">
+          <div className="story__copy">
+            <h2 id="story-h" className="voice story__h" data-reveal="">
+              Serving the small businesses that make New York, New York.
+            </h2>
+            <div className="prose story__text" data-reveal="">
+              <p className="story__lead">{about.paragraphs[1]}</p>
+              <p>{about.paragraphs[2]}</p>
+              <p>{about.paragraphs[3]}</p>
+            </div>
           </div>
-          <a className="story__credit" href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_Skyline_2024.jpg" target="_blank" rel="noreferrer">Skyline photograph: Kidfly182, CC BY 4.0</a>
+          <figure className="story__art" data-reveal="">
+            <Image {...brooklynBurgersPhoto} sizes="(max-width: 860px) 92vw, 46vw" />
+            <figcaption>
+              <span>Brooklyn Burgers &amp; Beer, Park Slope</span>
+              <ArrowLink href="/stories#brooklyn-burgers-and-beer">Read their story</ArrowLink>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
