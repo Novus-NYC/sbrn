@@ -238,6 +238,7 @@
 }
 
 .about-story__intro {
+  container-type: inline-size;
   padding-block: clamp(3.75rem, 8vw, 7.5rem) clamp(1.8rem, 4.5vw, 3.6rem);
 }
 
@@ -245,6 +246,14 @@
   max-width: 14ch;
   margin-top: .8rem;
   text-wrap: wrap;
+}
+
+@media (min-width: 650px) {
+  .about-story__intro .about-section-title {
+    max-width: none;
+    font-size: 6.75cqi;
+    white-space: nowrap;
+  }
 }
 
 /* Two beats share the same street view while the page scrolls naturally. */
