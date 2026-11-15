@@ -14,13 +14,9 @@ type Props = {
   heroImage?: { src: string; alt: string; credit?: string; source?: string }
 }
 
-/**
- * Every inner page opens on the gate, with its name painted across the slats.
- * Each page lifts it on something different: that is its own window.
- */
+/** A page-specific image sits behind a compact editorial introduction. */
 export default function PageHeader({ kicker, title, lead, aside, children, tone = "night", heroImage }: Props) {
   return (
-    <>
     <header className={`phead ${heroImage ? "phead--photo" : ""} ${tone === "coral" ? "phead--coral" : ""}`}>
       {heroImage ? <ParallaxImage src={heroImage.src} alt={heroImage.alt} priority className="phead__photo" /> : null}
       <div className="wrap phead__grid">
@@ -49,7 +45,5 @@ export default function PageHeader({ kicker, title, lead, aside, children, tone 
 
       {heroImage?.source && heroImage.credit ? <a className="phead__credit" href={heroImage.source} target="_blank" rel="noreferrer">Photo: {heroImage.credit}</a> : null}
     </header>
-
-    </>
   )
 }
