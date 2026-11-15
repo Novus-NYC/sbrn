@@ -773,7 +773,7 @@ body:has(.band) .footer--editorial .footer__cta { display: grid; }
 .footer__links { border-top: 1px solid var(--line-night); border-bottom: 1px solid var(--line-night); padding-block: 1.4rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem 3rem; flex-wrap: wrap; }
 .footer__links ul { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1.8rem; }
 .footer__links a { color: #ded9dd; min-height: 2.75rem; display: inline-flex; align-items: center; }
-.footer__links nav a { font-family: var(--f-display); font-size: clamp(1.2rem, 1.55vw, 1.6rem); line-height: 1; text-transform: uppercase; letter-spacing: .015em; }
+.footer__links nav a { font-family: var(--f-display); font-stretch: 75%; font-weight: 800; font-size: clamp(1.2rem, 1.55vw, 1.6rem); line-height: 1; text-transform: uppercase; letter-spacing: .015em; }
 .footer__links a:hover, .footer__fine a:hover { color: var(--lamp); }
 .footer--editorial .footer__base { border-top: 0; padding-block: 1.5rem calc(1.75rem + env(safe-area-inset-bottom)); align-items: center; }
 .footer__fine { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; }
