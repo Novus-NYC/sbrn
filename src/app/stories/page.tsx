@@ -18,7 +18,7 @@ export default function StoriesPage() {
         kicker="Stories"
         title={["Our impact on", "small businesses"]}
         lead={storiesIntro.text}
-        heroImage={{ src: "/media/stories/brooklyn-burgers-and-beer.webp", alt: "Brooklyn Burgers and Beer, one of the businesses featured in our stories" }}
+        heroImage={{ src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/SoHo_Manhattan_February_2026.jpg/3840px-SoHo_Manhattan_February_2026.jpg", alt: "A street scene in SoHo, Manhattan", credit: "Kidfly182, CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:SoHo_Manhattan_February_2026.jpg" }}
       >
         <nav aria-label="Boroughs">
           <ul className="jump">
