@@ -314,16 +314,22 @@ export default function MorningDriver({ count }: { count: number }) {
       })
     }
 
-    /* ---- re-measure when the stage changes width ---- */
-    let width = stage.clientWidth
+    /* ---- re-measure when the stage or the shops change size ----
+       The block is sized from the viewport height, which changes on phones
+       without any change in width (toolbars, in-app browsers), so the camera
+       stops must be re-measured on either axis. */
+    const size = () => `${stage.clientWidth}x${stage.clientHeight}|${shops[0].offsetWidth}`
+    let measured = size()
     let timer = 0
     const ro = new ResizeObserver(() => {
-      if (stage.clientWidth === width) return
-      width = stage.clientWidth
+      const next = size()
+      if (next === measured) return
+      measured = next
       window.clearTimeout(timer)
       timer = window.setTimeout(build, 120)
     })
     ro.observe(stage)
+    ro.observe(shops[0])
     document.fonts?.ready.then(build).catch(() => {})
 
     return () => {
