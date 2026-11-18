@@ -95,12 +95,17 @@ Everything comes from `raw messy data/` (a Wix export of nycsmallbusinessresourc
 
 ### Not carried over
 
-- **Translations.** The original offered eight translated versions. The language control supports Spanish, Chinese, Korean, Russian, Haitian Creole, Urdu, Tagalog and Greek, translating page copy, form labels, image descriptions, navigation and legal text. It is shown only when `GOOGLE_TRANSLATE_API_KEY` is configured on the server. The control remembers a visitor’s choice in their browser; `?lang=es` (and the other language codes) can open a page in that language. Translation is machine generated and should be reviewed before presenting legal copy as authoritative. The English page remains the source of record.
-
-### Translation setup
-
-Enable **Cloud Translation - Basic (v2)** for a Google Cloud project and set `GOOGLE_TRANSLATE_API_KEY` as a server-side environment variable on the deployment. Restrict the key to the Translation API and set a conservative project quota before enabling it: visitors’ page copy is translated on demand and this service is billed by usage. The key is never sent to the browser. Without the key the language control stays hidden and the English site remains usable. The saved source translations cover only portions of the old site, so they do not provide complete translations of the current draft.
 - **The business profile form** is the Network's existing external form (FormTitan). It is linked, not rebuilt.
+
+### Translations
+
+The site reads in English plus the eight languages of the Network's original site: Greek, Spanish, Haitian Creole, Korean, Russian, Tagalog, Urdu (right to left) and Simplified Chinese. There is no translation API, key or usage bill: every phrase is written out in `src/lib/i18n/messages/`.
+
+- **How it works.** Pages stay written in English. `src/lib/i18n/runtime.tsx` swaps the rendered copy (text, `alt`, `aria-label`, `title`, `placeholder`, page titles) for the chosen language after React renders, and keeps doing so as routes, menus and form states change. Dates are formatted for the language by the browser. Names of businesses, people, outlets, funders, credits and the postal address stay as written (`src/lib/i18n/keep.ts`), as does `Made by Novus`.
+- **Choosing a language.** The globe control in the navbar, the language row at the foot of the mobile menu, and the hero's greetings (each one switches the site into its language). The choice is remembered in the browser, and `?lang=es` (or any code) opens a page in that language for sharing. A head script applies a saved choice before first paint, so returning readers do not see English flash.
+- **Message files.** `en.json` maps a message id to the English exactly as it renders. Each language file has the same ids. A sentence with a link inside is split at the link with `‖` and must keep the same number of pieces; `{0}` stands for a name or number that is filled in (for example `Read from {0} (opens in a new tab)`).
+- **After changing copy.** Run the site, then `npm run i18n:check` (set `I18N_BASE` if it is not on port 3000). It visits every route in every language, opens the states that render extra text, and lists any phrase without a translation plus any text that overflows at phone width. Untranslated phrases fall back to English rather than breaking. Add the new English to `en.json` under a new id and the translation to each language file.
+- **Legal pages** are translated in full, with a notice in the reader's language that the English text governs and a button back to it.
 
 ## Media
 

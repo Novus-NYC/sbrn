@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import TranslationNotice from "@/lib/i18n/translation-notice"
 
 type Run = { text: string; href?: string; bold?: boolean }
 type Block =
@@ -47,6 +48,7 @@ export default function LegalDoc({ data }: { data: LegalData }) {
         </ol>
       </nav>
       <article className="legal__body">
+        <TranslationNotice />
         {data.blocks.map((b, i) => {
           if (b.type === "h") {
             return b.level === 2 ? (

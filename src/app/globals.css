@@ -65,10 +65,10 @@
   --line-night: rgba(255, 255, 255, 0.16);
 
   /* type */
-  --f-text: var(--font-archivo), "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-text: var(--font-archivo), var(--font-noto), var(--font-nastaliq), "Helvetica Neue", Arial, system-ui, sans-serif;
   /* "Archivo" is named directly so the display stack skips next/font's Arial fallback. */
-  --f-display: "Archivo", "SBRN Display A", "SBRN Display B", "SBRN Display C", "SBRN Display D", "Arial Narrow", sans-serif-condensed, sans-serif;
-  --f-voice: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --f-display: "Archivo", var(--font-noto), var(--font-nastaliq), "SBRN Display A", "SBRN Display B", "SBRN Display C", "SBRN Display D", "Arial Narrow", sans-serif-condensed, sans-serif;
+  --f-voice: var(--font-newsreader), Georgia, var(--font-nastaliq), "Times New Roman", serif;
   --t-mega: clamp(3.4rem, 0.9rem + 11.6vw, 13.5rem);
   --t-xl: clamp(2.6rem, 1.2rem + 5.6vw, 6.75rem);
   --t-l: clamp(1.9rem, 1.25rem + 2.5vw, 3.6rem);
