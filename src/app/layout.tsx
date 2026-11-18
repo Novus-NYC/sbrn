@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Archivo, Newsreader } from "next/font/google"
+import { Archivo, Newsreader, Noto_Nastaliq_Urdu, Noto_Sans } from "next/font/google"
 import type { ReactNode } from "react"
 import "./globals.css"
 import "./styles/chrome.css"
@@ -8,6 +8,8 @@ import "./styles/sections.css"
 import Footer from "@/lib/components/footer"
 import Navbar from "@/lib/components/navbar"
 import { chambers, site } from "@/lib/data/site"
+import { languageBootScript } from "@/lib/i18n/languages"
+import TranslationRuntime from "@/lib/i18n/runtime"
 import GateCurtain from "@/lib/motion/gate-curtain"
 import MotionRoot from "@/lib/motion/motion-root"
 
@@ -26,6 +28,25 @@ const newsreader = Newsreader({
   axes: ["opsz"],
   variable: "--font-newsreader",
   display: "swap",
+})
+
+// Translations: Archivo and Newsreader cover Latin only. These fill in Greek,
+// Cyrillic and Urdu glyph by glyph (unicode-range), so they download only when
+// a page is actually shown in one of those languages. Noto Sans has a width
+// axis, so Greek and Russian headlines stay condensed like the English ones.
+const notoSans = Noto_Sans({
+  subsets: ["cyrillic", "greek"],
+  axes: ["wdth"],
+  variable: "--font-noto",
+  display: "swap",
+  preload: false,
+})
+
+const nastaliq = Noto_Nastaliq_Urdu({
+  subsets: ["arabic"],
+  variable: "--font-nastaliq",
+  display: "swap",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -91,21 +112,23 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${newsreader.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${archivo.variable} ${newsreader.variable} ${notoSans.variable} ${nastaliq.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: flags }} />
+        <script dangerouslySetInnerHTML={{ __html: languageBootScript }} />
       </head>
       <body>
         <a className="skip" href="#main">
           Skip to content
         </a>
-        <Navbar translationsEnabled={Boolean(process.env.GOOGLE_TRANSLATE_API_KEY)} />
+        <Navbar />
         <main id="main" tabIndex={-1}>
           {children}
         </main>
         <Footer />
         <GateCurtain />
         <MotionRoot />
+        <TranslationRuntime />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

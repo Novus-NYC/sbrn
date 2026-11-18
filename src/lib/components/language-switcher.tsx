@@ -1,177 +1,144 @@
 "use client"
 
-import { usePathname } from "next/navigation"
-import { useEffect, useRef, useState } from "react"
-import { isLanguage, languages, type Language } from "@/lib/i18n/languages"
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react"
+import { languageInfo, languages, type Language } from "@/lib/i18n/languages"
+import { setLanguage, useLanguage } from "@/lib/i18n/store"
 
-type Original = { source: string; translated?: string }
-type Target = { apply: (value: string) => void; source: string }
-const textOrigins = new WeakMap<Text, Original>()
-const attributeOrigins = new WeakMap<Element, Map<string, Original>>()
-const translations = new Map<string, string>()
-let titleOrigin: Original | undefined
-const attributes = ["alt", "title", "placeholder", "aria-label", "aria-description"] as const
-const contentSelector = "script,style,noscript,textarea,code,pre,[contenteditable],[translate='no']"
-
-function translatable(text: string) {
-  return /\p{L}/u.test(text) && !/^(?:https?:\/\/|www\.|\S+@\S+)/i.test(text.trim())
+export function Globe({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9.2" />
+      <path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.7 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.5 8.1 12s1.3 6.6 3.9 9.2" />
+    </svg>
+  )
 }
 
-function targets(): Target[] {
-  const result: Target[] = []
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
-  while (walker.nextNode()) {
-    const node = walker.currentNode as Text
-    if (node.parentElement?.closest(contentSelector)) continue
-    const current = node.textContent || ""
-    let original = textOrigins.get(node)
-    if (!original || (current !== original.source && current !== original.translated)) {
-      original = { source: current }
-      textOrigins.set(node, original)
-    }
-    const source = original.source.trim()
-    if (!translatable(source)) continue
-    const saved = original
-    result.push({ source, apply(value) {
-      const leading = saved.source.match(/^\s*/)?.[0] || ""
-      const trailing = saved.source.match(/\s*$/)?.[0] || ""
-      const translated = leading + value + trailing
-      saved.translated = translated
-      if (node.isConnected && node.textContent !== translated) node.textContent = translated
-    } })
-  }
-
-  for (const element of document.body.querySelectorAll("[alt],[title],[placeholder],[aria-label],[aria-description]")) {
-    if (element.closest(contentSelector)) continue
-    let originals = attributeOrigins.get(element)
-    if (!originals) { originals = new Map(); attributeOrigins.set(element, originals) }
-    for (const name of attributes) {
-      const current = element.getAttribute(name)
-      if (!current) continue
-      let original = originals.get(name)
-      if (!original || (current !== original.source && current !== original.translated)) {
-        original = { source: current }
-        originals.set(name, original)
-      }
-      if (!translatable(original.source)) continue
-      const saved = original
-      result.push({ source: saved.source, apply(value) {
-        saved.translated = value
-        if (element.isConnected && element.getAttribute(name) !== value) element.setAttribute(name, value)
-      } })
-    }
-  }
-  return result
-}
-
-async function translateBatch(texts: string[], language: Language): Promise<void> {
-  const response = await fetch("/api/translate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ target: language, texts }),
-  })
-  if (!response.ok) throw new Error("Translation unavailable")
-  const body = await response.json() as { translations?: string[] }
-  if (!body.translations || body.translations.length !== texts.length) throw new Error("Incomplete translation")
-  body.translations.forEach((value, index) => translations.set(`${language}:${texts[index]}`, value))
-}
-
+/**
+ * The navbar control. It is written in no single language: the button shows a
+ * globe and the current language's code, and every choice is listed in its own
+ * script, so a reader who does not know English can still find theirs.
+ */
 export default function LanguageSwitcher() {
-  const pathname = usePathname()
-  const [language, setLanguage] = useState<Language>("en")
-  const [status, setStatus] = useState("")
-  const generation = useRef(0)
+  const language = useLanguage()
+  const [open, setOpen] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const panelId = useId()
+  const current = languageInfo(language)
 
   useEffect(() => {
-    const query = new URLSearchParams(window.location.search).get("lang")
-    const stored = window.localStorage.getItem("sbrn-language")
-    if (query && isLanguage(query)) setLanguage(query)
-    else if (stored && isLanguage(stored)) setLanguage(stored)
-  }, [])
-
-  useEffect(() => {
-    let raf = 0
-    let pending = false
-    let failed = false
-    const id = ++generation.current
-    const documentElement = document.documentElement
-    const direction = languages.find((item) => item.code === language)?.dir || "ltr"
-    documentElement.lang = language
-    documentElement.dir = direction
-    window.localStorage.setItem("sbrn-language", language)
-
-    async function update() {
-      pending = false
-      if (failed || id !== generation.current) return
-      const entries = targets()
-      const title = document.title
-      if (!titleOrigin || (title !== titleOrigin.source && title !== titleOrigin.translated)) titleOrigin = { source: title }
-      if (titleOrigin.source && translatable(titleOrigin.source)) {
-        const saved = titleOrigin
-        entries.push({ source: saved.source, apply(value) {
-          if (id === generation.current) { saved.translated = value; document.title = value }
-        } })
-      }
-      if (language === "en") {
-        entries.forEach(({ source, apply }) => apply(source))
-        setStatus("")
-        return
-      }
-      const missing = [...new Set(entries.map(({ source }) => source))].filter((source) => !translations.has(`${language}:${source}`))
-      if (missing.length) setStatus("Translating page…")
-      try {
-        let batch: string[] = []
-        let size = 0
-        for (const source of missing) {
-          if (batch.length >= 80 || size + source.length > 12000) {
-            await translateBatch(batch, language)
-            batch = []
-            size = 0
-          }
-          batch.push(source)
-          size += source.length
-        }
-        if (batch.length) await translateBatch(batch, language)
-        if (id !== generation.current) return
-        entries.forEach(({ source, apply }) => apply(translations.get(`${language}:${source}`) || source))
-        setStatus("")
-      } catch {
-        failed = true
-        if (id === generation.current) setStatus("Translation is temporarily unavailable. Please try again later.")
-      }
+    if (!open) return
+    const onPointer = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
     }
-    const schedule = () => {
-      if (pending || failed) return
-      pending = true
-      raf = requestAnimationFrame(update)
+    const onKey = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== "Escape") return
+      setOpen(false)
+      buttonRef.current?.focus()
     }
-    const observer = new MutationObserver(schedule)
-    observer.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: [...attributes] })
-    schedule()
+    document.addEventListener("pointerdown", onPointer)
+    document.addEventListener("keydown", onKey)
+    const t = window.setTimeout(() => {
+      rootRef.current?.querySelector<HTMLButtonElement>('[aria-pressed="true"]')?.focus()
+    }, 0)
     return () => {
-      generation.current++
-      observer.disconnect()
-      cancelAnimationFrame(raf)
+      window.clearTimeout(t)
+      document.removeEventListener("pointerdown", onPointer)
+      document.removeEventListener("keydown", onKey)
     }
-  }, [language, pathname])
+  }, [open])
 
-  function choose(value: string) {
-    if (!isLanguage(value)) return
-    const url = new URL(window.location.href)
-    if (value === "en") url.searchParams.delete("lang")
-    else url.searchParams.set("lang", value)
-    window.history.replaceState(window.history.state, "", url)
-    setStatus("")
-    setLanguage(value)
+  function choose(code: Language) {
+    setLanguage(code)
+    setOpen(false)
+    buttonRef.current?.focus()
+  }
+
+  // Arrow keys move through the list; Tab leaves it and closes it.
+  function onListKey(event: KeyboardEvent<HTMLUListElement>) {
+    const items = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("button"))
+    const index = items.indexOf(document.activeElement as HTMLButtonElement)
+    let next = -1
+    if (event.key === "ArrowDown") next = (index + 1) % items.length
+    else if (event.key === "ArrowUp") next = (index - 1 + items.length) % items.length
+    else if (event.key === "Home") next = 0
+    else if (event.key === "End") next = items.length - 1
+    if (next < 0) return
+    event.preventDefault()
+    items[next].focus()
   }
 
   return (
-    <div className="language-picker" translate="no">
-      <label htmlFor="site-language" className="sr-only">Website language</label>
-      <select id="site-language" value={language} onChange={(event) => choose(event.target.value)} aria-label="Website language">
-        {languages.map(({ code, label }) => <option key={code} value={code}>{label}</option>)}
-      </select>
-      {status && <span className="language-picker__status" role="status">{status}</span>}
+    <div
+      ref={rootRef}
+      className={`lang ${open ? "is-open" : ""}`}
+      translate="no"
+      onBlur={(event) => {
+        if (open && !rootRef.current?.contains(event.relatedTarget as Node)) setOpen(false)
+      }}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        className="lang__toggle"
+        aria-expanded={open}
+        aria-controls={panelId}
+        lang={current.code}
+        dir={current.dir}
+        aria-label={`${current.label}: ${current.name}`}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <Globe className="lang__globe" />
+        <span className="lang__code" aria-hidden="true">
+          {current.code.toUpperCase()}
+        </span>
+        <svg className="lang__chev" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
+          <path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        </svg>
+      </button>
+      <div id={panelId} className="lang__panel" hidden={!open}>
+        <p className="lang__title" aria-hidden="true">
+          {languages.map((item) => item.label).join(" · ")}
+        </p>
+        <ul className="lang__list" lang={current.code} aria-label={current.choose} onKeyDown={onListKey}>
+          {languages.map((item) => (
+            <li key={item.code}>
+              <button
+                type="button"
+                lang={item.code}
+                dir={item.dir}
+                aria-pressed={item.code === language}
+                onClick={() => choose(item.code)}
+              >
+                <span className="lang__code-sm" aria-hidden="true">
+                  {item.code.toUpperCase()}
+                </span>
+                <span className="lang__name">{item.name}</span>
+                <span className="lang__en" lang="en" dir="ltr">
+                  {item.english}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
+  )
+}
+
+/** A compact row of every language, for the mobile menu and anywhere the navbar is out of reach. */
+export function LanguageRow({ className = "" }: { className?: string }) {
+  const language = useLanguage()
+  const current = languageInfo(language)
+  return (
+    <ul className={`langrow ${className}`} lang={current.code} aria-label={current.choose} translate="no">
+      {languages.map((item) => (
+        <li key={item.code}>
+          <button type="button" lang={item.code} dir={item.dir} aria-pressed={item.code === language} onClick={() => setLanguage(item.code)}>
+            {item.name}
+          </button>
+        </li>
+      ))}
+    </ul>
   )
 }

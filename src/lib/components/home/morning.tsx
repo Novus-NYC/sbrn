@@ -2,6 +2,7 @@ import Image from "next/image"
 import { cta, hero, offer, stories } from "@/lib/data/site"
 import { Arrow, ArrowLink, Btn } from "../ui"
 import { Building } from "./building"
+import HeroLanguages from "./hero-languages"
 import MorningDriver from "./morning-driver"
 
 /** Deterministic pseudo-random numbers so the skyline is identical on server and client. */
@@ -124,13 +125,7 @@ export default function Morning() {
               </div>
             </div>
 
-            <ul className="greetings" aria-label="We are here to help you, in eight more languages" data-reveal="" style={{ ["--d" as string]: "360ms" }}>
-              {hero.greetings.map((g, i) => (
-                <li key={g.lang} lang={g.lang} dir={"dir" in g ? g.dir : undefined} style={{ ["--i" as string]: i }}>
-                  {g.text}
-                </li>
-              ))}
-            </ul>
+            <HeroLanguages />
           </div>
 
           <div className="wrap herogate__foot" data-reveal="" style={{ ["--d" as string]: "440ms" }}>

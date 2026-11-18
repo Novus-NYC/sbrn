@@ -31,7 +31,7 @@ export default function ConnectForm() {
           <label>Business name <span aria-hidden="true">*</span><input name="businessName" autoComplete="organization" required /></label>
           <label>Business website<input name="website" type="url" placeholder="https://" /></label>
           <label>Business address<input name="address" autoComplete="street-address" /></label>
-          <label>Borough <span aria-hidden="true">*</span><select name="borough" required defaultValue=""><option value="" disabled>Select a borough</option><option>Bronx</option><option>Brooklyn</option><option>Manhattan</option><option>Queens</option><option>Staten Island</option></select></label>
+          <label>Borough <span aria-hidden="true">*</span><select name="borough" required defaultValue=""><option value="" disabled>Select a borough</option><option value="Bronx">Bronx</option><option value="Brooklyn">Brooklyn</option><option value="Manhattan">Manhattan</option><option value="Queens">Queens</option><option value="Staten Island">Staten Island</option></select></label>
           <label className="intake__wide">Tell us about your business<textarea name="description" rows={4} /></label>
         </div>
       </fieldset>

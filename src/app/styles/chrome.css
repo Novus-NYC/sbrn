@@ -151,34 +151,187 @@ html:not(.js) .nav::before {
   gap: 0.75rem;
 }
 
-.language-picker { position: relative; display: flex; align-items: center; }
-.language-picker select {
-  appearance: none;
-  width: clamp(5.2rem, 9vw, 8.5rem);
-  min-height: 2.75rem;
-  padding: .45rem 1.35rem .45rem .6rem;
-  color: currentColor;
-  background: rgba(16, 24, 35, .48);
-  border: 1px solid rgba(255, 255, 255, .5);
-  border-radius: 0;
-  font: 700 .82rem var(--f-text);
-  cursor: pointer;
+/* ---------- language: a globe and the current code, every choice in its own script ---------- */
+.lang {
+  position: relative;
 }
-.language-picker::after { content: "⌄"; position: absolute; right: .45rem; pointer-events: none; }
-.language-picker select option { color: #101823; background: #fff; }
-.language-picker select:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
-.language-picker__status {
+
+.lang__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: inherit;
+  font-family: var(--f-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  transition: border-color var(--dur-1) ease, background-color var(--dur-1) ease;
+}
+
+.lang__toggle:hover,
+.lang.is-open .lang__toggle {
+  border-color: var(--lamp);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang__toggle:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 2px;
+}
+
+.lang__globe {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: none;
+}
+
+.lang__chev {
+  width: 0.65rem;
+  height: 0.45rem;
+  transition: transform var(--dur-1) var(--ease-gate);
+}
+
+.lang.is-open .lang__chev {
+  transform: rotate(180deg);
+}
+
+.lang__panel {
   position: absolute;
+  top: calc(100% + 0.6rem);
   right: 0;
-  top: calc(100% + .5rem);
-  width: max-content;
-  max-width: min(20rem, 85vw);
-  padding: .65rem .8rem;
+  z-index: 5;
+  width: min(19rem, calc(100vw - 2 * var(--gutter)));
+  max-height: calc(100svh - var(--nav-h) - 1.5rem);
+  overflow-y: auto;
+  padding: 0.75rem 0 0.4rem;
+  background: var(--night);
+  border: 1px solid var(--line-night);
+  border-top: 3px solid var(--coral);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.lang__panel[hidden] {
+  display: none;
+}
+
+.motion .lang__panel:not([hidden]) {
+  animation: lang-drop 260ms var(--ease-out);
+}
+
+@keyframes lang-drop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -0.5rem, 0);
+  }
+}
+
+.lang__title {
+  padding: 0 1rem 0.6rem;
+  color: var(--mist);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.lang__list button {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr auto;
+  align-items: baseline;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.55rem 1rem;
+  border-top: 1px solid var(--line-night);
+  color: var(--white);
+  text-align: left;
+  transition: background-color var(--dur-1) ease, color var(--dur-1) ease;
+}
+
+.lang__list button[dir="rtl"] {
+  direction: ltr;
+}
+
+.lang__list button:hover,
+.lang__list button:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--lamp);
+}
+
+.lang__list button:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: -2px;
+}
+
+.lang__list button[aria-pressed="true"] {
+  color: var(--lamp);
+  box-shadow: inset 3px 0 0 var(--lamp);
+}
+
+.lang__code-sm {
+  color: var(--mist);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.lang__name {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.lang__en {
+  color: var(--mist);
+  font-size: 0.75rem;
+}
+
+/* the same choices laid out flat, at the foot of the full-screen menu */
+.langrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.langrow button {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: border-color var(--dur-1) ease, color var(--dur-1) ease;
+}
+
+.langrow button:hover,
+.langrow button:focus-visible,
+.langrow button[aria-pressed="true"] {
+  border-color: var(--lamp);
+  color: var(--lamp);
+}
+
+.langrow button:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 2px;
+}
+
+/* translation runtime: hold the page until a saved language is applied, and say so if it cannot be */
+html.i18n-pending body {
+  visibility: hidden;
+}
+
+.i18n-error {
+  position: fixed;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  z-index: 130;
+  max-width: min(22rem, calc(100vw - 2 * var(--gutter)));
+  padding: 0.8rem 1rem;
   background: var(--night);
   color: var(--white);
-  font-size: .82rem;
+  border-left: 3px solid var(--coral);
+  font-size: var(--t-s);
   line-height: 1.4;
-  box-shadow: 0 2px 12px rgba(0,0,0,.2);
 }
 
 .nav__toggle {
@@ -240,7 +393,8 @@ html:not(.js) .nav::before {
 }
 
 @media (max-width: 520px) {
-  .language-picker select { width: 5.2rem; font-size: .75rem; }
+  .lang__toggle { padding-inline: 0.5rem; }
+  .lang__chev { display: none; }
   .nav__end { gap: .4rem; }
   .nav__toggle-label { display: none; }
   .nav__cta {
@@ -815,3 +969,24 @@ body:has(.band) .footer--editorial .footer__cta { display: grid; }
 @media (max-width: 700px) { .footer--editorial .footer__top { display: grid; } .footer--editorial .footer__nyc { font-size: clamp(5rem, 21vw, 8rem); } .footer--editorial .footer__name { font-size: clamp(1.2rem, 4.5vw, 2rem); } .footer__links { display: grid; } .footer__links ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .2rem 1rem; } }
 
 .phead__credit { position: absolute; right: var(--edge); bottom: .6rem; z-index: 2; color: #e6edf5; font-size: .75rem; text-decoration: underline; text-shadow: 0 1px 2px var(--night); }
+
+/* Translated copy: Greek and Russian words run longer than the English the
+   display sizes were tuned for. Let them hyphenate (or, failing that, break)
+   instead of pushing past the edge on a phone. */
+html:not([lang="en"]) :is(h1, h2, h3, h4, .display, .voice, .btn, .label) {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* The "Free" stamp is one word set huge; translations of it run two to three
+   times longer, so the stamp steps down rather than leaving the page. */
+html:not([lang="en"]) .free__stamp {
+  font-size: clamp(2.4rem, 1rem + 6vw, 7rem);
+}
+
+/* Line-reveal masks clip anything above the cap height. Accents on capitals
+   (Й, È, Ñ, Ü) sit there, so translated headlines get headroom for them. */
+html:not([lang="en"]) .ln {
+  padding-top: 0.16em;
+  margin-top: -0.16em;
+}

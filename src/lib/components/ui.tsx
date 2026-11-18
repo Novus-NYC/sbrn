@@ -104,7 +104,7 @@ export function Roll({ children }: { children: string }) {
 /** The logo lockup set in type: NYC over two tracked lines, as in the brand mark. */
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`wordmark ${className}`}>
+    <span className={`wordmark ${className}`} translate="no">
       <span className="wordmark__nyc">NYC</span>{" "}
       <span className="wordmark__rest">
         <span>Small Business</span> <span>Resource Network</span>

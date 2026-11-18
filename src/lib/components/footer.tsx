@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="wrap footer__top">
           <div className="footer__identity">
             <Link href="/" className="footer__brand" aria-label="NYC Small Business Resource Network home">
-              <span className="display footer__nyc">NYC</span>
-              <span className="display footer__name">Small Business<br />Resource Network</span>
+              <span className="display footer__nyc" translate="no">NYC</span>
+              <span className="display footer__name" translate="no">Small Business<br />Resource Network</span>
             </Link>
           </div>
           <div className="footer__cta">
